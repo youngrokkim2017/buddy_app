@@ -1,6 +1,6 @@
-// Define a new schema, for music
+// Define a new schema, for post
 // pass into mongoose.models
-// have a model for our Music
+// have a model for our Post
 const mongoose = require('mongoose');
 // need to access the schema
 const Schema = mongoose.Schema;
@@ -17,15 +17,15 @@ const pointSchema = new Schema({
     },
 });
 
-// Define what it means to be a Music in our app
-const MusicSchema = new Schema({
+// Define what it means to be a Post in our app
+const PostSchema = new Schema({
     user: {
         // similar to active record association
         type: Schema.Types.ObjectId,
         // needs a reference, the model we want to associate it with
         ref: 'users',
-        // ref: 'music',
-        // ref: 'musics',
+        // ref: 'post',
+        // ref: 'posts',
     },
     // text: {
     //     type: String,
@@ -35,22 +35,26 @@ const MusicSchema = new Schema({
         type: String,
         required: true,
     },
-    artist: {
+    start: {
         type: String,
         required: true,
     },
-    genre: {
+    destination: {
+        type: String,
+        required: true,
+    },
+    time: {
+        type: String,
+        required: true,
+    },
+    description: {
         type: String,
         required: true,
     },
     // location: {
-    //     type: String,
+    //     type: pointSchema,
     //     required: true,
     // },
-    location: {
-        type: pointSchema,
-        required: true,
-    },
     date: {
         type: Date,
         default: Date.now,
@@ -58,7 +62,6 @@ const MusicSchema = new Schema({
 });
 
 // Pass into mongoose.models
-const Music = mongoose.model('music', MusicSchema);
-// const Music = mongoose.model('musics', MusicSchema);
+const Post = mongoose.model('post', PostSchema);
 
-module.exports = Music;
+module.exports = Post;

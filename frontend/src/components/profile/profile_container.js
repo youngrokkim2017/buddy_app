@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { fetchUserMusic } from '../../actions/music_actions';
+import { fetchUserPost } from '../../actions/post_actions';
 import Profile from './profile';
 
 const mapStateToProps = (state) => {
     return {
-        music: Object.values(state.music.user),
+        post: Object.values(state.post.user),
         currentUser: state.session.user
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchUserMusic: id => dispatch(fetchUserMusic(id))
+        fetchUserPost: id => dispatch(fetchUserPost(id))
     };
 };
 

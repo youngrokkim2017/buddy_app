@@ -1,46 +1,46 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const validateMusicInput = require('../../validation/musics');
-const Music = require('../../models/Music');
+const validatePostInput = require('../../validation/post');
+const Post = require('../../models/Post');
 const Chat = require('../../models/Chat');
 const User = require('../../models/User');
 
 router.get('/test', (req, res) => {
-    res.json({ msg: 'This is the music route' })
+    res.json({ msg: 'This is the post route' })
 });
 
-// INDEX route GET route to get all the music currently available
+// INDEX route GET route to get all the posts currently available
 router.get('/', (req, res) => {
     // did not add passport.authenticate b/c doesn't matter which user is logged in
     // use mongoose to get the index
-    Music
+    Post
         .find()
         .sort({ date: -1 }) // sort by date in reverse order
-        .then(musics => res.json(musics))
+        .then(p => res.json(p))
         .catch(err => res.status(400).json(err));
 });
 
-// GET look up all the musics by a give user
+// GET look up all the posts by a give user
 router.get('/user/:user_id', (req, res) => {
-    // find the musics by the given id
-    Music
+    // find the posts by the given id
+    Post
         // search on the user field
         .find({ user: req.params.user_id })
-        // then send back the music that we find
-        .then(musics => res.json(musics))
+        // then send back the post that we find
+        .then(p => res.json(p))
         .catch(err => res.status(400).json(err));
 });
 
 // GET to a specific id 
 router.get('/:id', (req, res) => {
-    Music
+    Post
         .findById(req.params.id)
-        .then(music => res.json(music))
+        .then(p => res.json(p))
         .catch(err => res.status(400).json(err));
 });
 
-// Add POST route, allows us to create a new music on the backend
+// Add POST route, allows us to create a new post on the backend
 // and also want to add the user on the request using passport, import passport
 router.post('/', 
     passport.authenticate('jwt', { session: false }), // add passport here for the second middleware function
@@ -48,25 +48,26 @@ router.post('/',
         // now the req object will have the user key
         // will be the current user based on the jwt
         
-        // FIRST validate that the music will work
-        const { isValid, errors } = validateMusicInput(req.body);
+        // FIRST validate that the post will work
+        const { isValid, errors } = validatePostInput(req.body);
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
 
-        // NEXT create next music, if passed validations
-        const newMusic = new Music({
+        // NEXT create next post, if passed validations
+        const newPost = new Post({
             user: req.user.id,
             title: req.body.title,
-            artist: req.body.artist,
-            genre: req.body.genre,
-            location: req.body.location,
+            start: req.body.start,
+            destination: req.body.destination,
+            time: req.body.time,
+            description: req.body.description,
         });
 
-        // THEN save the music and send the res
-        newMusic.save() // returns a promise
-            .then(music => res.json(music));
+        // THEN save the post and send the res
+        newPost.save() // returns a promise
+            .then(p => res.json(p));
     }
 );
 
@@ -74,7 +75,7 @@ router.post('/',
 
 // // add a POST route 
 // // create a chat
-// router.post('/:musicId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
+// router.post('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
 //     const { errors, isValid } = validateChatInput(req.body);
 
 //     if (!isValid) {
@@ -86,7 +87,7 @@ router.post('/',
 //             _id: req.user._id,
 //             name: req.user.name,
 //         },
-//         music: req.params.musicId,
+//         post: req.params.postId,
 //         message: req.body.message,
 //     });
 
@@ -96,9 +97,9 @@ router.post('/',
 // });
 
 // // GET chats
-// router.get('/:musicId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
+// router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
 //     Chat
-//         .find({ music: req.params.musicId })
+//         .find({ post: req.params.postId })
 //         .then(chats => res.json(chats))
 // });
 
@@ -106,11 +107,11 @@ router.post('/',
 
 
 // // GETS users for the chat
-// router.get('/:musicId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     let music = [];
+// router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+//     let post = [];
 
-//     Music.findById(req.params.musicId)
-//         .then(music => {
+//     post.findById(req.params.postId)
+//         .then(post => {
 //             // User.findById()
 //         })
 // });

@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
-import { composeMusic } from '../../actions/music_actions';
-import MusicCompose from './music_compose';
+import { composePost } from '../../actions/post_actions';
+import PostForm from './post_form';
 
 const mapStateToProps = (state) => {
     return {
         currentUser: state.session.user,
-        newMusic: state.music.new
+        newPost: state.post.new
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        composeMusic: data => dispatch(composeMusic(data))
+        composePost: data => dispatch(composePost(data))
     };
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MusicCompose);
+)(PostForm);

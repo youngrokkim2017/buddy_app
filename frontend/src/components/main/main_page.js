@@ -1,7 +1,6 @@
 import React from 'react';
 // import { Link } from "react-router-dom";
 // import NavBar from '../nav/navbar';
-// import MusicBox from '../music/music_box';
 
 class MainPage extends React.Component {
     // constructor(props) {
@@ -9,7 +8,7 @@ class MainPage extends React.Component {
     // }
 
     // componentDidMount() {
-    //     this.props.fetchMusic();
+    //     this.props.fetchPost();
     // }
 
     render() {
@@ -18,7 +17,7 @@ class MainPage extends React.Component {
         return (
             <div>
                 {/* <Link to={'/'}><h1>APP NAME</h1></Link> */}
-                {/* <h1>A music drop app</h1> */}
+                {/* <h1>A buddy system app</h1> */}
                 {/* <div>
                     <NavBar />
                 </div> */}
@@ -29,8 +28,8 @@ class MainPage extends React.Component {
                 <div>
                     {/* <h2>Recent</h2> */}
                     {/* <div>   
-                        {this.props.music.map((m) => (
-                            <MusicBox
+                        {this.props.post.map((m) => (
+                            <PostIndexItem
                             key={m._id}
                             title={m.title}
                             artist={m.artist}

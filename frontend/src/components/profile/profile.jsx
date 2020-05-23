@@ -1,44 +1,44 @@
 import React from 'react';
-import MusicBox from '../music/music_box';
+import PostIndexItem from '../post/post_index_item';
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            music: []
+            post: []
         }
     }
 
     // componentWillMount() {
     componentDidMount() {
         console.log(this.props.currentUser.id);
-        this.props.fetchUserMusic(this.props.currentUser.id);
+        this.props.fetchUserPost(this.props.currentUser.id);
     }
 
     // componentWillReceiveProps(newState) {
     // componentDidUpdate(prevState) {
-    //     // this.setState({ music: newState.music });
-    //     this.setState({ music: prevState.music });
+    //     // this.setState({ post: newState.post });
+    //     this.setState({ post: prevState.post });
     // }
 
     render() {
         console.log(this.props);
 
-        // if (this.state.music.length === 0) {
-        if (this.props.music.length === 0) {
+        // if (this.state.post.length === 0) {
+        if (this.props.post.length === 0) {
             return(
                 <div>
-                    {this.props.currentUser.handle} has no Music
+                    {this.props.currentUser.handle} has no Post
                 </div>
             );
         } else {
             return (
                 <div>
-                    <h2>All of {this.props.currentUser.handle}'s Music</h2>
-                    {this.props.music.map(m => (
-                    // {this.state.music.map(m => (
-                        <MusicBox key={m._id} title={m.title} artist={m.artist} genre={m.genre} />
+                    <h2>All of {this.props.currentUser.handle}'s Posts</h2>
+                    {this.props.post.map(m => (
+                    // {this.state.post.map(m => (
+                        <PostIndexItem key={m._id} title={m.title} />
                     ))}
                 </div>
             );

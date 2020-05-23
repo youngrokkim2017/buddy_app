@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import { fetchMusic } from '../../actions/music_actions';
-import Music from './music';
+import { fetchPost } from '../../actions/post_actions';
+import Post from './post';
 
 const mapStateToProps = (state) => {
     return {
-        music: Object.values(state.music.all)
+        post: Object.values(state.post.all)
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchMusic: () => dispatch(fetchMusic())
+        fetchPost: () => dispatch(fetchPost())
     };
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Music);
+)(Post);

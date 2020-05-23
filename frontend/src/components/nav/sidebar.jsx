@@ -21,8 +21,8 @@ class SideBar extends React.Component {
             return (
                 <div>
                     <Link to={'/'}>Home</Link>
-                    <Link to={'/new_music'}>Drop</Link>
-                    <Link to={'/music'}>Browse</Link>
+                    <Link to={'/new_post'}>Create a Post</Link>
+                    <Link to={'/post'}>Browse</Link>
                     <Link to={'/profile'}>Profile</Link>
                     {/* <button onClick={this.logoutUser}>Log Out</button> */}
                     <Link to={'/'} onClick={this.logoutUser}>Log Out</Link>
@@ -32,7 +32,7 @@ class SideBar extends React.Component {
             return (
                 <div>
                     <Link to={'/'}>Home</Link>
-                    <Link to={'/music'}>Browse</Link>
+                    <Link to={'/post'}>Browse</Link>
                 </div>
             );
         }

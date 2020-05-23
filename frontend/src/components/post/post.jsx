@@ -1,14 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import MusicBox from './music_box';
-// import MusicMap from './music_map/music_map';
+import PostIndexItem from './post_index_item';
 
-class Music extends React.Component {
+class Post extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            music: [],
+            post: [],
             isNewestFirst: true,
         };
 
@@ -27,7 +26,7 @@ class Music extends React.Component {
 
     // componentWillMount() {
     componentDidMount() {
-        this.props.fetchMusic();
+        this.props.fetchPost();
 
         // if ("geolocation" in navigator) {
         //     console.log("Available");
@@ -40,25 +39,27 @@ class Music extends React.Component {
         //     console.log("Longitude is :", position.coords.longitude);
         // });
 
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                console.log(position)
-            },
-            function (error) {
-                    console.error("Error Code = " + error.code + " - " + error.message);
-            }
-        );
+        ///////////////// GEOLOCATION///////////////////////////////////////////
+        // navigator.geolocation.getCurrentPosition(
+        //     function (position) {
+        //         console.log(position)
+        //     },
+        //     function (error) {
+        //             console.error("Error Code = " + error.code + " - " + error.message);
+        //     }
+        // );
+        ////////////////////////////////////////////////////////////////////////
     }
 
     // componentWillReceiveProps(newState) {
     // componentDidUpdate(prevState) {
-    //     // this.setState({ music: newState.music });
-    //     this.setState({ music: prevState.music });
+    //     // this.setState({ post: newState.post });
+    //     this.setState({ post: prevState.post });
     // }
 
     handleAlphaSort() {
-      let titlesArr = this.props.music.map((m) => {
-        return m.title;
+      let titlesArr = this.props.post.map((p) => {
+        return p.title;
       });
 
       return titlesArr.sort();
@@ -69,31 +70,31 @@ class Music extends React.Component {
     }
 
     sortByDate() {
-      const { music } = this.state;
-      let sortedMusic = music;
+      const { post } = this.state;
+      let sortedPost = post;
       if (this.state.isNewestFirst) {
-        sortedMusic = music.sort((a, b) => a.date < b.date)
+        sortedPost = post.sort((a, b) => a.date < b.date)
       } else {
-        sortedMusic = music.sort((a, b) => a.date > b.date);
+        sortedPost = post.sort((a, b) => a.date > b.date);
       };
 
       this.setState({
-        music: sortedMusic,
+        post: sortedPost,
         isNewestFirst: !this.state.isNewestFirst,
       });
     }
 
     render() {
-        console.log(this.state);
-        // console.log(this.props);
-        console.log(this.props.music);
+        // console.log(this.state);
+        console.log(this.props);
+        // console.log(this.props.post);
 
-        // const { music } = this.state;
+        // const { post } = this.state;
 
-        if (this.props.music.length === 0) {
+        if (this.props.post.length === 0) {
             return (
                 <div>
-                    There is no Music
+                    There is no Post
                 </div>
             );
         } else {
@@ -101,26 +102,21 @@ class Music extends React.Component {
               <div>
                 <div>
                   {/* <button onClick={this.handleAlphaSort}>A-Z</button> */}
-                  <button onClick={this.toggleSortDate}>Date</button>
+                  {/* <button onClick={this.toggleSortDate}>Date</button> */}
                 </div>
 
-                {/* <div>
-                  <MusicMap />
-                </div> */}
-
                 {/* <br/> */}
-                <h2>All Music</h2>
+                <h2>All Post</h2>
                 {/* <br/> */}
                 <div>
-                  {/* {music.map((m) => ( */}
-                    {/* {this.state.music.all.map(m => ( */}
-                  {this.props.music.map((m) => (
-                    <MusicBox
-                      key={m._id}
-                      title={m.title}
-                      artist={m.artist}
-                      genre={m.genre}
-                      location={m.location}
+                  {this.props.post.map((p) => (
+                    <PostIndexItem
+                      key={p._id}
+                      title={p.title}
+                      start={p.start}
+                      destination={p.destination}
+                      time={p.time}
+                      description={p.description}
                     />
                   ))}
                 </div>       
@@ -130,7 +126,7 @@ class Music extends React.Component {
     }
 }
 
-export default withRouter(Music);
+export default withRouter(Post);
 
 
 // MAP EXAMPLE

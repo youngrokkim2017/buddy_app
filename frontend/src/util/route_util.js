@@ -10,8 +10,8 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         !loggedIn ? (
             <Component {...props} />
         ) : (
-                // Redirect to the music index page if the user is authenticated
-                <Redirect to="/music" />
+                // Redirect to the post index page if the user is authenticated
+                <Redirect to="/post" />
             )
     )} />
 );

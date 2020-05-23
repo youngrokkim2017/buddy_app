@@ -15,12 +15,12 @@ class LoginForm extends React.Component {
         this.renderErrors = this.renderErrors.bind(this);
     }
 
-    // Once the user has been authenticated, redirect to the music index page
+    // Once the user has been authenticated, redirect to the post index page
     // componentWillReceiveProps(nextProps) {
     componentDidUpdate(prevProps) {
         // if (nextProps.currentUser === true) {
         if (prevProps.currentUser === true) {
-            this.props.history.push('/music');
+            this.props.history.push('/post');
         }
 
         // Set or clear errors
