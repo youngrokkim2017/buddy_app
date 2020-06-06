@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import NavBar from '../nav/navbar';
 
 class MainPage extends React.Component {
@@ -21,10 +21,10 @@ class MainPage extends React.Component {
                 {/* <div>
                     <NavBar />
                 </div> */}
-                {/* <div>
+                <div>
                     <Link to={'/signup'}>Signup</Link>
                     <Link to={'/login'}>Login</Link>
-                </div> */}
+                </div>
                 <div>
                     {/* <h2>Recent</h2> */}
                     {/* <div>   

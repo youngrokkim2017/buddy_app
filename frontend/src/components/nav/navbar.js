@@ -29,7 +29,7 @@ class NavBar extends React.Component {
         } else {
             return (
                 <div>
-                    <Link to={'/post'}>Browse</Link>
+                    {/* <Link to={'/post'}>Browse</Link> */}
                     <Link to={'/signup'}>Signup</Link>
                     <Link to={'/login'}>Login</Link>
                 </div>
