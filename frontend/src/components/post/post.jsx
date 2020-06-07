@@ -11,6 +11,7 @@ class Post extends React.Component {
             isNewestFirst: true,
         };
 
+        this.handleDelete = this.handleDelete.bind(this);
         // this.toggleSortDate = this.toggleSortDate.bind(this);
         // this.handleAlphaSort = this.handleAlphaSort.bind(this);
     }
@@ -56,6 +57,11 @@ class Post extends React.Component {
     //     // this.setState({ post: newState.post });
     //     this.setState({ post: prevState.post });
     // }
+
+    handleDelete() {
+      this.props.deletePostItem(this.props.match.params.postId)
+        .then(this.props.history.push('/posts'))
+    };
 
     handleAlphaSort() {
       let titlesArr = this.props.post.map((p) => {
@@ -119,6 +125,9 @@ class Post extends React.Component {
                       description={p.description}
                     />
                   ))}
+                  {/* <div className="post-delete-button-container">
+                    <button className="delete-post" onClick={this.handleDelete}>Delete Post</button>
+                  </div> */}
                 </div>       
               </div>
             );

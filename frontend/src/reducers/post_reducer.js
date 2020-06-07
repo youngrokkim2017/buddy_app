@@ -1,7 +1,8 @@
 import {
     RECEIVE_POST,
     RECEIVE_USER_POST,
-    RECEIVE_NEW_POST
+    RECEIVE_NEW_POST,
+    REMOVE_POST,
 } from '../actions/post_actions';
 
 const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
@@ -18,6 +19,9 @@ const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
             return newState;
         case RECEIVE_NEW_POST:
             newState.new = action.post.data;
+            return newState;
+        case REMOVE_POST:
+            delete newState[action.postId];
             return newState;
         default:
             return state;
