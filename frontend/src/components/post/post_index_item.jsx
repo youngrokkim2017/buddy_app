@@ -1,14 +1,14 @@
 import React from 'react';
 
 class PostIndexItem extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
 
-        this.handleDelete = this.handleDelete.bind(this);
-    }
+    //     this.handleDelete = this.handleDelete.bind(this);
+    // }
 
     // componentDidMount() {
-    //     this.props.fetchPost();
+    //     this.props.fetchOnePost(this.props.postId);
     // }
 
     handleDelete(e) {
