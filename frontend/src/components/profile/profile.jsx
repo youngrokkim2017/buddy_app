@@ -16,6 +16,15 @@ class Profile extends React.Component {
         this.props.fetchUserPost(this.props.currentUser.id);
     }
 
+    // handleDelete = () => {
+    handleDelete(e) {
+        // this.props.deletePostItem(this.props.match.params.postId)
+        //     .then(this.props.history.push('/posts'))
+        e.preventDefault();
+
+        this.props.deletePostItem(this.props.postId);
+    };
+
     // componentWillReceiveProps(newState) {
     // componentDidUpdate(prevState) {
     //     // this.setState({ post: newState.post });

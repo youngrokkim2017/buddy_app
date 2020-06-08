@@ -92,7 +92,8 @@ class Post extends React.Component {
 
     render() {
         // console.log(this.state);
-        // console.log(this.props);
+        console.log(this.props);
+        // console.log(this.props.match.params);
         // console.log(this.props.post);
 
         // const { post } = this.state;
@@ -115,9 +116,12 @@ class Post extends React.Component {
                 <h2>All Post</h2>
                 {/* <br/> */}
                 <div>
-                  {this.props.post.map((p) => (
+                  {this.props.post.map((p, idx) => (
                     <PostIndexItem
-                      key={p._id}
+                      // key={p._id}
+                      key={idx}
+                      idx={idx}
+                      postId={p._id}
                       title={p.title}
                       start={p.start}
                       destination={p.destination}

@@ -1,7 +1,13 @@
 import axios from 'axios';
 
+// all posts
 export const getPost = () => {
     return axios.get('/api/posts');
+};
+
+// single post
+export const getOnePost = (postId) => {
+    return axios.get(`/api/posts/${postId}`);
 };
 
 export const getUserPost = (id) => {

@@ -7,14 +7,23 @@ class PostIndexItem extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    handleDelete() {
-        this.props.deletePostItem(this.props.match.params.postId)
-            .then(this.props.history.push('/posts'))
+    // componentDidMount() {
+    //     this.props.fetchPost();
+    // }
+
+    handleDelete(e) {
+    // handleDelete = () => {
+        // this.props.deletePostItem(this.props.match.params.postId)
+        //     .then(this.props.history.push('/posts'))
+        e.preventDefault();
+
+        this.props.deletePostItem(this.props.postId);
     };
 
     render() {
+        // console.log(this.props.postId);
         console.log(this.props);
-        
+
         return (
             <div>
                 <div>
@@ -36,9 +45,9 @@ class PostIndexItem extends React.Component {
                     </table> */}
                 </div>
                 <div>
-                    {/* <div className="post-delete-button-container">
+                    <div className="post-delete-button-container">
                         <button className="delete-post" onClick={this.handleDelete}>Delete Post</button>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         );

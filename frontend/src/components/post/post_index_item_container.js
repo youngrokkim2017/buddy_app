@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchPost, deletePostItem } from '../../actions/post_actions';
-import PostIndexItem from './post';
+import PostIndexItem from './post_index_item';
 
 const mapStateToProps = (state) => {
     return {
