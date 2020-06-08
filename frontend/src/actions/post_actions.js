@@ -6,6 +6,7 @@ export const RECEIVE_POST = 'RECEIVE_POST';
 export const RECEIVE_USER_POST = 'RECEIVE_USER_POST';
 export const RECEIVE_NEW_POST = 'RECEIVE_NEW_POST';
 export const REMOVE_POST = 'REMOVE_POST';
+export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
 
 export const receivePost = (posts) => ({
     type: RECEIVE_POST,
@@ -25,34 +26,46 @@ export const receiveNewPost = (post) => ({
 export const removePost = (postId) => ({
     type: REMOVE_POST,
     postId
-})
+});
+
+export const receivePostErrors = (errors) => ({
+    type: RECEIVE_POST_ERRORS,
+    errors
+});
 
 export const fetchPost = () => dispatch => (
     getPost()
         .then(posts => dispatch(receivePost(posts)))
-        .catch(err => console.log(err))
+        // .catch(err => console.log(err))
+        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
 );
 
 export const fetchUserPost = (id) => dispatch => (
     getUserPost(id)
         .then(posts => dispatch(receiveUserPost(posts)))
-        .catch(err => console.log(err))
+        // .catch(err => console.log(err))
+        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
 );
 
 export const composePost = (data) => dispatch => (
     createPost(data)
         .then(post => dispatch(receiveNewPost(post)))
-        .catch(err => console.log(err))
+        // .catch(err => console.log(err))
+        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
 );
 
 export const deletePostItem = (postId) => dispatch => (
     deletePost(postId)
         .then(post => dispatch(removePost(postId)))
-        .catch(err => console.log(err))
+        // .catch(err => console.log(err))
+        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
 );
 
 export const editPost = (post) => dispatch => (
     modifyPost(post)
-        .then(post => dispatch(receiveNewPost(post))
-        .catch(err => console.log(err)))
-)
+        .then(post => dispatch(receiveNewPost(post)))
+        // .catch(err => console.log(err)))
+        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
+);
+
+window.modifyPost = modifyPost;
