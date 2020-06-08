@@ -63,32 +63,32 @@ class Post extends React.Component {
         .then(this.props.history.push('/posts'))
     };
 
-    handleAlphaSort() {
-      let titlesArr = this.props.post.map((p) => {
-        return p.title;
-      });
+    // handleAlphaSort() {
+    //   let titlesArr = this.props.post.map((p) => {
+    //     return p.title;
+    //   });
 
-      return titlesArr.sort();
-    }
+    //   return titlesArr.sort();
+    // }
 
-    toggleSortDate(e) {
-      this.sortByDate();
-    }
+    // toggleSortDate(e) {
+    //   this.sortByDate();
+    // }
 
-    sortByDate() {
-      const { post } = this.state;
-      let sortedPost = post;
-      if (this.state.isNewestFirst) {
-        sortedPost = post.sort((a, b) => a.date < b.date)
-      } else {
-        sortedPost = post.sort((a, b) => a.date > b.date);
-      };
+    // sortByDate() {
+    //   const { post } = this.state;
+    //   let sortedPost = post;
+    //   if (this.state.isNewestFirst) {
+    //     sortedPost = post.sort((a, b) => a.date < b.date)
+    //   } else {
+    //     sortedPost = post.sort((a, b) => a.date > b.date);
+    //   };
 
-      this.setState({
-        post: sortedPost,
-        isNewestFirst: !this.state.isNewestFirst,
-      });
-    }
+    //   this.setState({
+    //     post: sortedPost,
+    //     isNewestFirst: !this.state.isNewestFirst,
+    //   });
+    // }
 
     render() {
         // console.log(this.state);
