@@ -37,35 +37,35 @@ export const fetchPost = () => dispatch => (
     getPost()
         .then(posts => dispatch(receivePost(posts)))
         // .catch(err => console.log(err))
-        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
+        .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
 
 export const fetchUserPost = (id) => dispatch => (
     getUserPost(id)
         .then(posts => dispatch(receiveUserPost(posts)))
         // .catch(err => console.log(err))
-        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
+        .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
 
 export const composePost = (data) => dispatch => (
     createPost(data)
         .then(post => dispatch(receiveNewPost(post)))
         // .catch(err => console.log(err))
-        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
+        .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
 
 export const deletePostItem = (postId) => dispatch => (
     deletePost(postId)
         .then(post => dispatch(removePost(postId)))
         // .catch(err => console.log(err))
-        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
+        .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
 
 export const editPost = (post) => dispatch => (
     modifyPost(post)
         .then(post => dispatch(receiveNewPost(post)))
         // .catch(err => console.log(err)))
-        .catch(err => dispatch(receiveRequestErrors(err.response.data)))
+        .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
 
 window.modifyPost = modifyPost;
