@@ -13,7 +13,7 @@ class PostIndexItem extends React.Component {
     };
 
     render() {
-        // table sorting
+        console.log(this.props);
         
         return (
             <div>
@@ -36,9 +36,9 @@ class PostIndexItem extends React.Component {
                     </table> */}
                 </div>
                 <div>
-                    <div className="post-delete-button-container">
+                    {/* <div className="post-delete-button-container">
                         <button className="delete-post" onClick={this.handleDelete}>Delete Post</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

@@ -92,7 +92,7 @@ class Post extends React.Component {
 
     render() {
         // console.log(this.state);
-        console.log(this.props);
+        // console.log(this.props);
         // console.log(this.props.post);
 
         // const { post } = this.state;

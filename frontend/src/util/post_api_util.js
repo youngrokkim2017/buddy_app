@@ -16,3 +16,7 @@ export const createPost = (data) => {
 export const deletePost = (id) => {
     return axios.delete(`/api/posts/${id}`);
 };
+
+export const modifyPost = (post) => {
+    return axios.patch(`/api/posts/${post._id}`, post);
+};
