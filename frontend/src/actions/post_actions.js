@@ -1,5 +1,5 @@
 import {
-    getPost, getUserPost, createPost, deletePost
+    getPost, getUserPost, createPost, deletePost, modifyPost
 } from '../util/post_api_util';
 
 export const RECEIVE_POST = 'RECEIVE_POST';
@@ -50,3 +50,9 @@ export const deletePostItem = (postId) => dispatch => (
         .then(post => dispatch(removePost(postId)))
         .catch(err => console.log(err))
 );
+
+export const editPost = (post) => dispatch => (
+    modifyPost(post)
+        .then(post => dispatch(receiveNewPost(post))
+        .catch(err => console.log(err)))
+)
