@@ -62,27 +62,38 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <br />
-                <form onSubmit={this.handleSubmit}>
-                    <div>
+            <div className="w-full max-w-xs mx-auto">
+                <form onSubmit={this.handleSubmit} className="g-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-20 border border-black">
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Email
+                        </label>
                         <input type="text"
                             autoComplete="username"
                             value={this.state.email}
                             onChange={this.update('email')}
-                            placeholder="Email"
-                        />
-                        <br />
+                            placeholder="name@example.com"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                    </div>
+                    <div className="mb-6">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Password
+                        </label>
                         <input type="password"
                             autoComplete="current-password"
                             value={this.state.password}
                             onChange={this.update('password')}
-                            placeholder="Password"
-                        />
-                        <br />
-                        <input type="submit" value="Log In" />
-                        {this.renderErrors()}
+                            placeholder="******"
+                            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+                        <p className="text-red-500 text-xs italic">Password field is required.</p>
                     </div>
+                    <div className="flex items-center justify-between">
+                        <input type="submit" value="Log In" className="btn btn-black focus:outline-none focus:shadow-outline" />
+                        <a className="inline-block align-baseline font-bold text-sm hover:text-blue-800" href="#">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    {this.renderErrors()}
                 </form>
             </div>
         );

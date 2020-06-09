@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import '../../stylesheets/global.css'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -42,7 +41,7 @@ class NavBar extends React.Component {
             return (
                 <>
                     {/* <Link to={'/post'}>Browse</Link> */}
-                    <Link to={'/signup'} className="btn btn-blue">Signup</Link>
+                    <Link to={'/signup'} className="btn btn-black">Signup</Link>
                     <Link to={'/login'} className="btn btn-white">Login</Link>
                 </>
             );
@@ -53,8 +52,8 @@ class NavBar extends React.Component {
         // console.log(this.props);
 
         return (
-            <nav className="navbar-container">
-                <Link to={'/'} className="navbar-brand"><h1>p2p</h1></Link>
+            <nav className="flex items-center justify-between flex-wrap bg-white">
+                <Link to={'/'} className="font-semibold text-xl tracking-tight"><h1>p2p</h1></Link>
                 <div className="navbar-naviation">   
                     {this.getLinks()}
                 </div>

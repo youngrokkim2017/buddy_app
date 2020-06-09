@@ -25,13 +25,14 @@ class PostIndexItem extends React.Component {
         console.log(this.props);
 
         return (
-            <div>
-                <div>
-                    <h3>{this.props.title}</h3>
-                    <h3>{this.props.start}</h3>
-                    <h3>{this.props.destination}</h3>
-                    <h3>{this.props.time}</h3>
-                    <h3>{this.props.description}</h3>
+            <div className="shadow-lg mb-4 bg-white rounded-lg p-6">
+                <div className="text-left">
+                    <h3 className="text-xl">{this.props.title}</h3>
+                    <h3 className="text-blue-500">{this.props.start}</h3>
+                    <p className="text-xl">→</p>
+                    <h3 className="">{this.props.destination}</h3>
+                    <h3 className="">{this.props.time}</h3>
+                    {/* <h3 className="">{this.props.description}</h3> */}
                     {/* <h3>{this.props.user}</h3> */}
                     {/* <table>
                         <thead></thead>
@@ -46,7 +47,7 @@ class PostIndexItem extends React.Component {
                 </div>
                 <div>
                     <div className="post-delete-button-container">
-                        <button className="delete-post" onClick={this.handleDelete}>Delete Post</button>
+                        <button className="delete-post" onClick={this.handleDelete}>Edit</button>
                     </div>
                 </div>
             </div>

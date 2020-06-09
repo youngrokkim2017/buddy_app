@@ -120,7 +120,7 @@ class Post extends React.Component {
                 </div>
 
                 {/* <br/> */}
-                <h2>All Post</h2>
+                <h2 class="text-xl">Activity Feed</h2>
                 {/* <br/> */}
                 <div>
                   {this.props.post.map((p, idx) => (
