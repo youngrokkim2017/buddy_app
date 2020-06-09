@@ -4,7 +4,8 @@ import Post from './post';
 
 const mapStateToProps = (state) => {
     return {
-        post: Object.values(state.post.all)
+        post: Object.values(state.post.all),
+        currentUser: state.session.user,
     };
 };
 

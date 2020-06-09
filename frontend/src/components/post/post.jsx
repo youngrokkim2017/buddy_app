@@ -16,6 +16,13 @@ class Post extends React.Component {
         // this.handleAlphaSort = this.handleAlphaSort.bind(this);
     }
 
+    // componentDidUpdate(prevProps) {
+    //     // if (nextProps.currentUser === true) {
+    //     if (prevProps.currentUser === false) {
+    //         this.props.history.push('/');
+    //     }
+    // }
+
     // MAP PROPS
     // static defaultProps = {
     //     center: {

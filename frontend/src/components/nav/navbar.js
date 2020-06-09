@@ -9,10 +9,23 @@ class NavBar extends React.Component {
         this.getLinks = this.getLinks.bind(this);
     }
 
+    // componentDidUpdate() {
+    //     // if (nextProps.currentUser === true) {
+    //     if (this.props.loggedIn === false) {
+    //         this.props.history.push('/');
+    //     }
+    // }
+
     logoutUser(e) {
         e.preventDefault();
         this.props.logout();
-    }
+
+        // if (this.props.loggedIn === false) {
+        //     this.props.history.push('/');
+        // };
+
+        // this.props.history.push('/');
+    };
 
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
@@ -29,7 +42,6 @@ class NavBar extends React.Component {
         } else {
             return (
                 <div>
-                    {/* <Link to={'/post'}>Browse</Link> */}
                     <Link to={'/signup'}>Signup</Link>
                     <Link to={'/login'}>Login</Link>
                 </div>
@@ -38,6 +50,8 @@ class NavBar extends React.Component {
     }
 
     render() {
+        // console.log(this.props);
+
         return (
             <div>
                 {/* <h1>APP</h1> */}

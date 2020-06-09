@@ -17,6 +17,13 @@ class PostForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // componentDidUpdate(prevProps) {
+    //     // if (nextProps.currentUser === true) {
+    //     if (prevProps.currentUser === false) {
+    //         this.props.history.push('/');
+    //     }
+    // }
+
     // componentWillReceiveProps(nextProps) {
     // componentDidUpdate(prevProps) {
     //     // this.setState({ newPost: nextProps.newPost.title });
