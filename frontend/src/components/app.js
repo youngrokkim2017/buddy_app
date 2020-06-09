@@ -13,7 +13,7 @@ import PostComposeContainer from './post/post_form_container';
 import ProfileContainer from './profile/profile_container';
 
 const App = () => (
-    <div className="mx-auto px-6 py-2 min-h-screen w-4/5 lg:static lg:max-h-full lg:overflow-visible lg:w-4/5 xl:w-4/5">
+    <div className="mx-auto px-6 py-2 min-h-screen w-5/5 lg:static lg:max-h-full lg:overflow-visible lg:w-3/5 xl:w-3/5 text-primary">
         {/* <SideBarContainer /> */}
         <NavBarContainer />
         <Switch>

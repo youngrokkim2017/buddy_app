@@ -1,20 +1,20 @@
 /* buttons */
 .btn {
-    @apply py-2 px-4 rounded mr-3;
+    @apply py-2 px-4 rounded-lg mr-3;
   }
 
 .btn-black {
-    @apply bg-black text-white;
+    @apply bg-primary text-white;
 }
 
 .btn-black:hover {
-    @apply bg-blue-500;
+    @apply bg-primary;
 }
 
 .btn-white {
-    @apply bg-white text-black border border-black;
+    @apply bg-white text-primary border border-primary;
 }
 
 .btn-white:hover {
-    @apply border-blue-500;
+    @apply border-blue-900;
 }
