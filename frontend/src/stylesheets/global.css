@@ -606,22 +606,7 @@ video {
   }
 }
 
-.navbar-container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  --bg-opacity: 1;
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, var(--bg-opacity));
-  padding: 1rem;
-}
-
-.navbar-brand{
-  font-weight: 600;
-  font-size: 1.25rem;
-  letter-spacing: -0.025em;
-}
+/* buttons */
 
 .btn {
   padding-top: 0.5rem;
@@ -632,7 +617,7 @@ video {
   margin-right: 0.75rem;
 }
 
-.btn-blue {
+.btn-black {
   --bg-opacity: 1;
   background-color: #000;
   background-color: rgba(0, 0, 0, var(--bg-opacity));
@@ -641,7 +626,7 @@ video {
   color: rgba(255, 255, 255, var(--text-opacity));
 }
 
-.btn-blue:hover {
+.btn-black:hover {
   --bg-opacity: 1;
   background-color: #4299e1;
   background-color: rgba(66, 153, 225, var(--bg-opacity));
