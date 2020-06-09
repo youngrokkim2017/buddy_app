@@ -120,7 +120,7 @@ class Post extends React.Component {
                 </div>
 
                 {/* <br/> */}
-                <h2 class="text-xl">Activity Feed</h2>
+                <h1 className="text-3xl font-medium mb-2">Activity Feed</h1>
                 {/* <br/> */}
                 <div>
                   {this.props.post.map((p, idx) => (
@@ -134,6 +134,7 @@ class Post extends React.Component {
                       destination={p.destination}
                       time={p.time}
                       description={p.description}
+                      date={p.date}
                     />
                   ))}
                   {/* <div className="post-delete-button-container">
