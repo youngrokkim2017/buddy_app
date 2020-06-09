@@ -9,10 +9,23 @@ class NavBar extends React.Component {
         this.getLinks = this.getLinks.bind(this);
     }
 
+    // componentDidUpdate() {
+    //     // if (nextProps.currentUser === true) {
+    //     if (this.props.loggedIn === false) {
+    //         this.props.history.push('/');
+    //     }
+    // }
+
     logoutUser(e) {
         e.preventDefault();
         this.props.logout();
-    }
+
+        // if (this.props.loggedIn === false) {
+        //     this.props.history.push('/');
+        // };
+
+        // this.props.history.push('/');
+    };
 
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
@@ -20,9 +33,8 @@ class NavBar extends React.Component {
             return (
                 <>
                     <Link to={'/new_post'}>Create a Post</Link>
-                    <Link to={'/post'}>Browse</Link>
+                    <Link to={'/post'}>Activity Feed</Link>
                     <Link to={'/profile'}>Profile</Link>
-                    {/* <button onClick={this.logoutUser}>Log Out</button> */}
                     <Link to={'/'} onClick={this.logoutUser}>Log Out</Link>
                 </>
             );
@@ -33,11 +45,17 @@ class NavBar extends React.Component {
                     <Link to={'/signup'} className="btn btn-blue">Signup</Link>
                     <Link to={'/login'} className="btn btn-white">Login</Link>
                 </>
+                <div>
+                    <Link to={'/signup'}>Signup</Link>
+                    <Link to={'/login'}>Login</Link>
+                </div>
             );
         }
     }
 
     render() {
+        // console.log(this.props);
+
         return (
             <nav className="navbar-container">
                 <Link to={'/'} className="navbar-brand"><h1>p2p</h1></Link>
@@ -45,6 +63,10 @@ class NavBar extends React.Component {
                     {this.getLinks()}
                 </div>
             </nav>
+            <div>
+                <Link to={'/'}><h1>APP NAME</h1></Link>
+                {this.getLinks()}
+            </div>
         );
     }
 }
