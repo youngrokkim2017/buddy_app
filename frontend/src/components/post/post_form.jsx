@@ -49,6 +49,8 @@ class PostForm extends React.Component {
             time: '',
             description: '',
         });
+
+        this.props.history.push('/post');
     }
 
     update(type) {
@@ -61,6 +63,8 @@ class PostForm extends React.Component {
 
     render() {
         // console.log(this.state);
+        console.log(this.props);
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>

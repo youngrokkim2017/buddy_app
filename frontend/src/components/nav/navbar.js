@@ -53,7 +53,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
 
         return (
             <nav className="flex items-center justify-between flex-wrap bg-white">
