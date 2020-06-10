@@ -89,9 +89,9 @@ class LoginForm extends React.Component {
                     </div>
                     <div className="flex items-center justify-between">
                         <input type="submit" value="Log In" className="btn btn-black focus:outline-none focus:shadow-outline" />
-                        <a className="inline-block align-baseline font-medium text-sm hover:text-blue-800" href="#">
+                        {/* <a className="inline-block align-baseline font-medium text-sm hover:text-blue-800" href="#">
                             Forgot Password?
-                        </a>
+                        </a> */}
                     </div>
                     {this.renderErrors()}
                 </form>

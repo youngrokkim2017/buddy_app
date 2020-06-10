@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 class PostIndexItem extends React.Component {
     // constructor(props) {
@@ -21,11 +22,11 @@ class PostIndexItem extends React.Component {
     };
 
     isNew(){
-        var hrs = 24;
-        var mins = 60;
+        // var hrs = 24;
+        // var mins = 60;
         var seconds = 60;
         var s = 1000;
-        var oneDay = hrs*mins*seconds*s;
+        // var oneDay = hrs*mins*seconds*s;
         var now = new Date();
         var postTime = new Date(this.props.date);
         var diffTime = Math.round(Math.abs(now.getTime()-postTime.getTime()));
@@ -47,7 +48,7 @@ class PostIndexItem extends React.Component {
                     </button> */}
                 </div>
                 <div className="flex">
-                    <img className="h-20 w-20 mr-4 block rounded-full shadow" src={"https://randomuser.me/api/portraits/men/"+Math.floor(Math.random()*50).toString()+".jpg"} />
+                    <img className="h-20 w-20 mr-4 block rounded-full shadow" src={"https://randomuser.me/api/portraits/men/"+Math.floor(Math.random()*50).toString()+".jpg"} alt="" />
                     <div className="text-left">
                         {this.isNew()}
                         <h3 className="align-middle font-light text-lg text-gray-500 leading-tight truncate capitalize">Kamran Ahmed</h3>
@@ -57,6 +58,7 @@ class PostIndexItem extends React.Component {
                             <h3 className="inline-block leading-none align-middle text-2xl capitalize">{this.props.destination}</h3>
                         </div>
                         <h3 className="text-gray-500 text-lg font-light truncate capitalize">{this.props.title}</h3>
+                        <h3><Link to={'/post/:postId'}>Edit</Link></h3>
                     </div>
                 </div>
             </div>
