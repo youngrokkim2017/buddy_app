@@ -30,7 +30,6 @@ class PostIndexItem extends React.Component {
         var now = new Date();
         var postTime = new Date(this.props.date);
         var diffTime = Math.round(Math.abs(now.getTime()-postTime.getTime()));
-        console.log(diffTime);
         if (diffTime < 15*seconds*s){
            return <span className='new bg-pink-500 text-white font-medium text-xs px-2 rounded-full'>New</span>;
         }
@@ -40,24 +39,24 @@ class PostIndexItem extends React.Component {
 
     render() {
         return (
-            <div className="mb-4 rounded-lg p-6 clearfix bg-gray-100">
+            <div className="mb-8 rounded-lg p-6 clearfix bg-white shadow-lg">
                 <div className="h-full float-right text-right">
-                    <h3 className="text-gray-500 font-light">{this.props.time}</h3>
+                    <h3 className="text-gray-500">{this.props.time}</h3>
                     {/* <button className="delete-post" onClick={this.handleDelete}>
                         <svg className="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M6.3 12.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM8 16h2.59l9-9L17 4.41l-9 9V16zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h6a1 1 0 0 1 0 2H4v14h14v-6z" /></svg>
                     </button> */}
                 </div>
                 <div className="flex">
-                    <img className="h-20 w-20 mr-4 block rounded-full shadow" src={"https://randomuser.me/api/portraits/men/"+Math.floor(Math.random()*50).toString()+".jpg"} alt="" />
+                    <img className="h-12 w-12 mr-4 block rounded-full shadow-lg" src={"https://randomuser.me/api/portraits/men/"+Math.floor(Math.random()*50).toString()+".jpg"} alt="" />
                     <div className="text-left">
                         {this.isNew()}
-                        <h3 className="align-middle font-light text-lg text-gray-500 leading-tight truncate capitalize">Kamran Ahmed</h3>
-                        <div className="mb-1">
-                            <h3 className="inline-block leading-none align-middle mr-1 text-2xl">{this.props.start}</h3>
-                            <svg className="inline-block align-middle mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M18.59 13H3a1 1 0 0 1 0-2h15.59l-5.3-5.3a1 1 0 1 1 1.42-1.4l7 7a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.42-1.4l5.3-5.3z" /></svg>
-                            <h3 className="inline-block leading-none align-middle text-2xl capitalize">{this.props.destination}</h3>
+                        <h3 className="align-middle text-lg text-black font-medium leading-tight capitalize">Kamran Ahmed</h3>
+                        <div className="leading-none text-2xl text-black">
+                            <h3 className="inline-block leading-none align-middle mr-1 ">{this.props.start}</h3>
+                            <svg className="inline-block align-middle mr-1 stroke-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M18.59 13H3a1 1 0 0 1 0-2h15.59l-5.3-5.3a1 1 0 1 1 1.42-1.4l7 7a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.42-1.4l5.3-5.3z" /></svg>
+                            <h3 className="inline-block leading-none align-middle capitalize">{this.props.destination}</h3>
                         </div>
-                        <h3 className="text-gray-500 text-lg font-light truncate capitalize">{this.props.title}</h3>
+                        <h3 className="text-black text-lg truncate capitalize">{this.props.title}</h3>
                         <h3><Link to={'/post/:postId'}>Edit</Link></h3>
                     </div>
                 </div>
