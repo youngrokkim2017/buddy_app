@@ -15,7 +15,7 @@ import PostShowContainer from './post/post_show_container';
 import ProfileContainer from './profile/profile_container';
 
 const App = () => (
-  <div className="bg-lavender antialiased flex">
+  <div className="bg-lavender antialiased flex text-slateblue">
     <NavBarContainer />
     
     <div className="px-8 py-10 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible lg:w-3/5 xl:w-3/5 mx-auto">

@@ -253,6 +253,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
+      logo:['Arizonia'],
       // serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       // mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
       // sans:['Poppins','sans-serif'],
