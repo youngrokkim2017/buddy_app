@@ -6,7 +6,9 @@ class SignupForm extends React.Component {
         super(props);
         this.state = {
             email: '',
-            handle: '',
+            // handle: '',
+            firstName: '',
+            lastName: '',
             password: '',
             password2: '',
             errors: {}
@@ -38,12 +40,17 @@ class SignupForm extends React.Component {
         e.preventDefault();
         let user = {
             email: this.state.email,
-            handle: this.state.handle,
+            // handle: this.state.handle,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
             password: this.state.password,
             password2: this.state.password2
         };
 
         this.props.signup(user, this.props.history);
+
+        // to login from signup page and push history as /posts
+        this.props.login(user);
     }
 
     renderErrors() {
@@ -72,11 +79,25 @@ class SignupForm extends React.Component {
                             placeholder="Email"
                         />
                         <br />
-                        <input type="text"
+                        {/* <input type="text"
                             autoComplete="username"
                             value={this.state.handle}
                             onChange={this.update('handle')}
                             placeholder="Handle"
+                        />
+                        <br /> */}
+                        <input type="text"
+                            autoComplete="username"
+                            value={this.state.firstName}
+                            onChange={this.update('firstName')}
+                            placeholder="First Name"
+                        />
+                        <br />
+                        <input type="text"
+                            autoComplete="username"
+                            value={this.state.lastName}
+                            onChange={this.update('lastName')}
+                            placeholder="Last Name"
                         />
                         <br />
                         <input type="password"

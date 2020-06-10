@@ -3,7 +3,15 @@ const Schema = mongoose.Schema;
 
 // define what it means to be a user in our app
 const UserSchema = new Schema({
-    handle: {
+    // handle: {
+    //     type: String,
+    //     required: true,
+    // },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
         type: String,
         required: true,
     },
