@@ -48,6 +48,9 @@ class SignupForm extends React.Component {
         };
 
         this.props.signup(user, this.props.history);
+
+        // to login from signup page and push history as /posts
+        this.props.login(user);
     }
 
     renderErrors() {
