@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+// import { set } from 'mongoose';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -13,6 +14,10 @@ class LoginForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+        this.handleDemoEmail = this.handleDemoEmail.bind(this);
+        this.handleDemoPassword = this.handleDemoPassword.bind(this);
     }
 
     // Once the user has been authenticated, redirect to the post index page
@@ -37,7 +42,13 @@ class LoginForm extends React.Component {
 
     // Handle form submission
     handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
+        if (e) {
+            e.preventDefault();
+        }
+
+        // // add 
+        // this.props.clearSessionErrors();
 
         let user = {
             email: this.state.email,
@@ -59,6 +70,41 @@ class LoginForm extends React.Component {
             </ul>
         );
     }
+
+    // DEMO USER LOGIN
+    handleDemoSubmit(e) {
+        e.preventDefault();
+
+        this.setState({
+            email: '',
+            password: '',
+        });
+
+        this.handleDemoEmail();
+    }
+
+    handleDemoEmail(demo) {
+        demo = demo || 'demo@example.com'.split('');
+
+        setTimeout(() => {
+            this.setState({
+                email: this.state.email + demo.shift()
+            });
+            demo.length > 0 ? this.handleDemoEmail(demo) : this.handleDemoPassword()
+        }, 50)
+    }
+
+    handleDemoPassword(demo) {
+        demo = demo || 'password'.split('');
+
+        setTimeout(() => {
+            this.setState({
+                password: this.state.password + demo.shift()
+            });
+            demo.length > 0 ? this.handleDemoPassword(demo) : this.handleSubmit()
+        }, 50)
+    }
+    //
 
     render() {
         return (
@@ -88,10 +134,13 @@ class LoginForm extends React.Component {
                         <p className="text-red-500 text-xs italic">Password field is required.</p>
                     </div>
                     <div className="flex items-center justify-between">
-                        <input type="submit" value="Log In" className="btn btn-black focus:outline-none focus:shadow-outline" />
+                        <input type="submit" 
+                        value="Log In" 
+                        className="btn btn-black focus:outline-none focus:shadow-outline" />
                         {/* <a className="inline-block align-baseline font-medium text-sm hover:text-blue-800" href="#">
                             Forgot Password?
                         </a> */}
+                        <button onClick={this.handleDemoSubmit}>Demo Log In</button>
                     </div>
                     {this.renderErrors()}
                 </form>
