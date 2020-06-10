@@ -62,7 +62,7 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="w-full max-w-xs mx-auto bg-gray-100 rounded-lg">
+            <div className="w-full max-w-xs mx-auto bg-white rounded-lg">
                 <form onSubmit={this.handleSubmit} className="px-8 pt-6 pb-8 mb-4 mt-20">
                     <div className="mb-4">
                         <label className="block text-sm font-medium mb-2">
@@ -88,7 +88,7 @@ class LoginForm extends React.Component {
                         <p className="text-red-500 text-xs italic">Password field is required.</p>
                     </div>
                     <div className="flex items-center justify-between">
-                        <input type="submit" value="Log In" className="btn btn-black focus:outline-none focus:shadow-outline" />
+                        <input type="submit" value="Log In" className="bg-cornflower hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" />
                         {/* <a className="inline-block align-baseline font-medium text-sm hover:text-blue-800" href="#">
                             Forgot Password?
                         </a> */}
