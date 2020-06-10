@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -19,6 +19,8 @@ class NavBar extends React.Component {
         e.preventDefault();
         this.props.logout();
 
+        this.props.history.push('/');
+
         // if (this.props.loggedIn === false) {
         //     this.props.history.push('/');
         // };
@@ -34,7 +36,9 @@ class NavBar extends React.Component {
                     <Link to={'/new_post'}>Create a Post</Link>
                     <Link to={'/post'}>Activity Feed</Link>
                     <Link to={'/profile'}>Profile</Link>
-                    <Link to={'/'} onClick={this.logoutUser}>Log Out</Link>
+                    {/* <Link to={'/'} onClick={this.logoutUser}>Log Out</Link> */}
+                    {/* <Link onClick={this.logoutUser}>Log Out</Link> */}
+                    <button onClick={this.logoutUser}>Log Out</button>
                 </>
             );
         } else {
@@ -49,7 +53,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
+        console.log(this.props);
 
         return (
             <nav className="flex items-center justify-between flex-wrap bg-white">
@@ -62,4 +66,5 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar;
+// export default NavBar;
+export default withRouter(NavBar);
