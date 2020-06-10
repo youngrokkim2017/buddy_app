@@ -24,7 +24,9 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
     // res.json({ msg: 'Success' });
     res.json({
         id: req.user.id,
-        handle: req.user.handle,
+        // handle: req.user.handle,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
         email: req.user.email
     });
 });
@@ -50,7 +52,9 @@ router.post('/register', (req, res) => {
                 return res.status(400).json({ email: "A user is already registered with that email" })
             } else { // if user doesn't exist, create a new user
                 const newUser = new User({
-                    handle: req.body.handle,
+                    // handle: req.body.handle,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
                     email: req.body.email,
                     password: req.body.password, 
                 });
@@ -124,7 +128,9 @@ router.post('/login', (req, res) => {
                             // contains all the user info the client might want
                             // comes from mongoDB
                             id: user.id,
-                            handle: user.handle,
+                            // handle: user.handle,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
                             email: user.email,
                         };
 
