@@ -39,7 +39,8 @@ class PostIndexItem extends React.Component {
 
     render() {
         return (
-            <div className="mb-8 rounded-lg p-6 clearfix bg-white shadow-lg">
+            <Link to={'/post/:postId'}>
+            <div className="mb-8 rounded-lg p-6 clearfix bg-white shadow-lg hover:bg-gray-100">
                 <div className="h-full float-right text-right">
                     <h3 className="text-gray-500">{this.props.time}</h3>
                     {/* <button className="delete-post" onClick={this.handleDelete}>
@@ -57,10 +58,10 @@ class PostIndexItem extends React.Component {
                             <h3 className="inline-block leading-none align-middle capitalize">{this.props.destination}</h3>
                         </div>
                         <h3 className="text-black text-lg truncate capitalize">{this.props.title}</h3>
-                        <h3><Link to={'/post/:postId'}>Edit</Link></h3>
                     </div>
                 </div>
             </div>
+            </Link>
         );
     };
 };
