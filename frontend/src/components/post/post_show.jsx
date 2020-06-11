@@ -3,7 +3,7 @@ import React from 'react';
 class PostShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.post;
+        // this.state = this.props.post;
 
         this.handleDelete = this.handleDelete.bind(this);
     }
@@ -37,7 +37,17 @@ class PostShow extends React.Component {
 
                 </div>
                 <div>
-                    <button className="delete-post" onClick={this.handleDelete}>Delete</button>
+                    {/* <button className="delete-post" onClick={this.handleDelete}>Delete</button> */}
+                    {/* { this.props.currentUserId === post.userId ?  */}
+                        <button 
+                            className="delete-post" 
+                            onClick={this.handleDelete}>Delete
+                        </button>
+
+                        {/* :
+
+                        ""
+                    } */}
                 </div>
             </div>
         );

@@ -4,7 +4,8 @@ import PostIndexItem from './post_index_item';
 
 const mapStateToProps = (state) => {
     return {
-        post: Object.values(state.post.all)
+        post: Object.values(state.post.all),
+        // post: Object.values(state.entities.posts)
     };
 };
 
