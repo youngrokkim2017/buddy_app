@@ -5,7 +5,7 @@ class PostIndexItem extends React.Component {
     // constructor(props) {
     //     super(props);
 
-    //     this.handleDelete = this.handleDelete.bind(this);
+    //     // this.handleDelete = this.handleDelete.bind(this);
     // }
 
     // componentDidMount() {
@@ -38,6 +38,8 @@ class PostIndexItem extends React.Component {
     };
 
     render() {
+        // console.log(this.props);
+
         return (
             <Link to={'/post/:postId'}>
             <div className="mb-8 rounded-lg p-6 clearfix bg-white shadow-lg hover:bg-gray-100">
@@ -60,6 +62,7 @@ class PostIndexItem extends React.Component {
                         <h3 className="text-black text-lg truncate capitalize">{this.props.title}</h3>
                     </div>
                 </div>
+                
             </div>
             </Link>
         );
