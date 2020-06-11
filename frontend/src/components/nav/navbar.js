@@ -87,8 +87,8 @@ class NavBar extends React.Component {
                         </nav>
                     </div>
                     <div className="absolute bottom-0 my-10">
-                        <a className="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">
-                            <button onClick={this.logoutUser} className="mx-4 font-medium">Log Out</button>
+                        <a className="block px-4 py-2 m-4 text-sm font-medium text-gray-500 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline" onClick={this.logoutUser}>
+                            Log Out
                         </a>
                     </div>
                 </div>
