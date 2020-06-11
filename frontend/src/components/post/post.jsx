@@ -99,11 +99,15 @@ class Post extends React.Component {
 
     render() {
         // console.log(this.state);
-        console.log(this.props);
+        // console.log(this.props);
         // console.log(this.props.match.params);
         // console.log(this.props.post);
 
         // const { post } = this.state;
+
+        // this.props.post.map(p => {
+        //   console.log(p.user)
+        // })
 
         if (this.props.post.length === 0) {
             return (
@@ -134,12 +138,22 @@ class Post extends React.Component {
                       destination={p.destination}
                       time={p.time}
                       description={p.description}
+                      user={p.user}
                       date={p.date}
                     />
                   ))}
                   {/* <div className="post-delete-button-container">
                     <button className="delete-post" onClick={this.handleDelete}>Delete Post</button>
                   </div> */}
+
+                  {/* {
+                    this.props.post.map(p => {
+                      p.user === this.props.currentUser.id ? 
+                      <button>edit</button> 
+                      :
+                      ""
+                    })
+                  } */}
                 </div>       
               </div>
             );

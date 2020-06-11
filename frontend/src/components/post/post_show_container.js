@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
     //     currentUser: state.session.user,
     // };
 
-    // let postId = ownProps.match.params.postId;
+    let postId = ownProps.match.params.postId;
+    // let postId = ownProps.match.params._id;
     // let postId = ownProps.match.params.id;
     // let postId = ownProps.id;
 
@@ -17,10 +18,17 @@ const mapStateToProps = (state, ownProps) => {
         currentUserId = state.session.user.id;
     };
 
+    let posts = Object.values(state.entities.posts);
+
     return {
         // post: state.post[postId],
         // post: state.entities.post[postId],
         currentUserId,
+        // posts: Object.values(state.entities.posts.all),
+        // posts: Object.values(state.entities.posts),
+        post: state.entities.posts[ownProps.match.params.postId],
+        postId,
+        posts,
     }
 };
 

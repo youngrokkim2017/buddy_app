@@ -4,7 +4,8 @@ import MainPage from './main_page';
 
 const mapStateToProps = (state) => {
     return {
-        post: Object.values(state.post.all)
+        // post: Object.values(state.post.all)
+        post: Object.values(state.post)
     };
 };
 

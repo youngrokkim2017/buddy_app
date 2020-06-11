@@ -7,6 +7,7 @@ export const getPost = () => {
 
 // single post
 export const getOnePost = (postId) => {
+    // debugger
     return axios.get(`/api/posts/${postId}`);
 };
 
