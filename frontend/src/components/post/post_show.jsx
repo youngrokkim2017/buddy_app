@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PostShow extends React.Component {
     constructor(props) {
         super(props);
         // this.state = this.props.post;
 
+        this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+
+        this.handleMessage = this.handleMessage.bind(this);
     }
 
     componentDidMount() {
@@ -26,15 +30,37 @@ class PostShow extends React.Component {
             .then(this.props.history.push('/posts'))
     };
 
+    handleEdit(e) {
+        e.preventDefault();
+    }
+
+    handleMessage(e) {
+        e.preventDefault();
+    }
+
     render() {
         console.log(this.state);
         console.log(this.props);
 
         return (
             <div className="post-show-container">
-                This is the post show route
                 <div>
+                    <Link to='/post'>
+                        <button>Back</button>
+                    </Link>
+                </div>
 
+                <br/>
+                <div>
+                    This is the post show route
+                </div>
+                <br/>
+
+                <div>
+                    <button onClick={this.handleMessage}>Message</button>
+                </div>
+                <div>
+                    <button onClick={this.handleEdit}>Edit</button>
                 </div>
                 <div>
                     {/* <button className="delete-post" onClick={this.handleDelete}>Delete</button> */}
