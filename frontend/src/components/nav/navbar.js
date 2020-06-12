@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         e.preventDefault();
         this.props.logout();
 
-        this.props.history.push('/');
+        // this.props.history.push('/');
 
         // if (this.props.loggedIn === false) {
         //     this.props.history.push('/');
@@ -74,7 +74,7 @@ class NavBar extends React.Component {
                 <div className="h-full overflow-y-auto scrolling-touch lg:h-screen lg:block lg:relative lg:sticky lg:top-0 bg-gray-100 lg:bg-transparent overflow-hidden">
                     <div className="flex flex-col w-full flex-shrink-0">
                         <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
-                            <Link className="text-4xl font-bold tracking-widest rounded-lg focus:outline-none focus:shadow-outline font-logo">p2p</Link>
+                            <Link to="/" className="text-4xl font-bold tracking-widest rounded-lg focus:outline-none focus:shadow-outline font-logo">p2p</Link>
                             <button className="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline">
                                 <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
                                     <path d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"></path>
@@ -87,7 +87,7 @@ class NavBar extends React.Component {
                         </nav>
                     </div>
                     <div className="absolute bottom-0 my-10">
-                        <Link className="block px-4 py-2 m-4 text-sm font-medium text-gray-500 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline" onClick={this.logoutUser}>
+                        <Link to="/" className="block px-4 py-2 m-4 text-sm font-medium text-gray-500 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline" onClick={this.logoutUser}>
                             Log Out
                         </Link>
                     </div>
