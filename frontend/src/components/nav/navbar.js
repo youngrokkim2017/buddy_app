@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         e.preventDefault();
         this.props.logout();
 
-        // this.props.history.push('/');
+        this.props.history.push('/');
 
         // if (this.props.loggedIn === false) {
         //     this.props.history.push('/');
@@ -87,9 +87,10 @@ class NavBar extends React.Component {
                         </nav>
                     </div>
                     <div className="absolute bottom-0 my-10">
-                        <Link to="/" className="block px-4 py-2 m-4 text-sm font-medium text-gray-500 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline" onClick={this.logoutUser}>
+                        {/* <Link to="/" className="block px-4 py-2 m-4 text-sm font-medium text-gray-500 bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline" onClick={this.logoutUser}>
                             Log Out
-                        </Link>
+                        </Link> */}
+                        <button onClick={this.logoutUser}>Log Out</button>
                     </div>
                 </div>
             </div>
