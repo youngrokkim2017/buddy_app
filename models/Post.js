@@ -27,6 +27,16 @@ const PostSchema = new Schema({
         // ref: 'post',
         // ref: 'posts',
     },
+    // user: {
+    //     id: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'users',
+    //     },
+    //     name: {
+    //         type: String,
+    //         required: true
+    //     }
+    // },
     // text: {
     //     type: String,
     //     required: true,
