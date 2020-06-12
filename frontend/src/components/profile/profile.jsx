@@ -44,10 +44,10 @@ class Profile extends React.Component {
         } else {
             return (
                 <div>
-                    <h2>All of {this.props.currentUser.handle}'s Posts</h2>
+                    <h2>All of {this.props.currentUser.firstName}'s Posts</h2>
                     {this.props.post.map(m => (
                     // {this.state.post.map(m => (
-                        <PostIndexItem key={m._id} title={m.title} start={m.start} destination={m.destination} time={m.time}/>
+                        <PostIndexItem key={m._id} title={m.title} start={m.start} destination={m.destination} time={m.time} firstName={m.firstName} />
                     ))}
                 </div>
             );
