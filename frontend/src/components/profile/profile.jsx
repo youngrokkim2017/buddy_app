@@ -8,6 +8,8 @@ class Profile extends React.Component {
         this.state = {
             post: []
         }
+
+        // this.handleDelete = this.handleDelete.bind(this);
     }
 
     // componentWillMount() {
@@ -38,13 +40,13 @@ class Profile extends React.Component {
         if (this.props.post.length === 0) {
             return(
                 <div>
-                    {this.props.currentUser.handle} has no Post
+                    {this.props.currentUser.firstName} {this.props.currentUser.lastName} Has No Posts
                 </div>
             );
         } else {
             return (
                 <div>
-                    <h2>All of {this.props.currentUser.firstName}'s Posts</h2>
+                    <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2>
                     {this.props.post.map(m => (
                     // {this.state.post.map(m => (
                         <PostIndexItem key={m._id} title={m.title} start={m.start} destination={m.destination} time={m.time} firstName={m.firstName} />
