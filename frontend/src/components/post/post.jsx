@@ -77,6 +77,12 @@ class Post extends React.Component {
         ////////////////////////////////////////////////////////////////////////
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    //   if (this.props.location.pathname !== prevProps.location.pathname) {
+    //     this.props.fetchPost();
+    //   }
+    // }
+
     // componentWillReceiveProps(newState) {
     // componentDidUpdate(prevState) {
     //     // this.setState({ post: newState.post });
