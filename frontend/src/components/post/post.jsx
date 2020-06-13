@@ -166,7 +166,7 @@ class Post extends React.Component {
                       start={p.start}
                       destination={p.destination}
                       time={p.time}
-                      description={p.description}
+                      // description={p.description}
                       user={p.user}
                       date={p.date}
                     />

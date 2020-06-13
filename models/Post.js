@@ -57,10 +57,10 @@ const PostSchema = new Schema({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true,
-    },
+    // description: {
+    //     type: String,
+    //     required: true,
+    // },
     // location: {
     //     type: pointSchema,
     //     required: true,

@@ -62,7 +62,7 @@ router.post('/',
             start: req.body.start,
             destination: req.body.destination,
             time: req.body.time,
-            description: req.body.description,
+            // description: req.body.description,
         });
 
         // THEN save the post and send the res
