@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostIndexItem from './post_index_item';
+// import PostForm from './post_form';
 
 class Post extends React.Component {
     constructor(props) {
@@ -35,6 +36,23 @@ class Post extends React.Component {
     // componentWillMount() {
     componentDidMount() {
         this.props.fetchPost();
+
+        // let post = {
+        //     title: this.state.title,
+        //     start: this.state.start,
+        //     destination: this.state.destination,
+        //     time: this.state.time,
+        //     description: this.state.description,
+        // };
+
+        // this.props.composePost(post);
+        // this.setState({
+        //     title: '',
+        //     start: '',
+        //     destination: '',
+        //     time: '',
+        //     description: '',
+        // });
 
         // if ("geolocation" in navigator) {
         //     console.log("Available");
@@ -126,6 +144,11 @@ class Post extends React.Component {
                 {/* <br/> */}
                 <h1 className="text-3xl font-medium mb-4">Activity Feed</h1>
                 {/* <br/> */}
+
+                {/* <div>
+                  <PostForm />
+                </div> */}
+
                 <div>
                   {this.props.post.map((p, idx) => (
                     <PostIndexItem
