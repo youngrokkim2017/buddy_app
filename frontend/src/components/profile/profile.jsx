@@ -49,7 +49,15 @@ class Profile extends React.Component {
                     <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2>
                     {this.props.post.map(m => (
                     // {this.state.post.map(m => (
-                        <PostIndexItem key={m._id} title={m.title} start={m.start} destination={m.destination} time={m.time} firstName={m.firstName} />
+                        <PostIndexItem 
+                            key={m._id} 
+                            title={m.title} 
+                            start={m.start} 
+                            destination={m.destination} 
+                            time={m.time} 
+                            authorId={m.user}
+                            // firstName={m.firstName} 
+                        />
                     ))}
                 </div>
             );

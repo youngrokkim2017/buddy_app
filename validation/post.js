@@ -10,7 +10,7 @@ module.exports = function validatePostInput(data) {
     data.start = validText(data.start) ? data.start : '';
     data.destination = validText(data.destination) ? data.destination : '';
     data.time = validText(data.time) ? data.time : '';
-    data.description = validText(data.description) ? data.description : '';
+    // data.description = validText(data.description) ? data.description : '';
 
     // then do validator checks
     // title
@@ -33,10 +33,10 @@ module.exports = function validatePostInput(data) {
         errors.time = 'Time must be between 1 and 30 characters';
     };
 
-    // description
-    if (!Validator.isLength(data.description, { min: 1, max: 30 })) {
-        errors.description = 'Description must be between 1 and 30 characters';
-    };
+    // // description
+    // if (!Validator.isLength(data.description, { min: 1, max: 30 })) {
+    //     errors.description = 'Description must be between 1 and 30 characters';
+    // };
 
     // also check its not empty
     // title
@@ -59,10 +59,10 @@ module.exports = function validatePostInput(data) {
         errors.time = 'Time field is required';
     };
 
-    // description
-    if (Validator.isEmpty(data.description)) {
-        errors.description = 'Description field is required';
-    };
+    // // description
+    // if (Validator.isEmpty(data.description)) {
+    //     errors.description = 'Description field is required';
+    // };
 
     // last return errors object
     return {
