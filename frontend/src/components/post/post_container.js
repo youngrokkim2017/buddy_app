@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
         // post: Object.values(state.post),
         // post: Object.values(state.entities.posts),
         currentUser: state.session.user,
+        newPost: state.post.new,
     };
 };
 

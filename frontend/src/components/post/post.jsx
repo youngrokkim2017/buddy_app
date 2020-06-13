@@ -7,14 +7,22 @@ class Post extends React.Component {
     constructor(props) {
         super(props);
 
+        // this.state = {
+        //     post: [],
+        //     isNewestFirst: true,
+        // };
+
         this.state = {
-            post: [],
-            isNewestFirst: true,
+            title: '',
+            start: '',
+            destination: '',
+            time: '',
         };
 
         this.handleDelete = this.handleDelete.bind(this);
         // this.toggleSortDate = this.toggleSortDate.bind(this);
         // this.handleAlphaSort = this.handleAlphaSort.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     // componentDidUpdate(prevProps) {
@@ -36,23 +44,6 @@ class Post extends React.Component {
     // componentWillMount() {
     componentDidMount() {
         this.props.fetchPost();
-
-        // let post = {
-        //     title: this.state.title,
-        //     start: this.state.start,
-        //     destination: this.state.destination,
-        //     time: this.state.time,
-        //     description: this.state.description,
-        // };
-
-        // this.props.composePost(post);
-        // this.setState({
-        //     title: '',
-        //     start: '',
-        //     destination: '',
-        //     time: '',
-        //     description: '',
-        // });
 
         // if ("geolocation" in navigator) {
         //     console.log("Available");
@@ -121,6 +112,38 @@ class Post extends React.Component {
     //   });
     // }
 
+    ///////////////////////////////// POST FORM ///////////////////////////////
+    handleSubmit(e) {
+        // e.preventDefault();
+
+        let post = {
+            title: this.state.title,
+            start: this.state.start,
+            destination: this.state.destination,
+            time: this.state.time,
+            // description: this.state.description,
+        };
+
+        this.props.composePost(post);
+        this.setState({
+            title: '',
+            start: '',
+            destination: '',
+            time: '',
+            // description: '',
+        });
+
+        this.props.history.push('/post');
+    }
+
+    update(type) {
+        return e => this.setState({
+            [type]: e.currentTarget.value
+        });
+    }
+    ///////////////////////////////// POST FORM ///////////////////////////////
+
+
     render() {
         // console.log(this.state);
         console.log(this.props);
@@ -142,6 +165,53 @@ class Post extends React.Component {
         } else {
             return (
               <div>
+                {/* POST FORM */}
+                <h1 className="text-3xl font-medium mb-4">Create Post</h1>
+
+                <div>
+                  <form onSubmit={this.handleSubmit}>
+                      <div>
+                          <label>Title</label>
+                          <input 
+                              type="textarea"
+                              value={this.state.title}
+                              onChange={this.update('title')}
+                              // placeholder="Title"
+                              placeholder="e.g. Going home"
+                          />
+                          <br/>
+                          <label>Start</label>
+                          <input
+                              type="textarea"
+                              value={this.state.start}
+                              onChange={this.update('start')}
+                              // placeholder="Start"
+                              placeholder="e.g. UC Berkeley"
+                          />
+                          <br />
+                          <label>Destination</label>
+                          <input
+                              type="textarea"
+                              value={this.state.destination}
+                              onChange={this.update('destination')}
+                              // placeholder="Destination"
+                              placeholder="e.g. Telegraph and Dwight"
+                          />
+                          <br/>
+                          <label>Time</label>
+                          <input
+                              type="textarea"
+                              value={this.state.time}
+                              onChange={this.update('time')}
+                              // placeholder="Time"
+                              placeholder="e.g. 6:00 pm"
+                          />
+                          <br/>
+                          <input type="submit" value="Submit"/>
+                      </div>
+                  </form>
+                </div>
+
                 <div>
                   {/* <button onClick={this.handleAlphaSort}>A-Z</button> */}
                   {/* <button onClick={this.toggleSortDate}>Date</button> */}
