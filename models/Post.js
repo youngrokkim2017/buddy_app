@@ -37,10 +37,6 @@ const PostSchema = new Schema({
     //         required: true
     //     }
     // },
-    // text: {
-    //     type: String,
-    //     required: true,
-    // },
     title: {
         type: String,
         required: true,
@@ -61,6 +57,21 @@ const PostSchema = new Schema({
     //     type: String,
     //     required: true,
     // },
+    // author: {
+    //     type: String,
+    //     required: true
+    // },
+    requests: [{
+        type: Schema.Types.ObjectId,
+        ref: 'requests'
+    }],
+    // requests: [{
+    //     text: String,
+    //     postedBy: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'users',
+    //     }
+    // }],
     // location: {
     //     type: pointSchema,
     //     required: true,
