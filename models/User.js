@@ -27,6 +27,13 @@ const UserSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     ref: 'post'
     // }],
+    // posts: [{
+    //     title: String,
+    //     postedBy: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'users',
+    //     }
+    // }],
     date: {
         type: Date,
         default: Date.now,

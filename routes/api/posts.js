@@ -58,11 +58,15 @@ router.post('/',
         // NEXT create next post, if passed validations
         const newPost = new Post({
             user: req.user.id,
+            //
+            // author: req.user.firstName,
+            //
             title: req.body.title,
             start: req.body.start,
             destination: req.body.destination,
             time: req.body.time,
             // description: req.body.description,
+            author: req.body.author,
         });
 
         // THEN save the post and send the res
