@@ -11,6 +11,7 @@ class PostForm extends React.Component {
             destination: '',
             time: '',
             // description: '',
+            author: this.props.currentUser.firstName,
             // newPost: '',
         };
 
@@ -39,6 +40,7 @@ class PostForm extends React.Component {
             destination: this.state.destination,
             time: this.state.time,
             // description: this.state.description,
+            author: this.state.author,
         };
 
         this.props.composePost(post);
@@ -48,6 +50,7 @@ class PostForm extends React.Component {
             destination: '',
             time: '',
             // description: '',
+            author: this.props.currentUser.firstName,
         });
 
         this.props.history.push('/post');
@@ -113,6 +116,15 @@ class PostForm extends React.Component {
                             placeholder="Description"
                         />
                         <br/> */}
+                        <label>Author</label>
+                        <input
+                            type="textarea"
+                            value={this.props.currentUser.firstName}
+                            // onChange={this.update('author')}
+                            // placeholder={this.props.currentUser.firstName} 
+                            readOnly
+                        />
+                        <br/>
                         <input type="submit" value="Submit"/>
                     </div>
                 </form>

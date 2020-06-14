@@ -17,6 +17,7 @@ class Post extends React.Component {
             start: '',
             destination: '',
             time: '',
+            author: this.props.currentUser.firstName,
         };
 
         this.handleDelete = this.handleDelete.bind(this);
@@ -122,6 +123,7 @@ class Post extends React.Component {
             destination: this.state.destination,
             time: this.state.time,
             // description: this.state.description,
+            author: this.state.author,
         };
 
         this.props.composePost(post);
@@ -131,6 +133,7 @@ class Post extends React.Component {
             destination: '',
             time: '',
             // description: '',
+            author: this.props.currentUser.firstName,
         });
 
         this.props.history.push('/post');
@@ -207,6 +210,14 @@ class Post extends React.Component {
                               placeholder="e.g. 6:00 pm"
                           />
                           <br/>
+                          <label>Author</label>
+                          <input
+                              type="textarea"
+                              value={this.props.currentUser.firstName}
+                              onChange={this.update('author')}
+                              // placeholder={this.props.currentUser.firstName} 
+                          />
+                          <br/>
                           <input type="submit" value="Submit"/>
                       </div>
                   </form>
@@ -228,7 +239,7 @@ class Post extends React.Component {
                 <div>
                   {this.props.post.map((p, idx) => (
                     <PostIndexItem
-                      // key={p._id}
+                      // // key={p._id}
                       key={idx}
                       idx={idx}
                       postId={p._id}
@@ -237,7 +248,8 @@ class Post extends React.Component {
                       destination={p.destination}
                       time={p.time}
                       // description={p.description}
-                      user={p.user}
+                      // user={p.firstName}
+                      author={p.author}
                       date={p.date}
                     />
                   ))}

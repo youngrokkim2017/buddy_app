@@ -11,6 +11,7 @@ module.exports = function validatePostInput(data) {
     data.destination = validText(data.destination) ? data.destination : '';
     data.time = validText(data.time) ? data.time : '';
     // data.description = validText(data.description) ? data.description : '';
+    data.author = validText(data.author) ? data.author : "";
 
     // then do validator checks
     // title
@@ -38,6 +39,10 @@ module.exports = function validatePostInput(data) {
     //     errors.description = 'Description must be between 1 and 30 characters';
     // };
 
+    if (!Validator.isLength(data.author, { min: 1, max: 30 })) {
+        errors.author = 'Author must be between 1 and 30 characters';
+    };
+
     // also check its not empty
     // title
     if (Validator.isEmpty(data.title)) {
@@ -63,6 +68,10 @@ module.exports = function validatePostInput(data) {
     // if (Validator.isEmpty(data.description)) {
     //     errors.description = 'Description field is required';
     // };
+
+    if (Validator.isEmpty(data.author)) {
+        errors.author = 'Author field is required';
+    };
 
     // last return errors object
     return {
