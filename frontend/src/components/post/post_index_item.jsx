@@ -33,15 +33,19 @@ class PostIndexItem extends React.Component {
     };
     
     render() {
+        console.log(this.props);
+
         return (
             <Link to={'/post/:postId'}>
                 <div className="p-6 border-b border-gray-300 flex flex-wrap hover:text-blue-600">
                     <div className="h-16 w-16 bg-indigo-500 rounded-full mr-4 mb-4 flex flex-shrink-0 items-center justify-center">
                         <h1 className="text-3xl text-white text-center">KA</h1>
+                        {/* <h1 className="text-3xl text-white text-center">{this.props.author[0]}</h1> */}
                     </div>
                     <div className="flex-1 md:flex-grow">
                         <div className="flex flex-wrap">
                             <h1 className="mr-1 text-xl">Kamran Ahmed</h1>
+                            {/* <h1 className="mr-1 text-xl">{this.props.author}</h1> */}
                             {this.isNew()}
                         </div>
                         <div className="flex flex-wrap items-center text-2xl">
@@ -54,11 +58,11 @@ class PostIndexItem extends React.Component {
                             <span className="mr-1">•</span>
                             <h1 className="capitalize">{this.props.title}</h1>
                         </div>
-                        <div class="block md:hidden">
+                        <div className="block md:hidden">
                             <span className="text-gray-500">2 days ago</span>
                         </div>
                     </div>
-                    <div class="hidden md:block">
+                    <div className="hidden md:block">
                         <time className="text-gray-500">2 days ago</time>
                     </div>
                 </div>
