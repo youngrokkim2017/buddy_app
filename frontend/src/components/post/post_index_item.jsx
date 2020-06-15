@@ -66,13 +66,14 @@ class PostIndexItem extends React.Component {
 
         distance = distance.replace(/%d/i, interval);
         words += distance;
-        if (distance != locales.seconds){
+        if (distance !== locales.seconds){
             words += locales.sufix;
         } 
         
         if (seconds < 60 * 15){
             // console.log('less than 15 mintues');
             // maybe put isNew() in here since the scaffolidng is already built
+            // how to add it next to author
         }
         
         return words.trim();
@@ -96,7 +97,7 @@ render() {
         <Link to={'/post/:postId'}>
             <div className="p-6 border-b border-gray-300 flex flex-wrap hover:text-blue-600">
                 <div className="h-16 w-16 bg-indigo-500 rounded-full mr-4 mb-4 flex flex-shrink-0 items-center justify-center">
-                    <h1 className="text-3xl text-white text-center">{(this.props.author) ? this.props.author.split("")[0] : ""}</h1>
+                    <h1 className="text-3xl text-white text-center">{this.props.author.split("")[0]}</h1>
                 </div>
                 <div className="flex-1 md:flex-grow">
                     <div className="flex flex-wrap">
