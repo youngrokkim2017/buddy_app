@@ -15,21 +15,23 @@ import PostShowContainer from './post/post_show_container';
 import ProfileContainer from './profile/profile_container';
 
 const App = () => (
-  <div className="bg-lavender antialiased flex text-slateblue">
+  <div className="w-full max-w-screen-xl mx-auto lg:px-6 flex h-screen">
     <NavBarContainer />
-    
-    <div className="px-8 py-10 min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible lg:w-3/5 xl:w-3/5 mx-auto">
-      <Switch>
-        <AuthRoute exact path="/" component={MainPage} />
-        <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-        <Route exact path="/post" component={PostContainer} />
-        <Route exact path="/post/:postId" component={PostShowContainer} />
-        <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
+    <div className="flex overflow-hidden mx-auto lg:mx-0 md:w-4/5 lg:w-3/5">
+      <div className="flex-grow overflow-y-scroll">
+        <Switch>
+          <AuthRoute exact path="/" component={MainPage} />
+          <AuthRoute exact path="/login" component={LoginFormContainer} />
+          <AuthRoute exact path="/signup" component={SignupFormContainer} />
 
-        <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      </Switch>
+          <Route exact path="/post" component={PostContainer} />
+          <Route exact path="/post/:postId" component={PostShowContainer} />
+          <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
+
+          <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+        </Switch>
+      </div>
     </div>
   </div>
 );
