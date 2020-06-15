@@ -27,10 +27,20 @@ const PostSchema = new Schema({
         // ref: 'post',
         // ref: 'posts',
     },
-    // text: {
-    //     type: String,
-    //     required: true,
+    // user: {
+    //     id: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'users',
+    //     },
+    //     ame: {
+    //         type: String,
+    //         required: true
+    //     }
     // },
+    author: {
+        type: String,
+        required: true,
+    },
     title: {
         type: String,
         required: true,
@@ -47,13 +57,36 @@ const PostSchema = new Schema({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true,
-    },
+    // description: {
+    //     type: String,
+    //     required: true,
+    // },
+    // author: {
+    //     type: String,
+    //     required: true
+    // },
+    requests: [{
+        type: Schema.Types.ObjectId,
+        ref: 'requests'
+    }],
+    // requests: [{
+    //     text: String,
+    //     postedBy: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'users',
+    //     }
+    // }],
     // location: {
     //     type: pointSchema,
     //     required: true,
+    // },
+    // expire_at: {
+    //     type: Date, 
+    //     // default: Date.now, expires: 86400
+    //     default: Date.now, 
+    //     index: {
+    //         expires: 120,
+    //     },
     // },
     date: {
         type: Date,

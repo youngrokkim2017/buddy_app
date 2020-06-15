@@ -15,7 +15,7 @@ class PostShow extends React.Component {
 
     componentDidMount() {
         // this.props.fetchOnePost(this.props.match.params.postId);
-        this.props.fetchOnePost(this.props.postId);
+        // this.props.fetchOnePost(this.props.postId);
 
         // this.props.fetchPost();
     }

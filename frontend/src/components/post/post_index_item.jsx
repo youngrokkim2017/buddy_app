@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 class PostIndexItem extends React.Component {
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
 
-    //     // this.handleDelete = this.handleDelete.bind(this);
-    // }
+        this.handleDelete = this.handleDelete.bind(this);
+    }
 
     // componentDidMount() {
     //     this.props.fetchOnePost(this.props.postId);

@@ -18,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
         currentUserId = state.session.user.id;
     };
 
-    let posts = Object.values(state.entities.posts);
+    // let posts = Object.values(state.entities.posts);
+    let posts = Object.values(state.entities.posts.all);
 
     return {
         // post: state.post[postId],

@@ -18,11 +18,24 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
+        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.edu$/,
     },
     password: {
         type: String,
         required: true,
     },
+    // posts: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'post'
+    // }],
+    // posts: [{
+    //     title: String,
+    //     postedBy: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'users',
+    //     }
+    // }],
     date: {
         type: Date,
         default: Date.now,

@@ -8,11 +8,13 @@ class Profile extends React.Component {
         this.state = {
             post: []
         }
+
+        // this.handleDelete = this.handleDelete.bind(this);
     }
 
     // componentWillMount() {
     componentDidMount() {
-        console.log(this.props.currentUser.id);
+        // console.log(this.props.currentUser.id);
         this.props.fetchUserPost(this.props.currentUser.id);
     }
 
@@ -38,16 +40,24 @@ class Profile extends React.Component {
         if (this.props.post.length === 0) {
             return(
                 <div>
-                    {this.props.currentUser.handle} has no Post
+                    {this.props.currentUser.firstName} {this.props.currentUser.lastName} Has No Posts
                 </div>
             );
         } else {
             return (
                 <div>
-                    <h2>All of {this.props.currentUser.handle}'s Posts</h2>
+                    <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2>
                     {this.props.post.map(m => (
                     // {this.state.post.map(m => (
-                        <PostIndexItem key={m._id} title={m.title} start={m.start} destination={m.destination} time={m.time}/>
+                        <PostIndexItem 
+                            key={m._id} 
+                            title={m.title} 
+                            start={m.start} 
+                            destination={m.destination} 
+                            time={m.time} 
+                            authorId={m.user}
+                            author={m.author}
+                        />
                     ))}
                 </div>
             );

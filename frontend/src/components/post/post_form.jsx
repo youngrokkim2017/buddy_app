@@ -10,7 +10,8 @@ class PostForm extends React.Component {
             start: '',
             destination: '',
             time: '',
-            description: '',
+            // description: '',
+            author: this.props.currentUser.firstName,
             // newPost: '',
         };
 
@@ -38,7 +39,8 @@ class PostForm extends React.Component {
             start: this.state.start,
             destination: this.state.destination,
             time: this.state.time,
-            description: this.state.description,
+            // description: this.state.description,
+            author: this.state.author,
         };
 
         this.props.composePost(post);
@@ -47,7 +49,8 @@ class PostForm extends React.Component {
             start: '',
             destination: '',
             time: '',
-            description: '',
+            // description: '',
+            author: this.props.currentUser.firstName,
         });
 
         this.props.history.push('/post');
@@ -69,39 +72,57 @@ class PostForm extends React.Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <div>
+                        <label>Title</label>
                         <input 
                             type="textarea"
                             value={this.state.title}
                             onChange={this.update('title')}
-                            placeholder="Title"
+                            // placeholder="Title"
+                            placeholder="e.g. Going home"
                         />
                         <br/>
+                        <label>Start</label>
                         <input
                             type="textarea"
                             value={this.state.start}
                             onChange={this.update('start')}
-                            placeholder="Start"
+                            // placeholder="Start"
+                            placeholder="e.g. UC Berkeley"
                         />
                         <br />
+                        <label>Destination</label>
                         <input
                             type="textarea"
                             value={this.state.destination}
                             onChange={this.update('destination')}
-                            placeholder="Destination"
+                            // placeholder="Destination"
+                            placeholder="e.g. Telegraph and Dwight"
                         />
                         <br/>
+                        <label>Time</label>
                         <input
                             type="textarea"
                             value={this.state.time}
                             onChange={this.update('time')}
-                            placeholder="Time"
+                            // placeholder="Time"
+                            placeholder="e.g. 6:00 pm"
                         />
                         <br/>
+                        {/* <label>Description</label>
                          <input
                             type="textarea"
                             value={this.state.description}
                             onChange={this.update('description')}
                             placeholder="Description"
+                        />
+                        <br/> */}
+                        <label>Author</label>
+                        <input
+                            type="textarea"
+                            value={this.props.currentUser.firstName}
+                            // onChange={this.update('author')}
+                            // placeholder={this.props.currentUser.firstName} 
+                            readOnly
                         />
                         <br/>
                         <input type="submit" value="Submit"/>
