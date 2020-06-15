@@ -75,6 +75,44 @@ router.post('/',
     }
 );
 
+// Delete a post
+router.delete('/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        Post
+            .findById(req.params.id)
+            .then(post => {
+                post.remove()
+                    .then(post => res.json(post))
+                    .catch(err => res.status(404).json({ nopostfound: 'Invalid Request' }))
+            })
+            .catch(err => res.status(404).json({ nopostfound: 'No post found' }));
+    }
+);
+
+// Edit a post
+router.patch('/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        const { errors, isValid } = validatePostInput(req.body);
+
+        if (!isValid) {
+            return res.status(400).json(errors);
+        };
+
+        Post.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true },
+            (err, post) => {
+                if (err) return res.status(400).json(err);
+                return res.json(post)
+            }
+        )
+    }
+)
+
+
 ////////////////////////// CHAT //////////////////////////
 
 // // add a POST route 

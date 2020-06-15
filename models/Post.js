@@ -80,6 +80,14 @@ const PostSchema = new Schema({
     //     type: pointSchema,
     //     required: true,
     // },
+    // expire_at: {
+    //     type: Date, 
+    //     // default: Date.now, expires: 86400
+    //     default: Date.now, 
+    //     index: {
+    //         expires: 120,
+    //     },
+    // },
     date: {
         type: Date,
         default: Date.now,

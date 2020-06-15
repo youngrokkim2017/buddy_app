@@ -56,7 +56,7 @@ class Profile extends React.Component {
                             destination={m.destination} 
                             time={m.time} 
                             authorId={m.user}
-                            // firstName={m.firstName} 
+                            author={m.author}
                         />
                     ))}
                 </div>
