@@ -73,6 +73,7 @@ class PostIndexItem extends React.Component {
         if (seconds < 60 * 15){
             // console.log('less than 15 mintues');
             // maybe put isNew() in here since the scaffolidng is already built
+            // how to add it next to author
         }
         
         return words.trim();
