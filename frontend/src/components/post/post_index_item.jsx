@@ -66,7 +66,8 @@ class PostIndexItem extends React.Component {
                     <img className="h-12 w-12 mr-4 block rounded-full shadow-lg" src={"https://randomuser.me/api/portraits/men/"+Math.floor(Math.random()*50).toString()+".jpg"} alt="" />
                     <div className="text-left">
                         {this.isNew()}
-                        <h3 className="align-middle text-lg text-black font-medium leading-tight capitalize">Kamran Ahmed</h3>
+                        {/* <h3 className="align-middle text-lg text-black font-medium leading-tight capitalize">Kamran Ahmed</h3> */}
+                        <h3 className="align-middle text-lg text-black font-medium leading-tight capitalize">{this.props.author}</h3>
                         <div className="leading-none text-2xl text-black">
                             <h3 className="inline-block leading-none align-middle mr-1 ">{this.props.start}</h3>
                             <svg className="inline-block align-middle mr-1 stroke-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M18.59 13H3a1 1 0 0 1 0-2h15.59l-5.3-5.3a1 1 0 1 1 1.42-1.4l7 7a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.42-1.4l5.3-5.3z" /></svg>
