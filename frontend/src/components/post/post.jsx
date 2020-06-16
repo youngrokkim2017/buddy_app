@@ -120,11 +120,18 @@ class Post extends React.Component {
 
   ///////////////////////////////// POST FORM ///////////////////////////////
 
-// openPostForm() {
-//     create = document.getElementById("create");
-//     create.classList.add(block);
-//     create.classList.remove(hidden);
-//   }
+postForm() {
+    let create = document.getElementById("create");
+    if (create.classList.contains('hidden')){
+      create.classList.remove("hidden");
+      create.classList.add("block");
+    } else
+    {
+      create.classList.remove("block");
+      create.classList.add("hidden");
+    }
+    
+  }
 
 
 
@@ -162,8 +169,8 @@ class Post extends React.Component {
           </div>
           {/* POST FORM */}
           <div className="p-6 pb-6 border-gray-300 border-b">
-            <button onClick={this.openPostForm}><h1 className="text-2xl font-medium">Create an activity</h1></button>
-            <form onSubmit={this.handleSubmit} class="block" ref="create">
+            <button onClick={this.postForm}><h1 className="text-2xl font-medium">Create an activity</h1></button>
+            <form onSubmit={this.handleSubmit} class="hidden transition duration-500 ease-in-out" id="create">
               <div className="w-full mt-6">
                 <div className="flex flex-wrap">
                   <div className="w-full md:w-1/2 mb-6 pr-3">
