@@ -38,7 +38,7 @@ class PostIndexItem extends React.Component {
             year: 'a yr',
             years: '%d yrs'
         };
-
+        
         let seconds = Math.floor((new Date() - new Date(x)) / 1000),
             words = locales.prefix,
             interval = 0,
@@ -49,7 +49,6 @@ class PostIndexItem extends React.Component {
                 hour: seconds / 3600,
                 minute: seconds / 60
             };
-
         let distance = locales.seconds;
 
         for (let key in intervals) {
@@ -89,8 +88,6 @@ isNew() {
         return <span className="self-center rounded-full bg-pink-500 text-white px-2 py-1 text-xs font-bold">New</span>;
     }
 };
-
-
 
 render() {
     return (

@@ -69,67 +69,71 @@ class PostForm extends React.Component {
         console.log(this.props);
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label>Title</label>
-                        <input 
-                            type="textarea"
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                            // placeholder="Title"
-                            placeholder="e.g. Going home"
-                        />
-                        <br/>
-                        <label>Start</label>
-                        <input
-                            type="textarea"
-                            value={this.state.start}
-                            onChange={this.update('start')}
-                            // placeholder="Start"
-                            placeholder="e.g. UC Berkeley"
-                        />
-                        <br />
-                        <label>Destination</label>
-                        <input
-                            type="textarea"
-                            value={this.state.destination}
-                            onChange={this.update('destination')}
-                            // placeholder="Destination"
-                            placeholder="e.g. Telegraph and Dwight"
-                        />
-                        <br/>
-                        <label>Time</label>
-                        <input
-                            type="textarea"
-                            value={this.state.time}
-                            onChange={this.update('time')}
-                            // placeholder="Time"
-                            placeholder="e.g. 6:00 pm"
-                        />
-                        <br/>
-                        {/* <label>Description</label>
-                         <input
-                            type="textarea"
-                            value={this.state.description}
-                            onChange={this.update('description')}
-                            placeholder="Description"
-                        />
-                        <br/> */}
-                        <label>Author</label>
-                        <input
-                            type="textarea"
-                            value={this.props.currentUser.firstName}
-                            // onChange={this.update('author')}
-                            // placeholder={this.props.currentUser.firstName} 
-                            readOnly
-                        />
-                        <br/>
-                        <input type="submit" value="Submit"/>
-                    </div>
-                </form>
-                <br/>
-                {/* <PostIndexItem text={this.state.newPost} /> */}
+            <div className="border-l border-r border-gray-300 h-screen">
+                <div className="p-6 pb-6">
+
+                    <h1 className="text-2xl font-medium mb-4">Create an activity</h1>
+
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="w-full">
+
+                            <div className="flex flex-wrap">
+                                <div className="w-full md:w-1/2 mb-6 pr-3">
+                                    <label className="font-medium mb-2">
+                                        Start
+                                    </label>
+                                    <input
+                                        type="textarea"
+                                        value={this.state.start}
+                                        onChange={this.update('start')}
+                                        placeholder="UC Berkeley"
+                                        className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                    />
+                                </div>
+                                <div className="w-full md:w-1/2 mb-6 pr-3">
+                                    <label className="font-medium mb-2">
+                                        End
+                                    </label>
+                                    <input
+                                        type="textarea"
+                                        value={this.state.destination}
+                                        onChange={this.update('destination')}
+                                        placeholder="Telegraph and Dwight"
+                                        className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap">
+                                <div className="w-full md:w-1/2 mb-6 pr-3">
+                                    <label className="font-medium mb-2">
+                                        Title
+                                    </label>
+                                    <input
+                                        type="textarea"
+                                        value={this.state.title}
+                                        onChange={this.update('title')}
+                                        placeholder="Going home"
+                                        className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                    />
+                                </div>
+                                <div className="w-full md:w-1/2 mb-6 pr-3">
+                                    <label className="font-medium mb-2">
+                                        Time
+                                    </label>
+                                    <input
+                                        type="time"
+                                        value={this.state.time}
+                                        onChange={this.update('time')}
+                                        placeholder="6:00 pm"
+                                        className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                    />
+                                </div>
+                            </div>
+                            <input type="submit" value="Submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" />
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }
