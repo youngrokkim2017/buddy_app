@@ -117,7 +117,15 @@ class Post extends React.Component {
       [type]: e.currentTarget.value
     });
   }
+
   ///////////////////////////////// POST FORM ///////////////////////////////
+
+// openPostForm() {
+//     create = document.getElementById("create");
+//     create.classList.add(block);
+//     create.classList.remove(hidden);
+//   }
+
 
 
   render() {
@@ -141,61 +149,7 @@ class Post extends React.Component {
     } else {
       return (
         <div className="border-l border-r border-gray-300">
-            {/* POST FORM */}
-            <div className="p-6 pb-0">
-              <h1 className="text-2xl font-medium">Create Post</h1>
-              <form onSubmit={this.handleSubmit}>
-                <div>
-                  <label>Title</label>
-                  <input
-                    type="textarea"
-                    value={this.state.title}
-                    onChange={this.update('title')}
-                    // placeholder="Title"
-                    placeholder="e.g. Going home"
-                  />
-                  <br />
-                  <label>Start</label>
-                  <input
-                    type="textarea"
-                    value={this.state.start}
-                    onChange={this.update('start')}
-                    // placeholder="Start"
-                    placeholder="e.g. UC Berkeley"
-                  />
-                  <br />
-                  <label>Destination</label>
-                  <input
-                    type="textarea"
-                    value={this.state.destination}
-                    onChange={this.update('destination')}
-                    // placeholder="Destination"
-                    placeholder="e.g. Telegraph and Dwight"
-                  />
-                  <br />
-                  <label>Time</label>
-                  <input
-                    type="textarea"
-                    value={this.state.time}
-                    onChange={this.update('time')}
-                    // placeholder="Time"
-                    placeholder="e.g. 6:00 pm"
-                  />
-                  <br />
-                  <label>Author</label>
-                  <input
-                    type="textarea"
-                    value={this.props.currentUser.firstName}
-                    onChange={this.update('author')}
-                  // placeholder={this.props.currentUser.firstName} 
-                  />
-                  <br />
-                  <input type="submit" value="Submit" />
-                </div>
-              </form>
-            </div>
-
-            <div className="flex border-gray-300 border-b p-6">
+          <div className="flex border-gray-300 border-b p-6">
             <div className="flex-grow">
               <h1 className="text-2xl font-medium">Home</h1>
             </div>
@@ -205,6 +159,67 @@ class Post extends React.Component {
               </div>
               <input className="bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400" type="search" placeholder="Search" />
             </div>
+          </div>
+          {/* POST FORM */}
+          <div className="p-6 pb-6 border-gray-300 border-b">
+            <button onClick={this.openPostForm}><h1 className="text-2xl font-medium">Create an activity</h1></button>
+            <form onSubmit={this.handleSubmit} class="block" ref="create">
+              <div className="w-full mt-6">
+                <div className="flex flex-wrap">
+                  <div className="w-full md:w-1/2 mb-6 pr-3">
+                    <label className="font-medium mb-2">
+                      Start
+                  </label>
+                    <input
+                      type="textarea"
+                      value={this.state.start}
+                      onChange={this.update('start')}
+                      placeholder="UC Berkeley"
+                      className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                    />
+                  </div>
+                  <div className="w-full md:w-1/2 mb-6 pr-3">
+                    <label className="font-medium mb-2">
+                      End
+                  </label>
+                    <input
+                      type="textarea"
+                      value={this.state.destination}
+                      onChange={this.update('destination')}
+                      placeholder="Telegraph and Dwight"
+                      className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-wrap">
+                  <div className="w-full md:w-1/2 mb-6 pr-3">
+                    <label className="font-medium mb-2">
+                      Title
+                  </label>
+                    <input
+                      type="textarea"
+                      value={this.state.title}
+                      onChange={this.update('title')}
+                      placeholder="Going home"
+                      className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                    />
+                  </div>
+                  <div className="w-full md:w-1/2 mb-6 pr-3">
+                    <label className="font-medium mb-2">
+                      Time
+                  </label>
+                    <input
+                      type="time"
+                      value={this.state.time}
+                      onChange={this.update('time')}
+                      placeholder="6:00 pm"
+                      className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                    />
+                  </div>
+                </div>
+                <input type="submit" value="Submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" />
+              </div>
+            </form>
           </div>
 
           <div className="feed">

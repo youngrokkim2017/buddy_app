@@ -55,10 +55,12 @@ class Profile extends React.Component {
                             start={m.start} 
                             destination={m.destination} 
                             time={m.time} 
+                            date={m.date} 
                             authorId={m.user}
                             author={m.author}
                         />
                     ))}
+                    
                 </div>
             );
         };
