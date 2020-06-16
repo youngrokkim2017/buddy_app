@@ -54,6 +54,15 @@ class NavBar extends React.Component {
                             <h1 className="text-2xl font-medium">Profile</h1>
                         </div>
                     </Link>
+                    <Link to={'/notifications'}>
+                        <div className="flex text-xl mb-4 flex-shrink-0 hover:text-blue-600">
+                            <div className="flex-none self-center mr-2 relative">
+                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none"><path d="M15 19a3 3 0 0 1-6 0H4a1 1 0 0 1 0-2h1v-6a7 7 0 0 1 4.02-6.34 3 3 0 0 1 5.96 0A7 7 0 0 1 19 11v6h1a1 1 0 0 1 0 2h-5zm-4 0a1 1 0 0 0 2 0h-2zm0-12.9A5 5 0 0 0 7 11v6h10v-6a5 5 0 0 0-4-4.9V5a1 1 0 0 0-2 0v1.1z" /></svg>
+                                <span className="absolute -mt-1 ml-6 top-0 rounded-full w-3 h-3 bg-red-600 text-xs text-white text-center"></span>
+                            </div>
+                            <h1 className="text-2xl font-medium">Notifications</h1>
+                        </div>
+                    </Link>
                 </>
             );
         } else {
@@ -80,15 +89,15 @@ class NavBar extends React.Component {
             <div className="hidden lg:block w-24 h-screen pt-6 lg:w-1/5">
                 <div className="mb-8 flex justify-center lg:justify-start">
                     <Link to="" className="w-8 h-8 lg:w-12 lg:h-12">
-                            <img src={logo} className="" alt="logo"/>
+                        <img src={logo} className="" alt="logo" />
                     </Link>
                 </div>
                 <div>
                     {this.getLinks()}
                 </div>
 
-                <button className="absolute bottom-0 mb-12 text-gray-600 mt-5 text-lg" onClick={this.logoutUser}>Log Out</button>
-                
+                <button className="relative bottom-0 mt-8 text-gray-600 text-lg" onClick={this.logoutUser}>Log Out</button>
+
             </div>
         );
     }
