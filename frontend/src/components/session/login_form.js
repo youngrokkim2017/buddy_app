@@ -84,7 +84,7 @@ class LoginForm extends React.Component {
     }
 
     handleDemoEmail(demo) {
-        demo = demo || 'demo@example.com'.split('');
+        demo = demo || 'demo@example.edu'.split('');
 
         setTimeout(() => {
             this.setState({
