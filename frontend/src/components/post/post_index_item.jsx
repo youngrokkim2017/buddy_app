@@ -67,7 +67,7 @@ class PostIndexItem extends React.Component {
         if (distance !== locales.seconds) {
             words += locales.sufix;
         }
-
+      
         let parsed = words.trim();
         if (badge===false){
             return parsed;
