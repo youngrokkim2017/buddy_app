@@ -2,7 +2,7 @@ const Validator = require('validator');
 const validText = require('./valid-text');
 
 module.exports = function validateRequestStatus(data) {
-    let errors: {};
+    let errors = {}
 
     data.status = validText(data.status) ? data.status : '';
 
