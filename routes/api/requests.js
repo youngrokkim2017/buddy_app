@@ -5,6 +5,7 @@ const validatePostInput = require("../../validation/post");
 const Post = require("../../models/Post");
 const User = require("../../models/User");
 const Request = require("../../models/Request");
+const validateRequestStatus = require('../../validation/requests')
 
 // GET all requests associated with a Post
 router.get('/post/:postId',
@@ -41,5 +42,56 @@ router.post('/post/:postId',
         newRequest.save()
             .then(request => res.json(request))
             .catch(err => res.status(400).json(err));
+    }
+);
+
+// UPDATE request status
+router.patch('/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        const { errors, isValid } = validateRequestStatus(req.body)
+
+        if (!isValid) {
+            return res.status(400).json(errors)
+        };
+
+        Request.findByIdAndDelete(
+            req.body._id,
+            // req.body.id,
+            req.body,
+            { new: true },
+            (err, request) => {
+                if (err) {
+                    return res.status(400).json(err);
+                };
+                
+                return res.json(request);
+            }
+        )
+    }
+);
+
+// GET approved request of a user
+router.get('/users/:userId',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        const requests = Request.find({
+            requester: req.user._id,
+            // requester: req.user.id,
+        });
+
+        const request = requests.filter((request) => request.status === 'approved')
+
+        res.json(request)
+    }
+);
+
+// GET all requests of a user
+router.get('/',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        Request
+            .find({ requester: req.user._id })
+            .then(requests => res.json(requests))
     }
 );
