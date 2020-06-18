@@ -18,7 +18,7 @@ const App = () => (
   <div className="w-full max-w-screen-xl mx-auto lg:px-6 flex h-screen">
     <NavBarContainer />
 
-    <div className="flex overflow-hidden mx-auto lg:mx-0 md:w-4/5 lg:w-3/5">
+    <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
       <div className="flex-grow overflow-y-scroll">
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />
