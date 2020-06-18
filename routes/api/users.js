@@ -14,6 +14,10 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 // import validate login
 const validateLoginInput = require('../../validation/login');
+const validateUpdateInput = require('../../validation/update_user');
+// const { requestsReduer } = require('../../frontend/src/reducers/requests_reducer');
+// const { serializeUser } = require('passport');
+const Post = require('../../models/Post');
 
 // ADD ROUTES
 router.get('/test', (req, res) => {
@@ -159,7 +163,73 @@ router.post('/login', (req, res) => {
 
 //UDPATE current user
 router.patch('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    // const { errors, isValid } = 
-})
+    const { errors, isValid } = validateUpdateInput(req.body);
+
+    if (!isValid) {
+        return res.status(44).json(errors);
+    };
+
+    let filter = { _id: req.user._id };
+
+    let update = req.body;
+
+
+    User.findOneAndUpdate(filter, update, { new: true })
+        .then(user => {
+            let returnedUser = {
+                _id: user._id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+            };
+            res.json(returnedUser);
+        })
+        .catch(err => res.status(404).json({ nouserfound: 'No user found' })
+        );
+});
+
+// user show page
+router.get('/:id',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        User.findById(req.params.id)
+            .then(user => {
+                let returnedUser = {
+                    _id: user._id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                }
+                res.json(returnedUser)
+            })
+            .catch(err => res.status(404).json({ nouserfound: 'No user found' }))
+    }
+);
+
+// 
+router.get('/requests/:requestId', 
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        User.findOneAndUpdate({ _id: req.params.requestId })
+            .then(user => {
+                res.json(user)
+            })
+    }
+);
+
+// GET the requesters on a post
+router.get('/posts/:postId',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        Post.findOne({ _id: req.params.postId })
+            .then(post => {
+                Request.find({ post: post._id })
+                    .then(requests => {
+                        let requester = requests.map(request => request.requester)
+                        res.json(requester)
+                    })
+            })
+    }
+);
 
 module.exports = router;
