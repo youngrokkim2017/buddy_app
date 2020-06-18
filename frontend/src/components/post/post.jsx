@@ -154,7 +154,7 @@ class Post extends React.Component {
       return (
         <div className="border-l border-r border-gray-300">
           <div className="flex border-gray-300 border-b p-6">
-            <div className="flex-grow">
+            <div className="flex-grow mr-4">
               <h1 className="text-2xl font-medium">Home</h1>
             </div>
             <div className="relative text-gray-600">
@@ -231,7 +231,7 @@ class Post extends React.Component {
               </form>
             </div>
           </div>
-          <div className="feed pb-16 lg:pb-0">
+          <div className="feed pb-12 lg:pb-0">
             {this.props.post.map((p, idx) => (
               <PostIndexItem
                 // // key={p._id}
