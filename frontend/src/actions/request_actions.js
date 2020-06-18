@@ -26,7 +26,7 @@ const receiveRequestErrors = (errors) => ({
 });
 
 export const sendRequest = (postId) => dispatch => (
-    RequestApiUtil.sendRequest(walkId)
+    RequestApiUtil.sendRequest(postId)
         .then(request => dispatch(receiveRequest(request)))
         .catch(err => console.log(err))
 );

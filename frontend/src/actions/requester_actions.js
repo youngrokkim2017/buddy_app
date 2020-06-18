@@ -17,7 +17,7 @@ export const fetchRequestersFromPost = (postId) => dispatch => (
         .catch(err => console.log(err))
 );
 
-export const updateAUser = (data) => (
+export const updateAUser = (data) => dispatch => (
     UserApiUtil.updateAUser(data)
         .then(user => dispatch(receiveAUser(user)))
         .catch(err => console.log(err))

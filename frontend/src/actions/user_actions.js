@@ -28,7 +28,7 @@ export const clearUserErrors = () => ({
 
 // THUNK ACTIONS
 
-export const fetchAUser = (id) => (
+export const fetchAUser = (id) => dispatch => (
     UserApiUtil.fetchAUser(id)
         .then(user => dispatch(receiveAUser(user)))
         .catch()

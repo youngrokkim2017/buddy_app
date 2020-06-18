@@ -4,9 +4,9 @@ import {
     REMOVE_REQUEST,
 } from '../actions/request_actions';
 
-export const requestsReduer = (state = {}, action) => {
+export const requestsReducer = (state = {}, action) => {
     Object.freeze(state);
-    let newState = Object.assign({}. state);
+    let newState = Object.assign({}, state);
 
     switch (action.type) {
         case RECEIVE_REQUESTS:
