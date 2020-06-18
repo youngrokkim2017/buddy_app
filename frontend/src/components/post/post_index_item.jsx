@@ -22,7 +22,7 @@ class PostIndexItem extends React.Component {
     };
 
 
-    timeAgo(x, badge=false) {
+    timeAgo(x, badge = false) {
         let locales = {
             prefix: '',
             sufix: ' ago',
@@ -67,9 +67,9 @@ class PostIndexItem extends React.Component {
         if (distance !== locales.seconds) {
             words += locales.sufix;
         }
-      
+
         let parsed = words.trim();
-        if (badge===false){
+        if (badge === false) {
             return parsed;
         } else if (seconds < 60 * 15) {
             let recent = <span className="self-center rounded bg-pink-500 text-white px-2 text-xs font-bold">New</span>;
@@ -87,7 +87,7 @@ class PostIndexItem extends React.Component {
                     <div className="flex-1 md:flex-grow">
                         <div className="flex flex-wrap">
                             <h1 className="mr-1 text-xl">{this.props.author}</h1>
-                            {this.timeAgo(this.props.date,true)}
+                            {this.timeAgo(this.props.date, true)}
                         </div>
                         <div className="flex flex-wrap items-center text-2xl">
                             <h1 className="mr-1">{this.props.start}</h1>
