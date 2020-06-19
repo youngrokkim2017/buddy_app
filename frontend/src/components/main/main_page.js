@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import logo from '../logo.svg'
 import hero from '../hero.png'
 // import NavBar from '../nav/navbar';
@@ -112,4 +112,5 @@ class MainPage extends React.Component {
     }
 }
 
-export default MainPage;
+// export default MainPage;
+export default withRouter(MainPage);
