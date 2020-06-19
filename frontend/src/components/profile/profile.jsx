@@ -9,6 +9,7 @@ class Profile extends React.Component {
             post: []
         }
 
+        this.logoutUser = this.logoutUser.bind(this);
         // this.handleDelete = this.handleDelete.bind(this);
     }
 
@@ -33,6 +34,13 @@ class Profile extends React.Component {
     //     this.setState({ post: prevState.post });
     // }
 
+    logoutUser(e) {
+        e.preventDefault();
+        this.props.logout();
+
+        this.props.history.push('/');
+    };
+
     render() {
         console.log(this.props);
 
@@ -47,6 +55,8 @@ class Profile extends React.Component {
             return (
                 <div>
                     <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2>
+                    {/* <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button> */}
+                    <button onClick={this.logoutUser}>Log Out</button>
                     {this.props.post.map(m => (
                     // {this.state.post.map(m => (
                         <PostIndexItem 
