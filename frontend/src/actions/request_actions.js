@@ -3,7 +3,7 @@ import * as RequestApiUtil from '../util/request_api_util';
 export const RECEIVE_REQUESTS = 'RECEIVE_REQUESTS';
 export const RECEIVE_REQUEST = 'RECEIVE_REQUEST';
 export const REMOVE_REQUEST = 'REMOVE_REQUEST';
-export const RECEIVE_REQUEST_ERRORS = 'RECEIVE_REQUEST_ERRORS';
+// export const RECEIVE_REQUEST_ERRORS = 'RECEIVE_REQUEST_ERRORS';
 
 const receiveRequests = (requests) => ({
     type: RECEIVE_REQUESTS,
@@ -20,10 +20,10 @@ const removeRequest = (requestId) => ({
     requestId,
 });
 
-const receiveRequestErrors = (errors) => ({
-    type: RECEIVE_REQUEST_ERRORS,
-    errors,
-});
+// const receiveRequestErrors = (errors) => ({
+//     type: RECEIVE_REQUEST_ERRORS,
+//     errors,
+// });
 
 export const sendRequest = (postId) => dispatch => (
     RequestApiUtil.sendRequest(postId)
