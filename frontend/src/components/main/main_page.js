@@ -19,11 +19,20 @@ class MainPage extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLinkSubmit = this.handleLinkSubmit.bind(this);
     }
 
     // componentDidMount() {
     //     this.props.fetchPost();
     // }
+
+    handleLinkSubmit(e) {
+        e.preventDefault();
+
+        if (e.key === 'Enter') {
+            this.props.history.push('signup');
+        }
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -67,7 +76,7 @@ class MainPage extends React.Component {
                         <p className="mt-6 w-full lg:w-4/5 text-lg">Built for college students, late-night studiers, food runs, and more. <span className="text-blue-800 font-medium">Don't go alone.</span></p>
                         <form 
                             className="mt-6 bg-gray-100 border border-gray-300 text-gray-600 flex items-center rounded-lg max-w-sm py-2 px-4 pr-2 focus-within:border-blue-600"
-                            // onSubmit={this.props.history.push('/signup')}
+                            // onSubmit={this.handleLinkSubmit}
                         >
                             <input 
                                 className="appearance-none bg-transparent border-none w-full placeholder-gray-600 leading-tight focus:outline-none" 
@@ -85,10 +94,12 @@ class MainPage extends React.Component {
                                         email: this.state.email
                                     }
                                 }}
+                                // onKeyPress={this.handleLinkSubmit}
                                 className="inline-block text-lg px-4 py-2 leading-none rounded text-white bg-blue-600 shadow-lg flex-shrink-0"
                             >
                                 Sign Up
                             </Link>
+                            {/* <input type="submit"></input> */}
                         </form>
                         {/* <form onSubmit={this.handleSubmit}>
                             <div>

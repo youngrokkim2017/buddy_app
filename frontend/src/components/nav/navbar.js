@@ -85,21 +85,45 @@ class NavBar extends React.Component {
     render() {
         // console.log(this.props);
 
-        return (
-            <div className="bg-white p-8 pt-4 pb-0 border-t border-gray-300 fixed inset-x-0 bottom-0 z-10  w-full lg:static lg:block lg:h-screen lg:pt-6 lg:w-1/5 lg:mr-4">
-                <div className="hidden lg:flex mb-8 justify-center lg:justify-start">
-                    <Link to={"/"} className="w-8 h-8 lg:w-12 lg:h-12">
-                        <img src={logo} className="" alt="logo" />
-                    </Link>
+        if (this.props.location.pathname === '/') {
+            return (
+                <div>
+                    
                 </div>
-                <div className="flex justify-between lg:block lg:justify-start">
-                    {this.getLinks()}
+            );
+        } else {
+            return (
+                <div className="bg-white p-8 pt-4 pb-0 border-t border-gray-300 fixed inset-x-0 bottom-0 z-10  w-full lg:static lg:block lg:h-screen lg:pt-6 lg:w-1/5 lg:mr-4">
+                    <div className="hidden lg:flex mb-8 justify-center lg:justify-start">
+                        <Link to={"/"} className="w-8 h-8 lg:w-12 lg:h-12">
+                            <img src={logo} className="" alt="logo" />
+                        </Link>
+                    </div>
+                    <div className="flex justify-between lg:block lg:justify-start">
+                        {this.getLinks()}
+                    </div>
+
+                    <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button>
+
                 </div>
+            );
+        }
 
-                <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button>
+        // return (
+        //     <div className="bg-white p-8 pt-4 pb-0 border-t border-gray-300 fixed inset-x-0 bottom-0 z-10  w-full lg:static lg:block lg:h-screen lg:pt-6 lg:w-1/5 lg:mr-4">
+        //         <div className="hidden lg:flex mb-8 justify-center lg:justify-start">
+        //             <Link to={"/"} className="w-8 h-8 lg:w-12 lg:h-12">
+        //                 <img src={logo} className="" alt="logo" />
+        //             </Link>
+        //         </div>
+        //         <div className="flex justify-between lg:block lg:justify-start">
+        //             {this.getLinks()}
+        //         </div>
 
-            </div>
-        );
+        //         <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button>
+
+        //     </div>
+        // );
     }
 }
 
