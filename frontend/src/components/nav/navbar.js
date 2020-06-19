@@ -85,7 +85,7 @@ class NavBar extends React.Component {
     render() {
         // console.log(this.props);
 
-        if (this.props.location.pathname === ("/" || "/login" || "/signup")) {
+        if (this.props.location.pathname === "/" || this.props.location.pathname === "/login" || this.props.location.pathname === "/signup") {
             return (
                 <>
                 </>
