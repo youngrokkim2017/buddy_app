@@ -9,6 +9,7 @@ class Profile extends React.Component {
             post: []
         }
 
+        this.logoutUser = this.logoutUser.bind(this);
         // this.handleDelete = this.handleDelete.bind(this);
     }
 
@@ -18,7 +19,6 @@ class Profile extends React.Component {
         this.props.fetchUserPost(this.props.currentUser.id);
     }
 
-    // handleDelete = () => {
     handleDelete(e) {
         // this.props.deletePostItem(this.props.match.params.postId)
         //     .then(this.props.history.push('/posts'))
@@ -33,10 +33,16 @@ class Profile extends React.Component {
     //     this.setState({ post: prevState.post });
     // }
 
+    logoutUser(e) {
+        e.preventDefault();
+        this.props.logout();
+
+        this.props.history.push('/');
+    };
+
     render() {
         console.log(this.props);
 
-        // if (this.state.post.length === 0) {
         if (this.props.post.length === 0) {
             return(
                 <div>
@@ -47,8 +53,9 @@ class Profile extends React.Component {
             return (
                 <div>
                     <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2>
+                    {/* <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button> */}
+                    <button onClick={this.logoutUser}>Log Out</button>
                     {this.props.post.map(m => (
-                    // {this.state.post.map(m => (
                         <PostIndexItem 
                             key={m._id} 
                             title={m.title} 
@@ -60,6 +67,19 @@ class Profile extends React.Component {
                             author={m.author}
                         />
                     ))}
+                    {/* {this.props.post.map((p, idx) => (
+                        <PostIndexItem
+                            key={idx}
+                            idx={idx}
+                            postId={p._id}
+                            title={p.title}
+                            start={p.start}
+                            destination={p.destination}
+                            time={p.time}
+                            author={p.author}
+                            date={p.date}
+                        />
+                    ))} */}
                     
                 </div>
             );

@@ -13,7 +13,6 @@ class PostIndexItem extends React.Component {
     // }
 
     handleDelete(e) {
-        // handleDelete = () => {
         // this.props.deletePostItem(this.props.match.params.postId)
         //     .then(this.props.history.push('/posts'))
         e.preventDefault();

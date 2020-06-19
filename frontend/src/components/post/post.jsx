@@ -12,12 +12,15 @@ class Post extends React.Component {
     //     isNewestFirst: true,
     // };
 
+    let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
+
     this.state = {
       title: '',
       start: '',
       destination: '',
       time: '',
-      author: this.props.currentUser.firstName,
+      // author: this.props.currentUser.firstName,
+      author: fullName,
     };
 
     this.handleDelete = this.handleDelete.bind(this);
@@ -90,6 +93,8 @@ class Post extends React.Component {
   handleSubmit(e) {
     // e.preventDefault();
 
+    let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
+
     let post = {
       title: this.state.title,
       start: this.state.start,
@@ -105,8 +110,9 @@ class Post extends React.Component {
       start: '',
       destination: '',
       time: '',
-      // description: '',
-      author: this.props.currentUser.firstName,
+      // description: ''
+      // author: this.props.currentUser.firstName,
+      author: fullName,
     });
 
     this.props.history.push('/post');

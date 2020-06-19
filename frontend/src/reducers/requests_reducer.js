@@ -13,9 +13,10 @@ export const requestsReducer = (state = {}, action) => {
             action.requests.data.forEach(data => {
                 newState[data._id] = data
             })
-            return newState
+            return newState;
         case RECEIVE_REQUEST:
             newState[action.request.data._id] = action.request.data;
+            return newState;
         case REMOVE_REQUEST:
             delete newState[action.requestId];
             return newState;

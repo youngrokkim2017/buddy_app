@@ -1,11 +1,43 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
+
+        let inputEmail
+        if (this.props.location.state.email === undefined) {
+            inputEmail = '';
+        } else {
+            inputEmail = this.props.location.state.email;
+        }
+
+        // if (this.props.location.state) {
+        //     this.state = {
+        //         email: '',
+        //         // email: this.props.location.state.email,
+        //         // handle: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         password: '',
+        //         password2: '',
+        //         errors: {}
+        //     };
+        // } else {
+        //     this.state = {
+        //         // email: '',
+        //         email: this.props.location.state.email,
+        //         // handle: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         password: '',
+        //         password2: '',
+        //         errors: {}
+        //     };
+        // }
         this.state = {
-            email: '',
+            // email: '',
+            email: inputEmail,
             // handle: '',
             firstName: '',
             lastName: '',
@@ -69,6 +101,8 @@ class SignupForm extends React.Component {
     }
 
     render() {
+        // console.log('signup', this.props.location.state.email);
+
         return (
             <div className="signup-form-container">
                 <br />
@@ -121,6 +155,10 @@ class SignupForm extends React.Component {
                         {this.renderErrors()}
                     </div>
                 </form>
+                <div>
+                    Already have an account?
+                    <Link to={'/login'}>Log in</Link>
+                </div>
             </div>
         );
     }

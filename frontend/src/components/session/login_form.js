@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 // import { set } from 'mongoose';
 
 class LoginForm extends React.Component {
@@ -141,6 +141,20 @@ class LoginForm extends React.Component {
                             Forgot Password?
                         </a> */}
                         <button onClick={this.handleDemoSubmit}>Demo Log In</button>
+                    </div>
+                    <div>
+                        Don't have an account?
+                        <Link 
+                            // to={'/signup'}
+                            to={{
+                                pathname: '/signup',
+                                state: {
+                                    email: this.state.email
+                                }
+                            }}
+                        >
+                            Sign Up
+                        </Link>
                     </div>
                     {this.renderErrors()}
                 </form>
