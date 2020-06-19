@@ -64,14 +64,11 @@ class PostForm extends React.Component {
 
     update(type) {
         return e => this.setState({
-            // text: e.currentTarget.value
-            // title: e.currentTarget.value
             [type]: e.currentTarget.value
         });
     }
 
     render() {
-        // console.log(this.state);
         console.log(this.props);
 
         return (

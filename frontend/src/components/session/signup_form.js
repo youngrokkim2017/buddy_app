@@ -4,8 +4,33 @@ import { withRouter } from 'react-router-dom';
 class SignupForm extends React.Component {
     constructor(props) {
         super(props);
+
+        // if (this.props.location.state) {
+        //     this.state = {
+        //         email: '',
+        //         // email: this.props.location.state.email,
+        //         // handle: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         password: '',
+        //         password2: '',
+        //         errors: {}
+        //     };
+        // } else {
+        //     this.state = {
+        //         // email: '',
+        //         email: this.props.location.state.email,
+        //         // handle: '',
+        //         firstName: '',
+        //         lastName: '',
+        //         password: '',
+        //         password2: '',
+        //         errors: {}
+        //     };
+        // }
         this.state = {
-            email: '',
+            // email: '',
+            email: this.props.location.state.email || '',
             // handle: '',
             firstName: '',
             lastName: '',
@@ -69,6 +94,8 @@ class SignupForm extends React.Component {
     }
 
     render() {
+        // console.log('signup', this.props.location.state.email);
+
         return (
             <div className="signup-form-container">
                 <br />

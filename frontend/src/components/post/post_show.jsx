@@ -21,7 +21,6 @@ class PostShow extends React.Component {
     }
 
     handleDelete(e) {
-        // handleDelete = () => {
         e.preventDefault();
 
         // this.props.deletePostItem(this.props.match.params.postId)
@@ -40,7 +39,6 @@ class PostShow extends React.Component {
     }
 
     render() {
-        // console.log(this.state);
         console.log(this.props);
 
         // this.props.posts.map((p) => {
