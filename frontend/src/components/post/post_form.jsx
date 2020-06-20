@@ -72,6 +72,8 @@ class PostForm extends React.Component {
         console.log(this.props);
 
         return (
+            <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
+            <div className="flex-grow overflow-y-scroll">
             <div className="border-l border-r border-gray-300 h-screen">
                 <div className="p-6 pb-6">
 
@@ -137,6 +139,8 @@ class PostForm extends React.Component {
                         </div>
                     </form>
                 </div>
+            </div>
+            </div>
             </div>
         );
     }
