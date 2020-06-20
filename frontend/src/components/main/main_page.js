@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, withRouter } from "react-router-dom";
-import logo from '../logo.svg'
-import hero from '../hero.png'
+// import logo from '../logo.svg'
+import logo from '../../assets/logo.svg';
+// import hero from '../hero.png'
+import hero from '../../assets/hero.png';
 // import NavBar from '../nav/navbar';
 
 class MainPage extends React.Component {

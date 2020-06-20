@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 // import { set } from 'mongoose';
+import logo from '../../assets/logo.svg';
+// import hero from '../../assets/hero.png'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -14,6 +16,7 @@ class LoginForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.getLinkToHome = this.getLinkToHome.bind(this);
 
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.handleDemoEmail = this.handleDemoEmail.bind(this);
@@ -71,6 +74,17 @@ class LoginForm extends React.Component {
         );
     }
 
+    getLinkToHome() {
+        return (
+            <nav className="flex items-center justify-between flex-wrap">
+                <Link to="" className="flex flex-grow items-center text-white w-auto block">
+                    <img src={logo} className="w-8 h-8 mr-4" alt="logo" />
+                    <h1 className="text-blue-800 text-2xl">people2places</h1>
+                </Link>
+            </nav>
+        )
+    }
+
     // DEMO USER LOGIN
     handleDemoSubmit(e) {
         e.preventDefault();
@@ -109,6 +123,9 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div className="w-full max-w-xs mx-auto bg-white rounded-lg">
+                <div>
+                    {this.getLinkToHome()}
+                </div>
                 <form onSubmit={this.handleSubmit} className="px-8 pt-6 pb-8 mb-4 mt-20">
                     <div className="mb-4">
                         <label className="block text-sm font-medium mb-2">

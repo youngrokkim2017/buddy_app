@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
+// import hero from '../../assets/hero.png'
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -48,6 +50,7 @@ class SignupForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clearedErrors = false;
+        this.getLinkToHome = this.getLinkToHome.bind(this);
     }
 
     // componentWillReceiveProps(nextProps) {
@@ -100,11 +103,25 @@ class SignupForm extends React.Component {
         );
     }
 
+    getLinkToHome() {
+        return (
+            <nav className="flex items-center justify-between flex-wrap">
+                <Link to="" className="flex flex-grow items-center text-white w-auto block">
+                    <img src={logo} className="w-8 h-8 mr-4" alt="logo" />
+                    <h1 className="text-blue-800 text-2xl">people2places</h1>
+                </Link>
+            </nav>
+        )
+    }
+
     render() {
         // console.log('signup', this.props.location.state.email);
 
         return (
             <div className="signup-form-container">
+                <div>
+                    {this.getLinkToHome()}
+                </div>
                 <br />
                 <form onSubmit={this.handleSubmit}>
                     <div className="signup-form">

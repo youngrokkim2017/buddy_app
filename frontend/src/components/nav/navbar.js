@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
-import logo from '../logo.svg'
+// import logo from '../logo.svg'
+import logo from '../../assets/logo.svg'
 
 class NavBar extends React.Component {
     constructor(props) {
