@@ -25,10 +25,14 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
         <div className="flex-grow overflow-y-scroll">
+      {/* <React.Fragment> */}
+        {/* <React.Fragment> */}
           <Route exact path="/post" component={PostContainer} />
           <Route exact path="/post/:id" component={PostShowContainer} />
           <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
           <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+        {/* </React.Fragment> */}
+      {/* </React.Fragment> */}
         </div>
       </div>
     </Switch>
