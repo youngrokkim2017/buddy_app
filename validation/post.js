@@ -15,23 +15,24 @@ module.exports = function validatePostInput(data) {
 
     // then do validator checks
     // title
-    if (!Validator.isLength(data.title, { min: 1, max: 30 })) {
-        errors.title = 'Title must be between 1 and 30 characters';
+    if (!Validator.isLength(data.title, { min: 1, max: 50 })) {
+        errors.title = 'Title must be between 1 and 50 characters';
     };
 
     //start
-    if (!Validator.isLength(data.start, { min: 1, max: 30 })) {
-        errors.start = 'Start must be between 1 and 30 characters';
+    if (!Validator.isLength(data.start, { min: 1, max: 100 })) {
+        errors.start = 'Start must be between 1 and 100 characters';
     };
 
     // destination
-    if (!Validator.isLength(data.destination, { min: 1, max: 30 })) {
-        errors.destination = 'Destination must be between 1 and 30 characters';
+    if (!Validator.isLength(data.destination, { min: 1, max: 100 })) {
+        errors.destination = 'Destination must be between 1 and 100 characters';
     };
 
     // time
     if (!Validator.isLength(data.time, { min: 1, max: 30 })) {
-        errors.time = 'Time must be between 1 and 30 characters';
+        // errors.time = 'Time must be between 1 and 30 characters';
+        errors.time = 'Time must be a valid time e.g. 12:00 PM';
     };
 
     // // description
