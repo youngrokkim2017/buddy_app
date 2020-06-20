@@ -1,5 +1,5 @@
 import React from 'react';
-// import Autocomplete from 'react-google-autocomplete';
+/* global google */
 
 class PostForm extends React.Component {
     constructor(props) {
@@ -19,6 +19,9 @@ class PostForm extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        
+        this.postFormStart = React.createRef();
+        this.postFormDest = React.createRef();
     }
 
     // componentDidUpdate(prevProps) {
@@ -68,6 +71,21 @@ class PostForm extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.startAutocomplete = new google.maps.places.Autocomplete(this.postFormStart.current);
+        this.destAutocomplete = new google.maps.places.Autocomplete(this.postFormDest.current);
+        this.startAutocomplete.addListener('place_changed', () => {
+            this.setState({
+                'start': this.postFormStart.current.value
+            })
+        });
+        this.destAutocomplete.addListener('place_changed', () =>{
+            this.setState({
+                'destination': this.postFormDest.current.value
+            })
+        });
+    }
+
     render() {
         console.log(this.props);
 
@@ -93,7 +111,7 @@ class PostForm extends React.Component {
                                                 onChange={this.update('start')}
                                                 placeholder="UC Berkeley"
                                                 className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
-                                                id="start"
+                                                ref={this.postFormStart}
                                             />
                                         </div>
                                         <div className="w-full md:w-1/2 mb-6 pr-3">
@@ -106,6 +124,7 @@ class PostForm extends React.Component {
                                                 onChange={this.update('destination')}
                                                 placeholder="Telegraph and Dwight"
                                                 className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                                ref={this.postFormDest}
                                             />
                                         </div>
                                     </div>
