@@ -44,30 +44,39 @@ class Profile extends React.Component {
         console.log(this.props);
 
         if (this.props.post.length === 0) {
-            return(
+            return (
                 <div>
                     {this.props.currentUser.firstName} {this.props.currentUser.lastName} Has No Posts
                 </div>
             );
         } else {
             return (
-                <div>
-                    <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2>
-                    {/* <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button> */}
-                    <button onClick={this.logoutUser}>Log Out</button>
-                    {this.props.post.map(m => (
-                        <PostIndexItem 
-                            key={m._id} 
-                            title={m.title} 
-                            start={m.start} 
-                            destination={m.destination} 
-                            time={m.time} 
-                            date={m.date} 
-                            authorId={m.user}
-                            author={m.author}
-                        />
-                    ))}
-                    {/* {this.props.post.map((p, idx) => (
+                <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
+                    <div className="flex-grow overflow-y-scroll">
+                        <div className="border-l border-r border-gray-300 h-screen">
+                            <div className="flex border-gray-300 border-b p-6">
+                                <div className="flex-grow mr-4">
+                                    <h1 className="text-2xl font-medium"> <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2></h1>
+                                </div>
+                                <button onClick={this.logoutUser}>Log Out</button>
+                            </div>
+                           
+                            {/* <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button> */}
+                            <div className="feed pb-12 lg:pb-0">
+                            {this.props.post.map(m => (
+                                <PostIndexItem
+                                    key={m._id}
+                                    title={m.title}
+                                    start={m.start}
+                                    destination={m.destination}
+                                    time={m.time}
+                                    date={m.date}
+                                    authorId={m.user}
+                                    author={m.author}
+                                />
+                            ))}
+                            </div>
+                            {/* {this.props.post.map((p, idx) => (
                         <PostIndexItem
                             key={idx}
                             idx={idx}
@@ -80,7 +89,9 @@ class Profile extends React.Component {
                             date={p.date}
                         />
                     ))} */}
-                    
+
+                        </div>
+                    </div>
                 </div>
             );
         };

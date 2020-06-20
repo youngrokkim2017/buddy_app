@@ -60,20 +60,23 @@ class PostShow extends React.Component {
         //         )
         //     }
         // })
- 
-        return (
-            <div className="post-show-container">
-                <div>
-                    <Link to='/post'>
-                        <button>Back</button>
-                    </Link>
-                </div>
 
-                <br/>
-                <div>
-                    This is the post show route
+        return (
+            <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
+                <div className="flex-grow overflow-y-scroll">
+                    <div className="border-l border-r border-gray-300 h-screen">
+                        <div className="p-6 pb-6">
+                            <div>
+                                <Link to='/post'>
+                                    <button>Back</button>
+                                </Link>
+                            </div>
+
+                            <br />
+                            <div>
+                                This is the post show route
                     <div>
-                        {/* {   this.props.posts.map(post => {
+                                    {/* {   this.props.posts.map(post => {
                                 if (this.props.currentUserId === post.user) {
                                     <div>
                                         hello
@@ -85,28 +88,31 @@ class PostShow extends React.Component {
                                 }
                             })
                         } */}
-                    </div>
-                </div>
-                <br/>
+                                </div>
+                            </div>
+                            <br />
 
-                <div>
-                    <button onClick={this.handleMessage}>Message</button>
-                </div>
-                <div>
-                    <button onClick={this.handleEdit}>Edit</button>
-                </div>
-                <div>
-                    {/* <button className="delete-post" onClick={this.handleDelete}>Delete</button> */}
-                    {/* { this.props.currentUserId === post.userId ?  */}
-                        <button 
-                            className="delete-post" 
-                            onClick={this.handleDelete}>Delete
+                            <div>
+                                <button onClick={this.handleMessage}>Message</button>
+                            </div>
+                            <div>
+                                <button onClick={this.handleEdit}>Edit</button>
+                            </div>
+                            <div>
+                                {/* <button className="delete-post" onClick={this.handleDelete}>Delete</button> */}
+                                {/* { this.props.currentUserId === post.userId ?  */}
+                                <button
+                                    className="delete-post"
+                                    onClick={this.handleDelete}>Delete
                         </button>
 
-                        {/* :
+                                {/* :
 
                         ""
                     } */}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
