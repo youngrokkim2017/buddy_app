@@ -26,7 +26,6 @@ const App = () => (
       <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
     </Switch>
-
   </div>
 );
 
