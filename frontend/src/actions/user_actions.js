@@ -32,4 +32,15 @@ export const fetchAUser = (id) => dispatch => (
     UserApiUtil.fetchAUser(id)
         .then(user => dispatch(receiveAUser(user)))
         .catch()
-)
+);
+
+export const updateAUser = (data) => dispatch => (
+    UserApiUtil.updateAUser(data)
+        .then(user => dispatch(receiveAUser(user)))
+        .catch(err => console.log(err))
+);
+
+export const fetchUserFromRequest = (requestId) => dispatch => (
+    UserApiUtil.fetchUserFromRequest(requestId)
+        .then(user => dispatch(receiveAUser(user)))
+);

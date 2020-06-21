@@ -9,7 +9,9 @@ class PostIndexItem extends React.Component {
     }
 
     // componentDidMount() {
-    //     this.props.fetchOnePost(this.props.postId);
+    //     // this.props.fetchOnePost(this.props.postId);
+    //     // this.props.fetchPost()
+    //     this.props.fetchRequestersFromPost(this.props.postId);
     // }
 
     handleDelete(e) {
@@ -77,6 +79,10 @@ class PostIndexItem extends React.Component {
     };
 
     render() {
+        console.log(this.props);
+
+        // if (!this.props.requests) return null;
+
         return (
             <Link to={'/post/:id'}>
                 <div className="p-6 border-b border-gray-300 flex flex-wrap hover:text-blue-600">

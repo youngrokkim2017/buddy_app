@@ -11,6 +11,8 @@ const db = require('./config/keys').mongoURI; // this gives back an object
 const users = require('./routes/api/users');
 // get posts router
 const posts = require('./routes/api/posts');
+// get requests router
+const requests = require('./routes/api/requests');
 // Import user model
 const User = require('./models/User');
 
@@ -52,10 +54,14 @@ require('./config/passport')(passport);
 //     res.send("Hello World!");
 // });
 
+
+// API ROUTES
 // if the route matches, then use the object
 app.use('/api/users', users);
 // FOR OTHER ROUTES LIKE POSTS??
 app.use('/api/posts', posts);
+app.use('/api/requests', requests);
+
 
 // need to tell the app object to listen on a given port
 const port = process.env.PORT || 5000;
