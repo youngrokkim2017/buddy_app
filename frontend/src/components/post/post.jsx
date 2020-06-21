@@ -51,9 +51,9 @@ class Post extends React.Component {
 
   // componentWillMount() {
   componentDidMount() {
-    console.log(this.postFormStart.current);
-    console.log("post " + this.props.post);
-    console.log("post " + this.props.post.length);
+    // console.log(this.postFormStart.current);
+    // console.log("post " + this.props.post);
+    // console.log("post " + this.props.post.length);
     this.props.fetchPost();
 
     // if ("geolocation" in navigator) {
