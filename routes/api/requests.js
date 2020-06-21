@@ -95,3 +95,5 @@ router.get('/',
             .then(requests => res.json(requests))
     }
 );
+
+module.exports = router;

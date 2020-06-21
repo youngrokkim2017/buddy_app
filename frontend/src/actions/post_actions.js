@@ -1,5 +1,5 @@
 import {
-    getPost, getUserPost, createPost, deletePost, modifyPost, getOnePost
+    getPost, getUserPost, createPost, deletePost, modifyPost, getOnePost, getPostFromRequest
 } from '../util/post_api_util';
 
 export const RECEIVE_ONE_POST = 'RECEIVE_ONE_POST'
@@ -78,6 +78,11 @@ export const editPost = (post) => dispatch => (
         .then(post => dispatch(receiveNewPost(post)))
         .catch(err => console.log(err))
         // .catch(err => dispatch(receivePostErrors(err.response.data)))
+);
+
+export const fetchPostFromRequest = (requestId) => dispatch => (
+    getPostFromRequest(requestId)
+        .then(post => dispatch(receiveOnePost(post)))
 );
 
 window.modifyPost = modifyPost;
