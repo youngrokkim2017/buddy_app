@@ -35,6 +35,6 @@ export const fetchAUser = (id) => dispatch => (
 )
 
 export const fetchUserFromRequest = (requestId) => dispatch => (
-    User.UserApiUtil.fetchUserFromRequest(requestId)
+    UserApiUtil.fetchUserFromRequest(requestId)
         .then(user => dispatch(receiveAUser(user)))
 );
