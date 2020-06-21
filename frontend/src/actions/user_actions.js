@@ -33,3 +33,8 @@ export const fetchAUser = (id) => dispatch => (
         .then(user => dispatch(receiveAUser(user)))
         .catch()
 )
+
+export const fetchUserFromRequest = (requestId) => dispatch => (
+    User.UserApiUtil.fetchUserFromRequest(requestId)
+        .then(user => dispatch(receiveAUser(user)))
+);
