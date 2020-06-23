@@ -113,9 +113,9 @@ class PostIndexItem extends React.Component {
                         <span className="text-gray-500">{this.timeAgo(this.props.date)}</span>
                     </div>
 
-                    {/* subscriber */}
+                    {/* follow */}
                     <div>
-                        <button>subscribe</button>
+                        {/* <button>follow</button> */}
                     </div>
                 </div>
             {/* </Link> */}
