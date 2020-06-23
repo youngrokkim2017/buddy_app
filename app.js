@@ -13,6 +13,8 @@ const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
 // get requests router
 const requests = require('./routes/api/requests');
+// get subscribe router
+const subscribers = require('./routes/api/subscribe');
 // Import user model
 const User = require('./models/User');
 
@@ -61,6 +63,7 @@ app.use('/api/users', users);
 // FOR OTHER ROUTES LIKE POSTS??
 app.use('/api/posts', posts);
 app.use('/api/requests', requests);
+app.use('/api/subscribe', subscribers);
 
 
 // need to tell the app object to listen on a given port
