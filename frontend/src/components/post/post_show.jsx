@@ -76,7 +76,7 @@ class PostShow extends React.Component {
                             <br />
                             <div>
                                 This is the post show route
-                    <div>
+                                <div>
                                     {/* {   this.props.posts.map(post => {
                                 if (this.props.currentUserId === post.user) {
                                     <div>

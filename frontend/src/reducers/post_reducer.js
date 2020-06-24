@@ -19,7 +19,7 @@ const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
 
             // return newState[action.posts.data._id] = action.posts.data;
 
-            return Object.assign({}, state, { [action.post.data._id]: action.post.data });
+            return Object.assign({}, state = {}, { [action.post.data._id]: action.post.data });
             // return Object.assign({}, state={}, { [action.post.data._id]: action.post.data });
 
             // return Object.assign(newState, action.post);
