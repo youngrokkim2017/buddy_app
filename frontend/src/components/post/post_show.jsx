@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class PostShow extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = this.props.post;
+        this.state = this.props.post;
 
         this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -15,6 +15,7 @@ class PostShow extends React.Component {
 
     componentDidMount() {
         // this.props.fetchOnePost(this.props.match.params.postId);
+        this.props.fetchOnePost(this.props.match.params.id);
         // this.props.fetchOnePost(this.props.postId);
 
         // this.props.fetchPost();

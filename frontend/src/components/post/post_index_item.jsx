@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class PostIndexItem extends React.Component {
     constructor(props) {
@@ -84,8 +84,8 @@ class PostIndexItem extends React.Component {
         // if (!this.props.requests) return null;
 
         return (
-            <div>
-            {/* <Link to={'/post/:id'}> */}
+            // <div>
+            <Link to={'/post/:id'}>
                 <div className="p-6 border-b border-gray-300 flex flex-wrap hover:text-blue-600">
                     <div className="h-16 w-16 bg-gray-500 rounded-full mr-4 mb-4 flex flex-shrink-0 items-center justify-center">
                         <h1 className="text-3xl text-white text-center">{this.props.author.split(" ").map((n,i,a)=> i === 0 || i+1 === a.length ? n[0] : null).join("")}</h1>
@@ -118,8 +118,8 @@ class PostIndexItem extends React.Component {
                         {/* <button>follow</button> */}
                     </div>
                 </div>
-            {/* </Link> */}
-            </div>
+            </Link>
+            // </div>
         );
     };
 };

@@ -5,12 +5,13 @@ import PostShow from './post_show';
 const mapStateToProps = (state, ownProps) => {
     // return {
     //     post: Object.values(state.post.all),
+    //     post: Object.values(state.posts.all),
     //     currentUser: state.session.user,
     // };
 
-    let postId = ownProps.match.params.postId;
+    // let postId = ownProps.match.params.postId;
     // let postId = ownProps.match.params._id;
-    // let postId = ownProps.match.params.id;
+    let postId = ownProps.match.params.id;
     // let postId = ownProps.id;
 
     let currentUserId;
@@ -23,11 +24,14 @@ const mapStateToProps = (state, ownProps) => {
 
     return {
         // post: state.post[postId],
+        // post: state.posts[postId],
         // post: state.entities.post[postId],
+        // post: state.entities.posts[postId],
+        post: state.entities.posts[postId],
         currentUserId,
         // posts: Object.values(state.entities.posts.all),
         // posts: Object.values(state.entities.posts),
-        post: state.entities.posts[ownProps.match.params.postId],
+        // post: state.entities.posts[ownProps.match.params.postId],
         postId,
         posts,
     }

@@ -14,12 +14,12 @@ const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
 
     switch (action.type) {
         case RECEIVE_ONE_POST:
-            newState[action.posts.data._id] = action.posts.data;
-            return newState;
+            // newState[action.posts.data._id] = action.posts.data;
+            // return newState;
 
             // return newState[action.posts.data._id] = action.posts.data;
 
-            // return Object.assign({}, state, { [action.post.data.id]: action.post.data });
+            return Object.assign({}, state, { [action.post.data._id]: action.post.data });
 
             // return Object.assign(newState, action.post);
         case RECEIVE_POSTS:
