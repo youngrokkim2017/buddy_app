@@ -249,7 +249,7 @@ class Post extends React.Component {
 
 {/* can logic for this.props.post.length go here? I want to load the create an activity form at the top*/}
             <div className="feed pb-12 lg:pb-0">
-                  {this.props.post.map((p, idx) => (
+                  {this.props.posts.map((p, idx) => (
                     <PostIndexItem
                       // // key={p._id}
                       key={idx}
