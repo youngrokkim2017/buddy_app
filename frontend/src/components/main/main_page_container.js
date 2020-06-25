@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPost } from '../../actions/post_actions';
+import { fetchPosts } from '../../actions/post_actions';
 import MainPage from './main_page';
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPost: () => dispatch(fetchPost())
+        fetchPosts: () => dispatch(fetchPosts())
     };
 };
 

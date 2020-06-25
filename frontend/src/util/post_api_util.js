@@ -2,7 +2,7 @@ import axios from 'axios';
 // import { request } from 'express';
 
 // all posts
-export const getPost = () => {
+export const getPosts = () => {
     return axios.get('/api/posts');
 };
 
@@ -10,6 +10,7 @@ export const getPost = () => {
 export const getOnePost = (postId) => {
     // debugger
     return axios.get(`/api/posts/${postId}`);
+    // return axios.get(`/api/post/${postId}`);
 };
 
 export const getUserPost = (id) => {

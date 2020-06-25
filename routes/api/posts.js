@@ -39,6 +39,14 @@ router.get('/:id', (req, res) => {
         .then(p => res.json(p))
         .catch(err => res.status(400).json(err));
 });
+// router.get('/:id', 
+//     passport.authenticate('jwt', { session: false }),
+//     (req, res) => {
+//     Post
+//         .findById(req.params.id).populate('user')
+//         .then(p => res.json(p))
+//         .catch(err => res.status(400).json({ nopostfound: 'No Post Found' }));
+// });
 
 // Add POST route, allows us to create a new post on the backend
 // and also want to add the user on the request using passport, import passport

@@ -54,7 +54,7 @@ class Post extends React.Component {
     // console.log(this.postFormStart.current);
     // console.log("post " + this.props.post);
     // console.log("post " + this.props.post.length);
-    this.props.fetchPost();
+    this.props.fetchPosts();
 
     // if ("geolocation" in navigator) {
     //     console.log("Available");
@@ -93,7 +93,7 @@ class Post extends React.Component {
 
   // componentDidUpdate(prevProps, prevState) {
   //   if (this.props.location.pathname !== prevProps.location.pathname) {
-  //     this.props.fetchPost();
+  //     this.props.fetchPosts();
   //   }
   // }
 
@@ -249,7 +249,7 @@ class Post extends React.Component {
 
 {/* can logic for this.props.post.length go here? I want to load the create an activity form at the top*/}
             <div className="feed pb-12 lg:pb-0">
-                  {this.props.post.map((p, idx) => (
+                  {this.props.posts.map((p, idx) => (
                     <PostIndexItem
                       // // key={p._id}
                       key={idx}
