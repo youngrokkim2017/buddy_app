@@ -6,10 +6,7 @@ import PostIndexItem from './post_index_item';
 
 const mapStateToProps = (state) => {
     return {
-        // post: Object.values(state.post.all),
         posts: Object.values(state.posts.all),
-        // post: Object.values(state.post),
-        // post: Object.values(state.entities.posts),
         currentUser: state.session.user,
         requests: Object.values(state.entities.requests),
     };

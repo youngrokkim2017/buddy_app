@@ -24,6 +24,7 @@ class Post extends React.Component {
       author: fullName,
     };
 
+    // this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     // this.toggleSortDate = this.toggleSortDate.bind(this);
     // this.handleAlphaSort = this.handleAlphaSort.bind(this);
@@ -103,6 +104,12 @@ class Post extends React.Component {
   //     this.setState({ post: prevState.post });
   // }
 
+  handleBackToPreviousPage(e) {
+    e.preventDefault();
+
+    this.props.history.goBack();
+  }
+
   handleDelete() {
     this.props.deletePostItem(this.props.match.params.postId)
       .then(this.props.history.push('/posts'))
@@ -161,6 +168,8 @@ class Post extends React.Component {
   }
 
   render() {
+    // console.log(this.props);
+
     return (
       <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
         <div className="flex-grow overflow-y-scroll">
@@ -248,36 +257,33 @@ class Post extends React.Component {
 
 
 {/* can logic for this.props.post.length go here? I want to load the create an activity form at the top*/}
-            <div className="feed pb-12 lg:pb-0">
-                  {this.props.posts.map((p, idx) => (
-                    <PostIndexItem
-                      // // key={p._id}
-                      key={idx}
-                      idx={idx}
-                      postId={p._id}
-                      title={p.title}
-                      start={p.start}
-                      destination={p.destination}
-                      time={p.time}
-                      // description={p.description}
-                      // user={p.firstName}
-                      author={p.author}
-                      date={p.date}
-                    />
-                  ))}
-                  {/* <div className="post-delete-button-container">
-                      <button className="delete-post" onClick={this.handleDelete}>Delete Post</button>
-                    </div> */}
 
-                  {/* {
-                      this.props.post.map(p => {
-                        p.user === this.props.currentUser.id ? 
-                        <button>edit</button> 
-                        :
-                        ""
-                      })
-                    } */}
-                </div>
+            {this.props.posts.length === 0 ? 
+              <div>
+                There are no Posts
+              </div>
+
+              :
+
+              <div className="feed pb-12 lg:pb-0">
+                    {this.props.posts.map((p, idx) => (
+                      <PostIndexItem
+                        // // key={p._id}
+                        key={idx}
+                        idx={idx}
+                        postId={p._id}
+                        title={p.title}
+                        start={p.start}
+                        destination={p.destination}
+                        time={p.time}
+                        // description={p.description}
+                        // user={p.firstName}
+                        author={p.author}
+                        date={p.date}
+                      />
+                    ))}
+              </div>
+            }
           </div>
         </div>
       </div>
