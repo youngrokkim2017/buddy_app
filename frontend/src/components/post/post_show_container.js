@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     };
 
     // let posts = Object.values(state.entities.posts);
-    let posts = Object.values(state.entities.posts.all);
+    // let posts = Object.values(state.entities.posts.all);
 
     return {
         // post: state.post[postId],
@@ -28,13 +28,14 @@ const mapStateToProps = (state, ownProps) => {
         // post: state.entities.post[postId],
         // post: state.entities.posts[postId],
         post: state.entities.posts[postId],
+        posts: state.entities.posts,
         currentUserId,
         currentUser: state.session.user,
         // posts: Object.values(state.entities.posts.all),
         // posts: Object.values(state.entities.posts),
         // post: state.entities.posts[ownProps.match.params.postId],
         postId,
-        posts,
+        // posts,
     }
 };
 

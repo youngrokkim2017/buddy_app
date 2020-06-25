@@ -21,6 +21,12 @@ class PostShow extends React.Component {
         // this.props.fetchPosts();
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.props.fetchOnePost(this.props.match.params.id);
+        }
+    }
+
     handleDelete(e) {
         e.preventDefault();
 

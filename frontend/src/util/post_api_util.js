@@ -10,6 +10,7 @@ export const getPosts = () => {
 export const getOnePost = (postId) => {
     // debugger
     return axios.get(`/api/posts/${postId}`);
+    // return axios.get(`/api/post/${postId}`);
 };
 
 export const getUserPost = (id) => {
