@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import PostIndexItem from './post_index_item';
 
 class PostShow extends React.Component {
     constructor(props) {
         super(props);
         // this.state = this.props.post;
+
+        this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
 
         this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
@@ -26,6 +28,12 @@ class PostShow extends React.Component {
     //         this.props.fetchOnePost(this.props.match.params.id);
     //     }
     // }
+
+    handleBackToPreviousPage(e) {
+        e.preventDefault();
+
+        this.props.history.goBack();
+    }
 
     handleDelete(e) {
         e.preventDefault();
@@ -132,14 +140,11 @@ class PostShow extends React.Component {
                     <div className="border-l border-r border-gray-300 h-screen">
                         <div className="p-6 pb-6">
                             <div>
-                                <Link to='/post'>
-                                    <button>Back</button>
-                                </Link>
+                                {/* <button onClick={this.handleBackToPreviousPage}>Back</button> */}
                             </div>
 
                             <br />
                             <div>
-                                {/* This is the post show route */}
                                 <div>
                                     {/* <div className="p-6 border-b border-gray-300 flex flex-wrap hover:text-blue-600"> */}
                                     <div className="p-6 border-b border-gray-300 flex flex-wrap">

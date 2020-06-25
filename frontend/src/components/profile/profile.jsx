@@ -9,6 +9,8 @@ class Profile extends React.Component {
             post: []
         }
 
+        this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
+
         this.logoutUser = this.logoutUser.bind(this);
         // this.handleDelete = this.handleDelete.bind(this);
     }
@@ -17,6 +19,12 @@ class Profile extends React.Component {
     componentDidMount() {
         // console.log(this.props.currentUser.id);
         this.props.fetchUserPost(this.props.currentUser.id);
+    }
+
+    handleBackToPreviousPage(e) {
+        e.preventDefault();
+
+        this.props.history.goBack();
     }
 
     handleDelete(e) {
