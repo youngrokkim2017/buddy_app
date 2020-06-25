@@ -23,16 +23,17 @@ class PostShow extends React.Component {
         // this.props.fetchPosts();
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.location.pathname !== prevProps.location.pathname) {
-    //         this.props.fetchOnePost(this.props.match.params.id);
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.props.fetchOnePost(this.props.match.params.id);
+        }
+    }
 
     handleBackToPreviousPage(e) {
         e.preventDefault();
 
-        this.props.history.goBack();
+        // this.props.history.goBack();
+        this.props.history.push('/post');
     }
 
     handleDelete(e) {
@@ -42,7 +43,7 @@ class PostShow extends React.Component {
         //     .then(this.props.history.push('/posts'))
 
         this.props.deletePostItem(this.props.postId)
-            .then(this.props.history.push('/posts'))
+            .then(this.props.history.push('/post'))
     };
 
     handleEdit(e) {
@@ -139,9 +140,9 @@ class PostShow extends React.Component {
                 <div className="flex-grow overflow-y-scroll">
                     <div className="border-l border-r border-gray-300 h-screen">
                         <div className="p-6 pb-6">
-                            <div>
-                                {/* <button onClick={this.handleBackToPreviousPage}>Back</button> */}
-                            </div>
+                            {/* <div>
+                                <button onClick={this.handleBackToPreviousPage}>Back</button>
+                            </div> */}
 
                             <br />
                             <div>
