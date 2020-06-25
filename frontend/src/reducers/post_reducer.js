@@ -31,8 +31,8 @@ const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
             // // newState = action.posts.data;
             return newState;
         case RECEIVE_USER_POST:
-            // newState.user = action.posts.data;
-            // // newState = action.posts.data;
+            newState.user = action.posts.data;
+            // newState = action.posts.data;
             return newState;
         case RECEIVE_NEW_POST:
             newState.new = action.post.data;
