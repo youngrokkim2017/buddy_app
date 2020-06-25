@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPost, fetchOnePost ,deletePostItem } from '../../actions/post_actions';
+import { fetchPosts, fetchOnePost ,deletePostItem } from '../../actions/post_actions';
 import PostShow from './post_show';
 
 const mapStateToProps = (state, ownProps) => {
@@ -29,6 +29,7 @@ const mapStateToProps = (state, ownProps) => {
         // post: state.entities.posts[postId],
         post: state.entities.posts[postId],
         currentUserId,
+        currentUser: state.session.user,
         // posts: Object.values(state.entities.posts.all),
         // posts: Object.values(state.entities.posts),
         // post: state.entities.posts[ownProps.match.params.postId],
@@ -39,7 +40,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchPost: () => dispatch(fetchPost()),
+        fetchPosts: () => dispatch(fetchPosts()),
         fetchOnePost: (postId) => dispatch(fetchOnePost(postId)),
         deletePostItem: (postId) => dispatch(deletePostItem(postId))
     };

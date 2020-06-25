@@ -1,5 +1,5 @@
 import {
-    getPost, getUserPost, createPost, deletePost, modifyPost, getOnePost, getPostFromRequest
+    getPosts, getUserPost, createPost, deletePost, modifyPost, getOnePost, getPostFromRequest
 } from '../util/post_api_util';
 
 export const RECEIVE_ONE_POST = 'RECEIVE_ONE_POST'
@@ -9,14 +9,18 @@ export const RECEIVE_NEW_POST = 'RECEIVE_NEW_POST';
 export const REMOVE_POST = 'REMOVE_POST';
 export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
 
-export const receiveOnePost = (post) => ({
+// export const receiveOnePost = (post) => ({
+export const receiveOnePost = (payload) => ({
     type: RECEIVE_ONE_POST,
-    post
+    // post
+    payload
 });
 
-export const receivePosts = (posts) => ({
+// export const receivePosts = (posts) => ({
+export const receivePosts = (payload) => ({
     type: RECEIVE_POSTS,
-    posts
+    // posts
+    payload
 });
 
 export const receiveUserPost = (posts) => ({
@@ -41,14 +45,16 @@ export const receivePostErrors = (errors) => ({
 
 export const fetchOnePost = (postId) => dispatch => (
     getOnePost(postId)
-        .then(post => dispatch(receiveOnePost(post)))
+        // .then(post => dispatch(receiveOnePost(post)))
+        .then(payload => dispatch(receiveOnePost(payload)))
         // .catch(err => console.log(err))
         .catch(err => dispatch(receivePostErrors(err.response.data)))
 )
 
-export const fetchPost = () => dispatch => (
-    getPost()
-        .then(posts => dispatch(receivePosts(posts)))
+export const fetchPosts = () => dispatch => (
+    getPosts()
+        // .then(posts => dispatch(receivePosts(posts)))
+        .then(payload => dispatch(receivePosts(payload)))
         .catch(err => console.log(err))
         // .catch(err => dispatch(receivePostErrors(err.response.data)))
 );

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchPost, deletePostItem, fetchOnePost } from '../../actions/post_actions';
+import { fetchPosts, deletePostItem, fetchOnePost } from '../../actions/post_actions';
 import { fetchRequests } from '../../actions/request_actions';
 import { fetchRequestersFromPost } from '../../actions/requester_actions';
 import PostIndexItem from './post_index_item';
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchPost: () => dispatch(fetchPost()),
+        // fetchPosts: () => dispatch(fetchPosts()),
         fetchOnePost: (postId) => dispatch(fetchOnePost(postId)),
         deletePostItem: (postId) => dispatch(deletePostItem(postId)),
         fetchRequests: (postId) => dispatch(fetchRequests(postId)),

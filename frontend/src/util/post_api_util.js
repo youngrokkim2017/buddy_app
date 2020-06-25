@@ -2,7 +2,7 @@ import axios from 'axios';
 // import { request } from 'express';
 
 // all posts
-export const getPost = () => {
+export const getPosts = () => {
     return axios.get('/api/posts');
 };
 

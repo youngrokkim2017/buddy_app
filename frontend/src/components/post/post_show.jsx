@@ -18,7 +18,7 @@ class PostShow extends React.Component {
         this.props.fetchOnePost(this.props.match.params.id);
         // this.props.fetchOnePost(this.props.postId);
 
-        // this.props.fetchPost();
+        // this.props.fetchPosts();
     }
 
     handleDelete(e) {
