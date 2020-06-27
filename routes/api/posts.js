@@ -27,6 +27,7 @@ router.get('/user/:user_id', (req, res) => {
     Post
         // search on the user field
         .find({ user: req.params.user_id })
+        .sort({ date: -1 })
         // then send back the post that we find
         .then(p => res.json(p))
         .catch(err => res.status(400).json(err));

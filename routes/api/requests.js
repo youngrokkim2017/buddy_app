@@ -12,10 +12,9 @@ router.get('/post/:postId',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         Request
-            .find({
-                walk: req.params.postId
-            })
+            .find({ post: req.params.postId })
             .then(requests => res.json(requests))
+            .catch(err => res.status(400).json(err));
     }
 );
 
@@ -26,8 +25,20 @@ router.get('/:id',
         Request
             .findById(req.params.id)
             .then(request => res.json(request))
+            .catch(err => res.status(400).json(err));
     }
 );
+
+// GET look up all the requests by a given user
+router.get('/user/:user_id', (req, res) => {
+    // find the posts by the given id
+    Request
+        // search on the user field
+        .find({ user: req.params.user_id })
+        // then send back the post that we find
+        .then(r => res.json(r))
+        .catch(err => res.status(400).json(err));
+});
 
 // POST a request to a post
 router.post('/post/:postId',
@@ -61,10 +72,7 @@ router.patch('/:id',
             req.body,
             { new: true },
             (err, request) => {
-                if (err) {
-                    return res.status(400).json(err);
-                };
-                
+                if (err) return res.status(400).json(err);
                 return res.json(request);
             }
         )
