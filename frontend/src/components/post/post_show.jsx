@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import PostIndexItem from './post_index_item';
 
 class PostShow extends React.Component {
@@ -9,7 +9,7 @@ class PostShow extends React.Component {
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
 
-        this.handleEdit = this.handleEdit.bind(this);
+        // this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
         this.handleMessage = this.handleMessage.bind(this);
@@ -36,18 +36,50 @@ class PostShow extends React.Component {
         this.props.history.push('/post');
     }
 
-    handleDelete(e) {
-        e.preventDefault();
+    // handleDelete(e) {
+        // e.preventDefault();
 
-        // this.props.deletePostItem(this.props.match.params.postId)
-        //     .then(this.props.history.push('/posts'))
+        // // this.props.deletePostItem(this.props.match.params.postId)
+        // //     .then(this.props.history.push('/posts'))
 
-        this.props.deletePostItem(this.props.postId)
+        // this.props.deletePostItem(this.props.postId)
+        //     .then(this.props.history.push('/post'))
+    // };
+
+    deleteButton() {
+        // if (this.props.post.user._id === this.props.currentUserId) {
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <button onClick={this.handleDelete}>
+                        Delete
+                    </button>
+                </div>
+            )
+        }
+    }
+
+    handleDelete() {
+        this.props.deletePostItem(this.props.post._id)
             .then(this.props.history.push('/post'))
-    };
+    }
 
     handleEdit(e) {
-        e.preventDefault();
+    // handleEdit(e) {
+        // e.preventDefault();
+
+        // if (this.props.post.user._id === this.props.currentUserId) {
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <Link to={`/post/${this.props.post._id}/edit`}>
+                        <button>
+                            Edit
+                        </button>
+                    </Link>
+                </div>
+            )
+        }
     }
 
     handleMessage(e) {
@@ -188,20 +220,15 @@ class PostShow extends React.Component {
                                 <button onClick={this.handleMessage}>Message</button>
                             </div>
                             <div>
-                                <button onClick={this.handleEdit}>Edit</button>
+                                {/* <button onClick={this.handleEdit}>Edit</button> */}
+                                {this.handleEdit()}
                             </div>
                             <div>
-                                {/* <button className="delete-post" onClick={this.handleDelete}>Delete</button> */}
-                                {/* { this.props.currentUserId === post.userId ?  */}
-                                <button
+                                {/* <button
                                     className="delete-post"
                                     onClick={this.handleDelete}>Delete
-                        </button>
-
-                                {/* :
-
-                        ""
-                    } */}
+                                </button> */}
+                                {this.deleteButton()}
                             </div>
                         </div>
                     </div>
