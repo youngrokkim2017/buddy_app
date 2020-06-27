@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import PostIndexItem from './post_index_item';
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -18,9 +17,6 @@ class PostShow extends React.Component {
     componentDidMount() {
         // this.props.fetchOnePost(this.props.match.params.postId);
         this.props.fetchOnePost(this.props.match.params.id);
-        // this.props.fetchOnePost(this.props.postId);
-
-        // this.props.fetchPosts();
     }
 
     componentDidUpdate(prevProps) {
@@ -36,18 +32,7 @@ class PostShow extends React.Component {
         this.props.history.push('/post');
     }
 
-    // handleDelete(e) {
-        // e.preventDefault();
-
-        // // this.props.deletePostItem(this.props.match.params.postId)
-        // //     .then(this.props.history.push('/posts'))
-
-        // this.props.deletePostItem(this.props.postId)
-        //     .then(this.props.history.push('/post'))
-    // };
-
     deleteButton() {
-        // if (this.props.post.user._id === this.props.currentUserId) {
         if (this.props.post.user === this.props.currentUserId) {
             return (
                 <div>
@@ -60,15 +45,15 @@ class PostShow extends React.Component {
     }
 
     handleDelete() {
+        // e.preventDefault();
         this.props.deletePostItem(this.props.post._id)
             .then(this.props.history.push('/post'))
     }
 
-    handleEdit(e) {
+    handleEdit() {
     // handleEdit(e) {
         // e.preventDefault();
 
-        // if (this.props.post.user._id === this.props.currentUserId) {
         if (this.props.post.user === this.props.currentUserId) {
             return (
                 <div>
@@ -147,26 +132,6 @@ class PostShow extends React.Component {
         if (this.props.post === undefined) return null;
         // let { post } = this.props;
 
-        // this.props.posts.map((p) => {
-        //     console.log(p.user);
-        // });
-
-        // this.props.posts.map(post => {
-        //     if (this.props.currentUserId === post.user) {
-        //         return (
-        //             <div>
-        //                 hello
-        //             </div>
-        //         )
-        //     } else {
-        //         return (
-        //             <div>
-        //                 no post
-        //             </div>
-        //         )
-        //     }
-        // })
-
         return (
             <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
                 <div className="flex-grow overflow-y-scroll">
@@ -220,14 +185,11 @@ class PostShow extends React.Component {
                                 <button onClick={this.handleMessage}>Message</button>
                             </div>
                             <div>
-                                {/* <button onClick={this.handleEdit}>Edit</button> */}
+                                {/* <button onClick={this.handleEdit()}>Edit</button> */}
                                 {this.handleEdit()}
                             </div>
                             <div>
-                                {/* <button
-                                    className="delete-post"
-                                    onClick={this.handleDelete}>Delete
-                                </button> */}
+                                {/* <button onClick={this.deleteButton()}>Delete</button> */}
                                 {this.deleteButton()}
                             </div>
                         </div>

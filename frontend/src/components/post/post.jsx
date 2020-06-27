@@ -20,7 +20,6 @@ class Post extends React.Component {
       start: '',
       destination: '',
       time: '',
-      // author: this.props.currentUser.firstName,
       author: fullName,
     };
 
@@ -116,7 +115,8 @@ class Post extends React.Component {
   };
 
   ///////////////////////////////// POST FORM ///////////////////////////////
-  handleSubmit(e) {
+  handleSubmit() {
+  // handleSubmit(e) {
     // e.preventDefault();
 
     let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
@@ -137,7 +137,6 @@ class Post extends React.Component {
       destination: '',
       time: '',
       // description: ''
-      // author: this.props.currentUser.firstName,
       author: fullName,
     });
 

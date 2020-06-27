@@ -78,7 +78,6 @@ class MainPage extends React.Component {
                         <p className="mt-6 w-full lg:w-4/5 text-lg">Built for college students, late-night studiers, food runs, and more. <span className="text-blue-800 font-medium">Don't go alone.</span></p>
                         <form 
                             className="mt-6 bg-gray-100 border border-gray-300 text-gray-600 flex items-center rounded-lg max-w-sm py-2 px-4 pr-2 focus-within:border-blue-600"
-                            // onSubmit={this.handleLinkSubmit}
                         >
                             <input 
                                 className="appearance-none bg-transparent border-none w-full placeholder-gray-600 leading-tight focus:outline-none" 
@@ -89,7 +88,6 @@ class MainPage extends React.Component {
                                 onChange={this.update('email')}
                             />
                             <Link 
-                                // to={'/signup'} 
                                 to={{
                                     pathname:'/signup',
                                     state: {
@@ -101,7 +99,6 @@ class MainPage extends React.Component {
                             >
                                 Sign Up
                             </Link>
-                            {/* <input type="submit"></input> */}
                         </form>
                         {/* <form onSubmit={this.handleSubmit}>
                             <div>

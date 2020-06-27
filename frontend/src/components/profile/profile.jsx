@@ -1,5 +1,6 @@
 import React from 'react';
 import PostIndexItem from '../post/post_index_item';
+import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class Profile extends React.Component {
         }
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 
         this.logoutUser = this.logoutUser.bind(this);
         // this.handleDelete = this.handleDelete.bind(this);
@@ -17,7 +19,6 @@ class Profile extends React.Component {
 
     // componentWillMount() {
     componentDidMount() {
-        // console.log(this.props.currentUser.id);
         this.props.fetchUserPost(this.props.currentUser.id);
     }
 
@@ -27,13 +28,40 @@ class Profile extends React.Component {
         this.props.history.goBack();
     }
 
-    handleDelete(e) {
-        // this.props.deletePostItem(this.props.match.params.postId)
-        //     .then(this.props.history.push('/posts'))
-        e.preventDefault();
+    deleteButton() {
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <button onClick={this.handleDelete}>
+                        Delete
+                    </button>
+                </div>
+            )
+        }
+    }
 
-        this.props.deletePostItem(this.props.postId);
-    };
+    handleDelete() {
+        // e.preventDefault();
+        this.props.deletePostItem(this.props.post._id)
+            .then(this.props.history.push('/post'))
+    }
+
+    handleEdit() {
+        // handleEdit(e) {
+        // e.preventDefault();
+
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <Link to={`/post/${this.props.post._id}/edit`}>
+                        <button>
+                            Edit
+                        </button>
+                    </Link>
+                </div>
+            )
+        }
+    }
 
     // componentWillReceiveProps(newState) {
     // componentDidUpdate(prevState) {
@@ -74,16 +102,16 @@ class Profile extends React.Component {
                            
                             {/* <button className="relative bottom-0 mt-8 text-gray-600 text-lg ml-2 hidden lg:block" onClick={this.logoutUser}>Log Out</button> */}
                             <div className="feed pb-12 lg:pb-0">
-                            {this.props.post.map(m => (
+                            {this.props.post.map(p => (
                                 <PostIndexItem
-                                    key={m._id}
-                                    title={m.title}
-                                    start={m.start}
-                                    destination={m.destination}
-                                    time={m.time}
-                                    date={m.date}
-                                    authorId={m.user}
-                                    author={m.author}
+                                    key={p._id}
+                                    title={p.title}
+                                    start={p.start}
+                                    destination={p.destination}
+                                    time={p.time}
+                                    date={p.date}
+                                    authorId={p.user}
+                                    author={p.author}
                                 />
                             ))}
                             </div>
