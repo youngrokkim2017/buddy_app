@@ -11,6 +11,7 @@ import SignupFormContainer from './session/signup_form_container';
 import PostContainer from './post/post_container';
 import PostComposeContainer from './post/post_form_container';
 import PostShowContainer from './post/post_show_container';
+import PostEditContainer from './post/post_edit_form_container';
 
 import ProfileContainer from './profile/profile_container';
 
@@ -26,7 +27,7 @@ const App = () => (
       <Route exact path="/post" component={PostContainer} />
       <Route exact path="/post/:id" component={PostShowContainer} />
       <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
-      {/* <ProtectedRoute exact path="/post/:id/edit" component={PostEditContainer} /> */}
+      <ProtectedRoute exact path="/post/:id/edit" component={PostEditContainer} />
 
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
     </Switch>
