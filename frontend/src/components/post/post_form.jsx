@@ -1,4 +1,5 @@
 import React from 'react';
+// import { withRouter } from 'react-router-dom';
 /* global google */
 
 class PostForm extends React.Component {
@@ -50,7 +51,9 @@ class PostForm extends React.Component {
             author: this.state.author,
         };
 
-        this.props.composePost(post);
+        // this.props.composePost(post);
+        this.props.action(post);
+
         this.setState({
             title: '',
             start: '',
@@ -61,6 +64,8 @@ class PostForm extends React.Component {
         });
 
         this.props.history.push('/post');
+
+        window.location.reload(false);
     }
 
     update(type) {
@@ -94,6 +99,13 @@ class PostForm extends React.Component {
                         <div className="p-6 pb-6">
 
                             <h1 className="text-2xl font-medium mb-4">Create an activity</h1>
+                            {/* {this.props.location.pathname === `/post/${this.props.post._id}/edit}` ?
+                                <h1 className="text-2xl font-medium mb-4">Edit Activity</h1>
+
+                                :
+
+                                <h1 className="text-2xl font-medium mb-4">Create an activity</h1>
+                            } */}
 
                             <form onSubmit={this.handleSubmit}>
                                 <div className="w-full">
@@ -165,3 +177,4 @@ class PostForm extends React.Component {
 };
 
 export default PostForm;
+// export default withRouter(PostForm);
