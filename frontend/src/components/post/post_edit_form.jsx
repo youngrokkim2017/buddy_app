@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import PostForm from './post_form';
 
 class PostEditForm extends React.Component {
@@ -16,7 +16,6 @@ class PostEditForm extends React.Component {
 
         return (
             <div>
-                edit post form
                 <PostForm
                     action={this.props.editPost}
                     currentUser={this.props.currentUser}
@@ -26,5 +25,5 @@ class PostEditForm extends React.Component {
     }
 }
 
-// export default PostEditForm;
-export default withRouter(PostEditForm);
+export default PostEditForm;
+// export default withRouter(PostEditForm);

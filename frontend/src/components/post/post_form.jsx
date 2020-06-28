@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 /* global google */
 
 class PostForm extends React.Component {
@@ -176,5 +176,5 @@ class PostForm extends React.Component {
     }
 };
 
-// export default PostForm;
-export default withRouter(PostForm);
+export default PostForm;
+// export default withRouter(PostForm);
