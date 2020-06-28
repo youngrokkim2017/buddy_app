@@ -80,9 +80,10 @@ export const deletePostItem = (postId) => dispatch => (
         // .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
 
-export const editPost = (post) => dispatch => (
-    modifyPost(post)
-        .then(post => dispatch(receiveNewPost(post)))
+export const editPost = (data) => dispatch => (
+    modifyPost(data)
+        // .then(post => dispatch(receiveNewPost(post)))
+        .then(post => dispatch(receiveOnePost(post)))
         .catch(err => console.log(err))
         // .catch(err => dispatch(receivePostErrors(err.response.data)))
 );

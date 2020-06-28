@@ -1,6 +1,6 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import PostIndexItem from './post_index_item';
+import { Link } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class PostShow extends React.Component {
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
 
-        this.handleEdit = this.handleEdit.bind(this);
+        // this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
         this.handleMessage = this.handleMessage.bind(this);
@@ -18,9 +18,6 @@ class PostShow extends React.Component {
     componentDidMount() {
         // this.props.fetchOnePost(this.props.match.params.postId);
         this.props.fetchOnePost(this.props.match.params.id);
-        // this.props.fetchOnePost(this.props.postId);
-
-        // this.props.fetchPosts();
     }
 
     componentDidUpdate(prevProps) {
@@ -34,20 +31,46 @@ class PostShow extends React.Component {
 
         // this.props.history.goBack();
         this.props.history.push('/post');
+
+        window.location.reload(false);
     }
 
-    handleDelete(e) {
-        e.preventDefault();
+    deleteButton() {
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <button onClick={this.handleDelete}>
+                        Delete
+                    </button>
+                </div>
+            )
+        }
+    }
 
-        // this.props.deletePostItem(this.props.match.params.postId)
-        //     .then(this.props.history.push('/posts'))
+    handleDelete() {
+        // e.preventDefault();
+        this.props.deletePostItem(this.props.post._id)
+            // .then(this.props.history.push('/post'))
+            .then(this.props.history.replace('/post'))
 
-        this.props.deletePostItem(this.props.postId)
-            .then(this.props.history.push('/post'))
-    };
+        window.location.reload(false);
+    }
 
-    handleEdit(e) {
-        e.preventDefault();
+    handleEdit() {
+    // handleEdit(e) {
+        // e.preventDefault();
+
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <Link to={`/post/${this.props.post._id}/edit`}>
+                        <button>
+                            Edit
+                        </button>
+                    </Link>
+                </div>
+            )
+        }
     }
 
     handleMessage(e) {
@@ -115,34 +138,14 @@ class PostShow extends React.Component {
         if (this.props.post === undefined) return null;
         // let { post } = this.props;
 
-        // this.props.posts.map((p) => {
-        //     console.log(p.user);
-        // });
-
-        // this.props.posts.map(post => {
-        //     if (this.props.currentUserId === post.user) {
-        //         return (
-        //             <div>
-        //                 hello
-        //             </div>
-        //         )
-        //     } else {
-        //         return (
-        //             <div>
-        //                 no post
-        //             </div>
-        //         )
-        //     }
-        // })
-
         return (
             <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
                 <div className="flex-grow overflow-y-scroll">
                     <div className="border-l border-r border-gray-300 h-screen">
                         <div className="p-6 pb-6">
-                            {/* <div>
+                            <div>
                                 <button onClick={this.handleBackToPreviousPage}>Back</button>
-                            </div> */}
+                            </div>
 
                             <br />
                             <div>
@@ -188,20 +191,12 @@ class PostShow extends React.Component {
                                 <button onClick={this.handleMessage}>Message</button>
                             </div>
                             <div>
-                                <button onClick={this.handleEdit}>Edit</button>
+                                {/* <button onClick={this.handleEdit()}>Edit</button> */}
+                                {this.handleEdit()}
                             </div>
                             <div>
-                                {/* <button className="delete-post" onClick={this.handleDelete}>Delete</button> */}
-                                {/* { this.props.currentUserId === post.userId ?  */}
-                                <button
-                                    className="delete-post"
-                                    onClick={this.handleDelete}>Delete
-                        </button>
-
-                                {/* :
-
-                        ""
-                    } */}
+                                {/* <button onClick={this.deleteButton()}>Delete</button> */}
+                                {this.deleteButton()}
                             </div>
                         </div>
                     </div>
@@ -212,3 +207,4 @@ class PostShow extends React.Component {
 }
 
 export default PostShow;
+// export default withRouter(PostShow);

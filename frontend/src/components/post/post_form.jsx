@@ -13,7 +13,6 @@ class PostForm extends React.Component {
             destination: '',
             time: '',
             // description: '',
-            // author: this.props.currentUser.firstName,
             author: fullName,
             // newPost: '',
         };
@@ -58,7 +57,6 @@ class PostForm extends React.Component {
             destination: '',
             time: '',
             // description: '',
-            // author: this.props.currentUser.firstName,
             author: fullName,
         });
 

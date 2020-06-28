@@ -84,8 +84,6 @@ class PostIndexItem extends React.Component {
         // if (!this.props.requests) return null;
 
         return (
-            // <div>
-            // <Link to={'/post/:id'}>
             <Link to={`/post/${this.props.postId}`}>
                 <div className="p-6 border-b border-gray-300 flex flex-wrap hover:text-blue-600">
                     <div className="h-16 w-16 bg-gray-500 rounded-full mr-4 mb-4 flex flex-shrink-0 items-center justify-center">
@@ -120,7 +118,6 @@ class PostIndexItem extends React.Component {
                     </div>
                 </div>
             </Link>
-            // </div>
         );
     };
 };

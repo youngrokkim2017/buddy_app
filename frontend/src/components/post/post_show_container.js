@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
 import { fetchPosts, fetchOnePost ,deletePostItem } from '../../actions/post_actions';
 import PostShow from './post_show';
 
@@ -40,3 +41,8 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(PostShow);
+
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(withRouter(PostShow));

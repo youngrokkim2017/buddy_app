@@ -20,7 +20,6 @@ class Post extends React.Component {
       start: '',
       destination: '',
       time: '',
-      // author: this.props.currentUser.firstName,
       author: fullName,
     };
 
@@ -34,14 +33,23 @@ class Post extends React.Component {
     this.postFormDest = React.createRef();
   }
 
-  // componentDidUpdate(prevProps) {
-  //     // if (nextProps.currentUser === true) {
-  //     if (prevProps.currentUser === false) {
-  //         this.props.history.push('/');
+  // // componentDidUpdate() {
+  // componentDidUpdate(nextProps) {
+  // // componentWillReceiveProps(nextProps) {
+  //     // // if (nextProps.currentUser === true) {
+  //     // if (prevProps.currentUser === false) {
+  //     //     this.props.history.push('/');
+  //     // }
+
+  //     // this.props.fetchPosts();
+
+  //     if (this.props.location.pathname !== nextProps.location.pathname) {
+  //       // this.props.fetchPosts();
+  //       window.location.reload(false);
   //     }
   // }
 
-  // MAP PROPS
+  ////////// MAP PROPS //////////
   // static defaultProps = {
   //     center: {
   //       lat: 59.95,
@@ -49,6 +57,7 @@ class Post extends React.Component {
   //     },
   //     zoom: 11
   // };    
+  //////////////////////////////
 
   // componentWillMount() {
   componentDidMount() {
@@ -78,6 +87,7 @@ class Post extends React.Component {
     //     }
     // );
     ////////////////////////////////////////////////////////////////////////
+
     this.startAutocomplete = new google.maps.places.Autocomplete(this.postFormStart.current);
     this.destAutocomplete = new google.maps.places.Autocomplete(this.postFormDest.current);
     this.startAutocomplete.addListener('place_changed', () => {
@@ -116,7 +126,8 @@ class Post extends React.Component {
   };
 
   ///////////////////////////////// POST FORM ///////////////////////////////
-  handleSubmit(e) {
+  handleSubmit() {
+  // handleSubmit(e) {
     // e.preventDefault();
 
     let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
@@ -137,7 +148,6 @@ class Post extends React.Component {
       destination: '',
       time: '',
       // description: ''
-      // author: this.props.currentUser.firstName,
       author: fullName,
     });
 
@@ -292,6 +302,7 @@ class Post extends React.Component {
 }
 
 export default withRouter(Post);
+// export default (Post);
 
 
 // MAP EXAMPLE
