@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -30,6 +31,8 @@ class PostShow extends React.Component {
 
         // this.props.history.goBack();
         this.props.history.push('/post');
+
+        window.location.reload(false);
     }
 
     deleteButton() {
@@ -47,7 +50,10 @@ class PostShow extends React.Component {
     handleDelete() {
         // e.preventDefault();
         this.props.deletePostItem(this.props.post._id)
-            .then(this.props.history.push('/post'))
+            // .then(this.props.history.push('/post'))
+            .then(this.props.history.replace('/post'))
+
+        window.location.reload(false);
     }
 
     handleEdit() {
@@ -137,9 +143,9 @@ class PostShow extends React.Component {
                 <div className="flex-grow overflow-y-scroll">
                     <div className="border-l border-r border-gray-300 h-screen">
                         <div className="p-6 pb-6">
-                            {/* <div>
+                            <div>
                                 <button onClick={this.handleBackToPreviousPage}>Back</button>
-                            </div> */}
+                            </div>
 
                             <br />
                             <div>
@@ -201,3 +207,4 @@ class PostShow extends React.Component {
 }
 
 export default PostShow;
+// export default withRouter(PostShow);
