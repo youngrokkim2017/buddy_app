@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { sendRequest, deleteRequest } from '../../actions/request_actions';
-import MakeRequest from './make_request';
+import MakeRequest from './create_request';
 
 const mapStateToProps = (state) => ({
     requester: state.session.user.id
