@@ -187,9 +187,9 @@ class PostShow extends React.Component {
                             </div>
                             <br />
 
-                            <div>
+                            {/* <div>
                                 <button onClick={this.handleMessage}>Message</button>
-                            </div>
+                            </div> */}
                             <div>
                                 {/* <button onClick={this.handleEdit()}>Edit</button> */}
                                 {this.handleEdit()}
