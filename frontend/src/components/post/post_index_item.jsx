@@ -1,16 +1,24 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import CreateRequestContainer from '../request/create_request_container';
 
 class PostIndexItem extends React.Component {
     constructor(props) {
         super(props);
 
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleAccept = this.handleAccept.bind(this);
     }
 
     // componentDidMount() {
     //     // this.props.fetchOnePost(this.props.postId);
     //     // this.props.fetchPost()
+    //     // this.props.fetchRequestersFromPost(this.props.postId);
+
+    //     // this.props.fetchRequests(this.props.post._id);
+    //     this.props.fetchRequests(this.props.postId);
+    //     // this.props.fetchRequestersFromPost(this.props.post._id);
     //     this.props.fetchRequestersFromPost(this.props.postId);
     // }
 
@@ -21,6 +29,27 @@ class PostIndexItem extends React.Component {
 
         this.props.deletePostItem(this.props.postId);
     };
+
+    handleAccept(e) {
+        e.preventDefault();
+
+        let request = this.props.requests.find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
+
+        this.props.history.push(`/requests/${request._id}`);
+    }
+
+    requestButton() {
+        let post = this.props.post;
+
+        // if (post.user === this.props.currentUser.id) return (<p>Your Post</p>)
+
+        return (
+            <CreateRequestContainer 
+                post={post}
+                requested={false}
+            />
+        )
+    }
 
 
     timeAgo(x, badge = false) {
@@ -115,6 +144,7 @@ class PostIndexItem extends React.Component {
                     {/* follow */}
                     <div>
                         {/* <button>follow</button> */}
+                        {this.requestButton()}
                     </div>
                 </div>
             </Link>
@@ -122,7 +152,8 @@ class PostIndexItem extends React.Component {
     };
 };
 
-export default PostIndexItem;
+// export default PostIndexItem;
+export default withRouter(PostIndexItem);
 
 // also want to render additional info
 // ie. username and datetime
