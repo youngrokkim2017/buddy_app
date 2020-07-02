@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CreateRequestContainer from '../request/create_request_container';
 // import { withRouter } from 'react-router-dom';
 
 class PostShow extends React.Component {
@@ -11,6 +12,7 @@ class PostShow extends React.Component {
 
         // this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleAccept = this.handleAccept.bind(this);
 
         this.handleMessage = this.handleMessage.bind(this);
     }
@@ -73,6 +75,27 @@ class PostShow extends React.Component {
                 </div>
             )
         }
+    }
+
+    handleAccept(e) {
+        e.preventDefault();
+
+        let request = this.props.requests.find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
+
+        this.props.history.push(`/requests/${request._id}`);
+    }
+
+    requestButton() {
+        let post = this.props.post;
+
+        // if (post.user === this.props.currentUser.id) return (<p>Your Post</p>)
+
+        return (
+            <CreateRequestContainer
+                post={post}
+                requested={false}
+            />
+        )
     }
 
     handleMessage(e) {
@@ -194,11 +217,14 @@ class PostShow extends React.Component {
                             </div> */}
                             <div>
                                 {/* <button onClick={this.handleEdit()}>Edit</button> */}
-                                {this.handleEdit()}
+                                {/* {this.handleEdit()} */}
                             </div>
                             <div>
                                 {/* <button onClick={this.deleteButton()}>Delete</button> */}
                                 {this.deleteButton()}
+                            </div>
+                            <div>
+                                {this.requestButton()}
                             </div>
                         </div>
                     </div>

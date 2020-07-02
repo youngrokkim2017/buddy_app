@@ -143,8 +143,7 @@ class PostIndexItem extends React.Component {
 
                     {/* follow */}
                     <div>
-                        {/* <button>follow</button> */}
-                        {this.requestButton()}
+                        {/* {this.requestButton()} */}
                     </div>
                 </div>
             </Link>
