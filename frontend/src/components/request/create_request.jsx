@@ -65,25 +65,27 @@ class MakeRequest extends React.Component {
                         Cancelling
                     </button>
                     <button
-                        active className={
+                        // active className={
+                        className={
                             this.props.requested ?
                                 'hidden'
                             :
                                 "button"
                         }
-                        id={`request-button${this.props.post}`}
+                        // id={`request-button${this.props.post}`}
                         onClick={this.handleSubmit}
                     >
                         Join
                     </button>
                     <button
-                        active className={
+                        // active className={
+                        className={
                             this.props.requested ?
                                 'button'
                             :
                                 'hidden'
                         }
-                        id={`pending-button${this.props.post}`}
+                        // id={`pending-button${this.props.post}`}
                         onClick={this.handlePending}
                     >
                         Pending
