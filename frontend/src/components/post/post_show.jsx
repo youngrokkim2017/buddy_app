@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CreateRequestContainer from '../request/create_request_container';
+// import CreateRequestContainer from '../request/create_request_container';
+import CreateRequest from '../request/create_request';
 // import { withRouter } from 'react-router-dom';
 
 class PostShow extends React.Component {
@@ -91,7 +92,11 @@ class PostShow extends React.Component {
         // if (post.user === this.props.currentUser.id) return (<p>Your Post</p>)
 
         return (
-            <CreateRequestContainer
+            // <CreateRequestContainer
+            //     post={post}
+            //     requested={false}
+            // />
+            <CreateRequest
                 post={post}
                 requested={false}
             />
