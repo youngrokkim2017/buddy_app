@@ -1,11 +1,13 @@
 import axios from 'axios';
 
 export const sendRequest = (postId) => {
-    return axios.post(`/api/requests/posts/${postId}`);
+    // return axios.post(`/api/requests/posts/${postId}`);
+    return axios.post(`/api/requests/post/${postId}`);
 };
 
 export const fetchRequests = (postId) => {
-    return axios.get(`/api/requests/posts/${postId}`);
+    // return axios.get(`/api/requests/posts/${postId}`);
+    return axios.get(`/api/requests/post/${postId}`);
 };
 
 export const fetchRequest = (requestId) => {
@@ -21,7 +23,8 @@ export const fetchActiveRequest = (userId) => {
 };
 
 export const fetchActiveRequests = (postId) => {
-    return axios.goet(`/api/requests/posts/approved/${postId}`);
+    // return axios.get(`/api/requests/posts/approved/${postId}`);
+    return axios.get(`/api/requests/post/approved/${postId}`);
 };
 
 export const fetchUserRequests = () => {

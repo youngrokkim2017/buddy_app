@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { fetchPosts, fetchOnePost ,deletePostItem } from '../../actions/post_actions';
 import { fetchRequests } from '../../actions/request_actions';
+import { sendRequest, deleteRequest } from '../../actions/request_actions';
 import PostShow from './post_show';
 
 const mapStateToProps = (state, ownProps) => {
@@ -37,6 +38,8 @@ const mapDispatchToProps = dispatch => {
         fetchOnePost: (postId) => dispatch(fetchOnePost(postId)),
         deletePostItem: (postId) => dispatch(deletePostItem(postId)),
         fetchRequests: (postId) => dispatch(fetchRequests(postId)),
+        request: postId => dispatch(sendRequest(postId)),
+        deleteRequest: requestId => dispatch(deleteRequest(requestId)),
     };
 };
 

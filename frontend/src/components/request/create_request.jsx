@@ -22,7 +22,8 @@ class MakeRequest extends React.Component {
             sending: true,
         });
 
-        this.props.sendRequest(this.props.post.id)
+        // this.props.sendRequest(this.props.post.id)
+        this.props.request(this.props.post._id)
             .then(this.setState({ sending: false }))
     }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CreateRequestContainer from '../request/create_request_container';
+// import CreateRequestContainer from '../request/create_request_container';
+import CreateRequest from '../request/create_request';
 // import { withRouter } from 'react-router-dom';
 
 class PostShow extends React.Component {
@@ -8,11 +9,25 @@ class PostShow extends React.Component {
         super(props);
         // this.state = this.props.post;
 
+        this.state = {
+            // requester: this.props.requester,
+            // loading: true,
+            // sending: false,
+            // cancelling: false,
+            following: false,
+            followersCount: 0,
+            // followers: [],
+            requesterId: null,
+        }
+
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
 
         // this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+
         this.handleAccept = this.handleAccept.bind(this);
+        this.handleRequest = this.handleRequest.bind(this);
+        this.handleRemoveRequest = this.handleRequest.bind(this);
 
         this.handleMessage = this.handleMessage.bind(this);
     }
@@ -80,22 +95,61 @@ class PostShow extends React.Component {
     handleAccept(e) {
         e.preventDefault();
 
-        let request = this.props.requests.find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
+        let request = this.props.requests
+            .find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
 
         this.props.history.push(`/requests/${request._id}`);
     }
 
     requestButton() {
         let post = this.props.post;
+        // console.log(post);
+
+        let request = this.props.requests
+            .find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
+        // console.log(request);  // undefined
 
         // if (post.user === this.props.currentUser.id) return (<p>Your Post</p>)
 
         return (
-            <CreateRequestContainer
+            // <CreateRequestContainer
+            //     post={post}
+            //     requested={false}
+            // />
+            <CreateRequest
                 post={post}
+                request={request}
                 requested={false}
             />
         )
+    }
+
+    handleRequest(e) {
+        e.preventDefault();
+
+        // this.setState({
+        //     sending: true,
+        // });
+
+        this.props.request(this.props.post._id)
+            // .then(this.setState({ sending: false }))
+            // .then(this.props.post.requests.push())
+            .then(this.setState({
+                following: true,
+                followersCount: this.state.followersCount + 1,
+                requesterId: this.props.currentUserId,
+                // followers: this.state.followers.push(this.props.currentUser.firstName),
+            }))
+    }
+
+    handleRemoveRequest(e) {
+        e.preventDefault();
+
+        let requestId = this.props.requests.map((r, idx) => {
+            return (r._id)
+        })
+
+        this.props.deleteRequest(requestId)
     }
 
     handleMessage(e) {
@@ -159,9 +213,20 @@ class PostShow extends React.Component {
 
     render() {
         console.log(this.props);
+        console.log(this.state);
+
+        console.log(this.props.currentUserId)
+        console.log(this.state.requesterId)
+        // console.log(this.state.followers)
 
         if (this.props.post === undefined) return null;
         // let { post } = this.props;
+
+        let requesterId = this.props.requests.map((r, idx) => {
+            return (r.requester)
+        })
+
+        console.log(requesterId);
 
         return (
             <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
@@ -224,7 +289,17 @@ class PostShow extends React.Component {
                                 {this.deleteButton()}
                             </div>
                             <div>
-                                {this.requestButton()}
+                                {/* {this.requestButton()} */}
+                                {/* <button onClick={this.handleRequest}>Join</button> */}
+                                {this.props.currentUserId === this.state.requesterId ?
+                                    <button onClick={this.handleRemoveRequest}>Unfollow</button>
+                                    :
+                                    <button onClick={this.handleRequest}>Follow</button>
+                                }
+                                <div>
+                                    {this.state.followersCount}
+                                    {/* {this.state.followers}   */}
+                                </div>
                             </div>
                         </div>
                     </div>

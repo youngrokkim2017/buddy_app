@@ -8,7 +8,8 @@ class SignupForm extends React.Component {
         super(props);
 
         let inputEmail
-        if (this.props.location.state.email === undefined) {
+        // if (this.props.location.state.email === undefined) {
+        if (!this.props.location.state) {
             inputEmail = '';
         } else {
             inputEmail = this.props.location.state.email;
