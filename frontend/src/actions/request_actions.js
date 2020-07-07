@@ -63,6 +63,6 @@ export const fetchUserRequest = () => dispatch => (
 
 export const deleteRequest = (requestId) => dispatch => (
     RequestApiUtil.deleteRequest(requestId)
-        .then(request => dispatch(removeRequest(requestId)))
+        .then(requestId => dispatch(removeRequest(requestId)))
         .catch(err => console.log(err))
 )

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import CreateRequestContainer from '../request/create_request_container';
 import CreateRequest from '../request/create_request';
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class PostShow extends React.Component {
             // loading: true,
             // sending: false,
             // cancelling: false,
-            following: false,
+            // following: false,
             followersCount: 0,
             // followers: [],
             requesterId: null,
@@ -25,9 +25,9 @@ class PostShow extends React.Component {
         // this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
-        this.handleAccept = this.handleAccept.bind(this);
+        // this.handleAccept = this.handleAccept.bind(this);
         this.handleRequest = this.handleRequest.bind(this);
-        this.handleRemoveRequest = this.handleRequest.bind(this);
+        this.handleRemoveRequest = this.handleRemoveRequest.bind(this);
 
         this.handleMessage = this.handleMessage.bind(this);
     }
@@ -92,14 +92,14 @@ class PostShow extends React.Component {
         }
     }
 
-    handleAccept(e) {
-        e.preventDefault();
+    // handleAccept(e) {
+    //     e.preventDefault();
 
-        let request = this.props.requests
-            .find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
+    //     let request = this.props.requests
+    //         .find(req => this.props.requests.includes(req) && req.post === this.props.post._id && req.requester === this.props.currentUser.id)
 
-        this.props.history.push(`/requests/${request._id}`);
-    }
+    //     this.props.history.push(`/requests/${request._id}`);
+    // }
 
     requestButton() {
         let post = this.props.post;
@@ -134,12 +134,19 @@ class PostShow extends React.Component {
         this.props.request(this.props.post._id)
             // .then(this.setState({ sending: false }))
             // .then(this.props.post.requests.push())
-            .then(this.setState({
-                following: true,
-                followersCount: this.state.followersCount + 1,
-                requesterId: this.props.currentUserId,
-                // followers: this.state.followers.push(this.props.currentUser.firstName),
-            }))
+            // .then(this.setState({
+            //     // following: true,
+            //     followersCount: this.state.followersCount + 1,
+            //     requesterId: this.props.currentUserId,
+            //     // followers: this.state.followers.push(this.props.currentUser.firstName),
+            // }))
+
+        this.setState({
+            // following: true,
+            followersCount: this.state.followersCount + 1,
+            requesterId: this.props.currentUserId,
+            // followers: this.state.followers.push(this.props.currentUser.firstName),
+        })
     }
 
     handleRemoveRequest(e) {
@@ -149,7 +156,19 @@ class PostShow extends React.Component {
             return (r._id)
         })
 
-        this.props.deleteRequest(requestId)
+        // let request = this.props.requests.map((r, idx) => {
+        //     return (r)
+        // })
+
+        this.props.deleteRequest(requestId);
+        // this.props.deleteRequest(request);
+
+        this.setState({
+            // following: true,
+            followersCount: this.state.followersCount - 1,
+            requesterId: null,
+            // followers: this.state.followers.push(this.props.currentUser.firstName),
+        })
     }
 
     handleMessage(e) {
@@ -309,5 +328,5 @@ class PostShow extends React.Component {
     }
 }
 
-export default PostShow;
-// export default withRouter(PostShow);
+// export default PostShow;
+export default withRouter(PostShow);
