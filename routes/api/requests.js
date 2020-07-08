@@ -105,18 +105,30 @@ router.get('/',
 );
 
 // Delete a request
+// router.delete('/:id',
+//     passport.authenticate('jwt', { session: false }),
+//     (req, res) => {
+//         Request
+//             .findById(req.params.id)
+//             .then(request => {
+//                 request.remove()
+//                     .then(r => res.json(r))
+//                     .catch(err => res.status(404).json({ norequestfound: 'Invalid Request' }))
+//             })
+//             .catch(err => res.status(404).json({ norequestfound: 'No request found' }));
+//     }
+// );
+
 router.delete('/:id',
-    passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        Request
-            .findById(req.params.id)
-            .then(request => {
-                request.remove()
-                    .then(r => res.json(r))
-                    .catch(err => res.status(404).json({ norequestfound: 'Invalid Request' }))
-            })
-            .catch(err => res.status(404).json({ norequestfound: 'No request found' }));
+        Request.findByIdAndDelete(
+            req.params.id,
+            err => {
+                if (err) res.status(422).send({ error: err })
+                res.status(200).json({ message: 'Request Deleted' })
+            }
+        )
     }
-);
+)
 
 module.exports = router;

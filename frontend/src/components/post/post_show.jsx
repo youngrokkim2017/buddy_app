@@ -232,10 +232,10 @@ class PostShow extends React.Component {
 
     render() {
         console.log(this.props);
-        console.log(this.state);
+        // console.log(this.state);
 
-        console.log(this.props.currentUserId)
-        console.log(this.state.requesterId)
+        // console.log(this.props.currentUserId)
+        // console.log(this.state.requesterId)
         // console.log(this.state.followers)
 
         if (this.props.post === undefined) return null;
