@@ -10,14 +10,16 @@ class PostShow extends React.Component {
         // this.state = this.props.post;
 
         this.state = {
-            // requester: this.props.requester,
-            // loading: true,
-            // sending: false,
-            // cancelling: false,
-            // following: false,
-            followersCount: 0,
-            // followers: [],
+            // // requester: this.props.requester,
+            // // loading: true,
+            // // sending: false,
+            // // cancelling: false,
+            // // following: false,
+            // followersCount: 0,
+            // // followers: [],
             requesterId: null,
+            followClick: this.props.followClick || 0,
+            showFollowCount: this.props.showFollowCount || true,
         }
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
@@ -28,6 +30,10 @@ class PostShow extends React.Component {
         // this.handleAccept = this.handleAccept.bind(this);
         this.handleRequest = this.handleRequest.bind(this);
         this.handleRemoveRequest = this.handleRemoveRequest.bind(this);
+
+        // handlers for follower counts
+        // this.incrementFollower = this.incrementFollower.bind(this);
+        // this.decrementFollower = this.decrementFollower.bind(this);
 
         this.handleMessage = this.handleMessage.bind(this);
     }
@@ -141,12 +147,16 @@ class PostShow extends React.Component {
             //     // followers: this.state.followers.push(this.props.currentUser.firstName),
             // }))
 
-        this.setState({
-            // following: true,
-            followersCount: this.state.followersCount + 1,
-            requesterId: this.props.currentUserId,
-            // followers: this.state.followers.push(this.props.currentUser.firstName),
-        })
+        // this.setState({
+        //     // following: true,
+        //     followersCount: this.state.followersCount + 1,
+        //     requesterId: this.props.currentUserId,
+        //     // followers: this.state.followers.push(this.props.currentUser.firstName),
+        // })
+
+        // IMPLEMENT TOGGLES FOR INCREMENT/DECREMENT FOLLOWER
+        // this.incrementFollower;
+        this.incrementFollower();
     }
 
     handleRemoveRequest(e) {
@@ -163,11 +173,39 @@ class PostShow extends React.Component {
         this.props.deleteRequest(requestId);
         // this.props.deleteRequest(request);
 
+        // this.setState({
+        //     // following: true,
+        //     followersCount: this.state.followersCount - 1,
+        //     requesterId: null,
+        //     // followers: this.state.followers.push(this.props.currentUser.firstName),
+        // })
+
+        // IMPLEMENT TOGGLES FOR INCREMENT/DECREMENT FOLLOWER
+        // this.decrementFollower;
+        this.decrementFollower();
+    }
+
+    incrementFollower() {
         this.setState({
-            // following: true,
-            followersCount: this.state.followersCount - 1,
+            followClick: this.state.followClick + 1,
+            requesterId: this.props.currentUserId,
+        });
+
+        this.toggleFollowClick();
+    }
+
+    decrementFollower() {
+        this.setState({
+            followClick: this.state.followClick - 1,
             requesterId: null,
-            // followers: this.state.followers.push(this.props.currentUser.firstName),
+        });
+
+        this.toggleFollowClick();
+    }
+
+    toggleFollowClick() {
+        this.setState({
+            showFollowCount: !this.state.showFollowCount
         })
     }
 
@@ -316,8 +354,9 @@ class PostShow extends React.Component {
                                     <button onClick={this.handleRequest}>Follow</button>
                                 }
                                 <div>
-                                    {this.state.followersCount}
+                                    {/* {this.state.followersCount} */}
                                     {/* {this.state.followers}   */}
+                                    {this.state.followClick}
                                 </div>
                             </div>
                         </div>
