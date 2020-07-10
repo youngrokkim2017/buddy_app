@@ -18,8 +18,11 @@ class PostShow extends React.Component {
             // followersCount: 0,
             // // followers: [],
             requesterId: null,
-            followClick: this.props.followClick || 0,
-            showFollowCount: this.props.showFollowCount || true,
+            // followCounter: this.props.followCounter || 0,
+            // followFlag: this.props.followFlag || true,
+            status: this.props.requests.map((r) => r.status) || 'pending',
+            // status: null,
+            followers: this.props.post.followers || 0,
         }
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
@@ -147,16 +150,16 @@ class PostShow extends React.Component {
             //     // followers: this.state.followers.push(this.props.currentUser.firstName),
             // }))
 
-        // this.setState({
-        //     // following: true,
-        //     followersCount: this.state.followersCount + 1,
-        //     requesterId: this.props.currentUserId,
-        //     // followers: this.state.followers.push(this.props.currentUser.firstName),
-        // })
+        this.setState({
+            // following: true,
+            // followersCount: this.state.followersCount + 1,
+            followers: this.props.post.followers + 1,
+            requesterId: this.props.currentUserId,
+            // followers: this.state.followers.push(this.props.currentUser.firstName),
+        })
 
         // IMPLEMENT TOGGLES FOR INCREMENT/DECREMENT FOLLOWER
-        // this.incrementFollower;
-        this.incrementFollower();
+        // this.incrementFollower();
     }
 
     handleRemoveRequest(e) {
@@ -173,41 +176,41 @@ class PostShow extends React.Component {
         this.props.deleteRequest(requestId);
         // this.props.deleteRequest(request);
 
-        // this.setState({
-        //     // following: true,
-        //     followersCount: this.state.followersCount - 1,
-        //     requesterId: null,
-        //     // followers: this.state.followers.push(this.props.currentUser.firstName),
-        // })
+        this.setState({
+            // following: true,
+            // followersCount: this.state.followersCount - 1,
+            followers: this.props.post.followers - 1,
+            requesterId: null,
+            // followers: this.state.followers.push(this.props.currentUser.firstName),
+        })
 
         // IMPLEMENT TOGGLES FOR INCREMENT/DECREMENT FOLLOWER
-        // this.decrementFollower;
-        this.decrementFollower();
+        // this.decrementFollower();
     }
 
-    incrementFollower() {
-        this.setState({
-            followClick: this.state.followClick + 1,
-            requesterId: this.props.currentUserId,
-        });
+    // incrementFollower() {
+    //     this.setState({
+    //         followCounter: this.state.followCounter + 1,
+    //         requesterId: this.props.currentUserId,
+    //     });
 
-        this.toggleFollowClick();
-    }
+    //     this.toggleFollowFlag();
+    // }
 
-    decrementFollower() {
-        this.setState({
-            followClick: this.state.followClick - 1,
-            requesterId: null,
-        });
+    // decrementFollower() {
+    //     this.setState({
+    //         followCounter: this.state.followCounter - 1,
+    //         requesterId: null,
+    //     });
 
-        this.toggleFollowClick();
-    }
+    //     this.toggleFollowFlag();
+    // }
 
-    toggleFollowClick() {
-        this.setState({
-            showFollowCount: !this.state.showFollowCount
-        })
-    }
+    // toggleFollowFlag() {
+    //     this.setState({
+    //         followFlag: !this.state.followFlag
+    //     })
+    // }
 
     handleMessage(e) {
         e.preventDefault();
@@ -353,10 +356,13 @@ class PostShow extends React.Component {
                                     :
                                     <button onClick={this.handleRequest}>Follow</button>
                                 }
+                                {/* <button onClick={this.state.followFlag ? this.handleRequest : this.handleRemoveRequest}>
+                                    {this.state.followCounter}
+                                </button> */}
                                 <div>
                                     {/* {this.state.followersCount} */}
-                                    {/* {this.state.followers}   */}
-                                    {this.state.followClick}
+                                    {this.state.followers}  
+                                    {/* {this.state.followCounter} */}
                                 </div>
                             </div>
                         </div>
