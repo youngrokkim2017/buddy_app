@@ -76,6 +76,9 @@ const PostSchema = new Schema({
     //         ref: 'users',
     //     }
     // }],
+    followers: {
+        type: Number,
+    },
     // location: {
     //     type: pointSchema,
     //     required: true,
