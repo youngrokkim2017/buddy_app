@@ -24,3 +24,5 @@ export const requestsReducer = (state = {}, action) => {
             return state;
     };
 };
+
+export default requestsReducer;

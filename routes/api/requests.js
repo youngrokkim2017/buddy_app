@@ -122,6 +122,7 @@ router.get('/',
 router.delete('/:id',
     (req, res) => {
         Request.findByIdAndDelete(
+        // Request.deleteMany(
             req.params.id,
             err => {
                 if (err) res.status(422).send({ error: err })

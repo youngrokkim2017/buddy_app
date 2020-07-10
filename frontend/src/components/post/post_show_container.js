@@ -29,6 +29,7 @@ const mapStateToProps = (state, ownProps) => {
         postId,
         // posts,
         requests: Object.values(state.entities.requests),
+        // requests: state.entities.requests,
     }
 };
 
