@@ -76,9 +76,10 @@ const PostSchema = new Schema({
     //         ref: 'users',
     //     }
     // }],
-    followers: {
-        type: Number,
-    },
+    followers: [{
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+    }],
     // location: {
     //     type: pointSchema,
     //     required: true,
