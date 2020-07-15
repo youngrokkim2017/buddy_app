@@ -94,3 +94,5 @@ export const fetchPostFromRequest = (requestId) => dispatch => (
 );
 
 window.modifyPost = modifyPost;
+
+// add post action for receving requests from a post
