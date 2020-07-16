@@ -1,5 +1,6 @@
 import {
-    getPosts, getUserPost, createPost, deletePost, modifyPost, getOnePost, getPostFromRequest
+    getPosts, getUserPost, createPost, deletePost, modifyPost, getOnePost, getPostFromRequest,
+    // sendRequest, fetchRequests
 } from '../util/post_api_util';
 
 export const RECEIVE_ONE_POST = 'RECEIVE_ONE_POST'
@@ -42,6 +43,25 @@ export const receivePostErrors = (errors) => ({
     type: RECEIVE_POST_ERRORS,
     errors
 });
+
+// // REQUESTS
+// const receiveRequests = (requests) => ({
+//     type: RECEIVE_REQUESTS,
+//     requests,
+// });
+
+// export const sendRequest = (postId) => dispatch => (
+//     RequestApiUtil.sendRequest(postId)
+//         .then(request => dispatch(receiveRequest(request)))
+//         .catch(err => console.log(err))
+// );
+
+// export const fetchRequests = (postId) => dispatch => (
+//     RequestApiUtil.fetchRequests(postId)
+//         .then(requests => dispatch(receiveRequests(requests)))
+//         .catch(err => console.log(err))
+// );
+// //
 
 export const fetchOnePost = (postId) => dispatch => (
     getOnePost(postId)
