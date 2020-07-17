@@ -3,12 +3,18 @@ import {
     // sendRequest, fetchRequests
 } from '../util/post_api_util';
 
+import * as PostApiUtil from '../util/post_api_util';
+
 export const RECEIVE_ONE_POST = 'RECEIVE_ONE_POST'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const RECEIVE_USER_POST = 'RECEIVE_USER_POST';
 export const RECEIVE_NEW_POST = 'RECEIVE_NEW_POST';
 export const REMOVE_POST = 'REMOVE_POST';
 export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
+// REQUESTS
+export const RECEIVE_REQUEST = "RECEIVE_REQUEST";
+export const RECEIVE_REQUESTS = "RECEIVE_REQUESTS";
+export const REMOVE_REQUEST = "REMOVE_REQUEST";
 
 // export const receiveOnePost = (post) => ({
 export const receiveOnePost = (payload) => ({
@@ -44,24 +50,40 @@ export const receivePostErrors = (errors) => ({
     errors
 });
 
-// // REQUESTS
-// const receiveRequests = (requests) => ({
-//     type: RECEIVE_REQUESTS,
-//     requests,
-// });
+// REQUESTS
+const receiveRequest = (request) => ({
+    type: RECEIVE_REQUEST,
+    request,
+});
 
-// export const sendRequest = (postId) => dispatch => (
-//     RequestApiUtil.sendRequest(postId)
-//         .then(request => dispatch(receiveRequest(request)))
-//         .catch(err => console.log(err))
-// );
+const receiveRequests = (requests) => ({
+    type: RECEIVE_REQUESTS,
+    requests,
+});
 
-// export const fetchRequests = (postId) => dispatch => (
-//     RequestApiUtil.fetchRequests(postId)
-//         .then(requests => dispatch(receiveRequests(requests)))
-//         .catch(err => console.log(err))
-// );
-// //
+const removeRequest = (requestId) => ({
+    type: REMOVE_REQUEST,
+    requestId,
+});
+
+export const sendRequest = (postId) => dispatch => (
+    PostApiUtil.sendRequest(postId)
+        .then(request => dispatch(receiveRequest(request)))
+        .catch(err => console.log(err))
+);
+
+export const fetchRequests = (postId) => dispatch => (
+    PostApiUtil.fetchRequests(postId)
+        .then(requests => dispatch(receiveRequests(requests)))
+        .catch(err => console.log(err))
+);
+
+export const deleteRequest = (requestId) => dispatch => (
+    PostApiUtil.deleteRequest(requestId)
+        .then(requestId => dispatch(removeRequest(requestId)))
+        .catch(err => console.log(err))
+)
+//
 
 export const fetchOnePost = (postId) => dispatch => (
     getOnePost(postId)
