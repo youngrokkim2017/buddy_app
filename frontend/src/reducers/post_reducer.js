@@ -5,7 +5,7 @@ import {
     REMOVE_POST,
     RECEIVE_ONE_POST,
     // REQUESTS
-    RECEIVE_REQUESTS,
+    // RECEIVE_REQUESTS,
 } from '../actions/post_actions';
 
 const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
@@ -43,11 +43,11 @@ const PostReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
         case REMOVE_POST:
             delete newState[action.postId];
             return newState;
-        // REQUESTS
-        case RECEIVE_REQUESTS:
-            newState.all = action.requests.data;
-            return newState;
-        //
+        // // REQUESTS
+        // case RECEIVE_REQUESTS:
+        //     newState.all = action.requests.data;
+        //     return newState;
+        // //
         default:
             return state;
     };
