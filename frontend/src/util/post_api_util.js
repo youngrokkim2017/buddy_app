@@ -33,3 +33,20 @@ export const modifyPost = (post) => {
 export const getPostFromRequest = (requestId) => {
     return axios.get(`/api/posts/requests/${requestId}`);
 };
+
+
+// // REQUESTS
+
+// export const sendRequest = (requestId) => {
+//     // return axios.post(`/api/requests/posts/${requestId}`);
+//     return axios.post(`/api/posts/requests/${requestId}`);
+// };
+
+// export const fetchRequests = (requestId) => {
+//     // return axios.get(`/api/requests/posts/${requestId}`);
+//     return axios.get(`/api/posts/requests/${requestId}`);
+// };
+
+// export const deleteRequest = (id) => {
+//     return axios.delete(`/api/posts/requests/${id}`);
+// };
