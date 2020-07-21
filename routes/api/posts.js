@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const validatePostInput = require('../../validation/post');
+const validateChatInput = require('../../validation/chat');
 const Post = require('../../models/Post');
 const Chat = require('../../models/Chat');
 const User = require('../../models/User');
@@ -121,38 +122,42 @@ router.patch('/:id',
     }
 )
 
+//  CHAT ROUTES //
+
+//              //
+
 
 ////////////////////////// CHAT //////////////////////////
 
 // // add a POST route 
-// // create a chat
-// router.post('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     const { errors, isValid } = validateChatInput(req.body);
+// create a chat
+router.post('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { errors, isValid } = validateChatInput(req.body);
 
-//     if (!isValid) {
-//         return res.status(400).json(errors);
-//     };
+    if (!isValid) {
+        return res.status(400).json(errors);
+    };
 
-//     const newChat = new Chat({
-//         user: {
-//             _id: req.user._id,
-//             name: req.user.name,
-//         },
-//         post: req.params.postId,
-//         message: req.body.message,
-//     });
+    const newChat = new Chat({
+        user: {
+            _id: req.user._id,
+            name: req.user.name,
+        },
+        post: req.params.postId,
+        message: req.body.message,
+    });
 
-//     newChat.save()
-//         .then(chat => res.json(chat))
-//         .catch(err => res.status(400).json(err))
-// });
+    newChat.save()
+        .then(chat => res.json(chat))
+        .catch(err => res.status(400).json(err))
+});
 
-// // GET chats
-// router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     Chat
-//         .find({ post: req.params.postId })
-//         .then(chats => res.json(chats))
-// });
+// GET chats
+router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Chat
+        .find({ post: req.params.postId })
+        .then(chats => res.json(chats))
+});
 
 ////////////////////////// CHAT //////////////////////////
 
