@@ -86,6 +86,21 @@ router.post('/',
 );
 
 // Delete a post
+// router.delete('/:id',
+//     (req, res) => {
+//         Chat.deleteMany({ request: req.params.id }, err => {
+//             // errors
+//         }). then(
+//             Post.findByIdAndDelete(req.params.id, 
+//                 err => {
+//                     if (err) res.status(422).send({ error: err });
+
+//                     res.status.json({ message: 'Post Deleted' })
+//                 }
+//             )
+//         )
+//     }
+// )
 router.delete('/:id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
