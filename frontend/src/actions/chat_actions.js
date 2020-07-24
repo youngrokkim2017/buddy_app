@@ -8,7 +8,7 @@ export const receiveChats = chats => ({
     chats
 });
 
-export const fetchChats = (postId) => (
+export const fetchChats = (postId) => dispatch => (
     ChatApiUtil.getChats(postId)
         .then(res => dispatch(receiveChats(res.data)))
 )
