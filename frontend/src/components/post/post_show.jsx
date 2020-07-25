@@ -196,6 +196,12 @@ class PostShow extends React.Component {
     //     })
     // }
 
+    handleChat(e) {
+        e.preventDefault();
+
+        this.props.history.push(`/post/${this.props.post._id}/chat`)
+    }
+
     handleMessage(e) {
         e.preventDefault();
     }
