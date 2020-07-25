@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchChats } from '../../actions/chat_actions';
 import Chat from './chat';
-import { fetchAUser } from '../../util/user_api_util';
+// import { fetchAUser } from '../../util/user_api_util';
 
 const mapStateToProps = (state) => {
     return {
@@ -12,9 +12,11 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = dispatch = {
-    fetchChats: postId => dispatch(fetchChats(postId)),
-    // need to fetch the users in the chat
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchChats: postId => dispatch(fetchChats(postId))
+        // need to fetch the users in the chat
+    }
 }
 
 export default connect(

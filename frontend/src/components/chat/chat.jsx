@@ -2,9 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 class Chat extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         return (
@@ -14,3 +14,6 @@ class Chat extends React.Component {
         )
     }
 }
+
+// export default Chat;
+export default withRouter(Chat);
