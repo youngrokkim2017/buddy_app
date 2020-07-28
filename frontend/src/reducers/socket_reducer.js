@@ -7,7 +7,7 @@ export const socketReducer = (state ={}, action) => {
 
     // let newState = Object.assign({}, state);
 
-    // switch(action.type) {
+    switch(action.type) {
     //     case RECEIVE_ROOM:
     //         //
     //         return //
