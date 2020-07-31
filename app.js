@@ -23,7 +23,24 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 // WEBSOCKETS // 
+io
+    .on('connection', (socket) => {
+        socket.emit('welcome', "welcome to post namespace")
 
+        socket.on('joinroom', (room) => {
+            socket.join(room);
+
+            return socket.emit('success', 'You have successfully joined ' + room)
+        })
+
+        socket.on('exitroom', (room) => {
+            socket.leave(room);
+
+            return socket.emit('success', 'You have successfully exited ' + room)
+        })
+
+        
+    })
 /////////////
 
 // set up app to test using postman
