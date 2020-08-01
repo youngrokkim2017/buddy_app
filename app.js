@@ -39,7 +39,22 @@ io
             return socket.emit('success', 'You have successfully exited ' + room)
         })
 
-        
+        socket.on('sendMessage', (messageInfo) => {
+            io  
+                .in(`${messageInfo.room}`)
+                .emit('sendMessage', messageInfo);
+
+            const newChat = new Chat({
+                user: {
+                    id: messageInfo.user.id,
+                    name: messageInfo.user.name,
+                },
+                post: messageInfo.room,
+                content: messageInfo.content,
+            })
+
+            newChat.save();
+        })
     })
 /////////////
 
