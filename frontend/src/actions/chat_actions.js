@@ -1,5 +1,5 @@
 import * as ChatApiUtil from '../util/chat_api_util';
-// import receiveUsers from './user_actions';
+import receiveUsers from './user_actions';
 
 export const RECEIVE_CHATS = 'RECEIVE_CHATS';
 
@@ -10,5 +10,10 @@ export const receiveChats = chats => ({
 
 export const fetchChats = (postId) => dispatch => (
     ChatApiUtil.getChats(postId)
-        .then(res => dispatch(receiveChats(res.data)))
+        .then(response => dispatch(receiveChats(response.data)))
+)
+
+export const fetchChatMembers = (postId) => dispatch => (
+    ChatApiUtil.getMembers(postId)
+        .then(response => dispatch(receiveUsers(response.data)))
 )
