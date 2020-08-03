@@ -27,6 +27,27 @@ class Chat extends React.Component {
             })
     }
 
+    componentWillUnmount() {
+        e.preventDefault();
+
+        const input = document.getElementById('chat-input')
+
+        let messageInfo = {
+            room: this.props.match.params.postId,
+            user: this.props.currentUser,
+            content: input.value,
+        };
+
+        input.value = '';
+
+        let messageEmission = {
+            actions: 'sendMessage',
+            value: messageInfo,
+        };
+
+        this.props.receiveEmit(messageEmission);
+    }
+
     render() {
         return (
             <div>
