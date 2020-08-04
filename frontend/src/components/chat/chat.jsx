@@ -8,6 +8,8 @@ class Chat extends React.Component {
         this.state = {
             chat: [],
         };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +30,12 @@ class Chat extends React.Component {
     }
 
     componentWillUnmount() {
+        console.log('chat has unmounted');
+
+        this.props.receiveExitRoom(this.props.match.params.postId);
+    }
+
+    handleSubmit(e) {
         e.preventDefault();
 
         const input = document.getElementById('chat-input')
@@ -47,8 +55,6 @@ class Chat extends React.Component {
 
         this.props.receiveEmit(messageEmission);
     }
-
-    
 
     render() {
         return (
