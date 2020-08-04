@@ -48,10 +48,28 @@ class Chat extends React.Component {
         this.props.receiveEmit(messageEmission);
     }
 
+    
+
     render() {
         return (
-            <div>
+            <div className="chat-container">
+                <div className="chat-header">
+                    {title}
+                </div>
+                <div className="chat-output">
+                    {this.state.chat}
+                </div>
 
+                <form className="chat-box">
+                    <input 
+                        type="text"
+                        id="chat-input"
+                        placeholder="Message"
+                    />
+                    <button className="small main button" onClick={this.handleSubmit}>
+                        Send
+                    </button>
+                </form>
             </div>
         )
     }
