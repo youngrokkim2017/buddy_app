@@ -57,6 +57,12 @@ class Chat extends React.Component {
     }
 
     render() {
+        let title = "";
+
+        if (this.props.users.length === 2) {
+            title = this.props.users[0]._id === this.props.currentUser.id ? this.props.users[1].firstName : this.props.users[0].firstName
+        }
+
         return (
             <div className="chat-container">
                 <div className="chat-header">
