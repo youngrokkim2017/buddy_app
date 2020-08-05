@@ -1,5 +1,5 @@
 import * as ChatApiUtil from '../util/chat_api_util';
-import receiveUsers from './user_actions';
+import { receiveUsers } from './user_actions';
 
 export const RECEIVE_CHATS = 'RECEIVE_CHATS';
 
