@@ -8,18 +8,18 @@ export const socketReducer = (state ={}, action) => {
     // let newState = Object.assign({}, state);
 
     switch(action.type) {
-    //     case RECEIVE_ROOM:
-    //         //
-    //         return //
-    //     case RECEIVE_LISTENER:
-    //         //
-    //         return //
-    //     case RECEIVE_EMIT:
-    //         //
-    //         return //
-    //     case RECEIVE_EXIT_ROOM:
-    //         //
-    //         return //
+        case RECEIVE_ROOM:
+            //
+            return //
+        case RECEIVE_LISTENER:
+            //
+            return //
+        case RECEIVE_EMIT:
+            //
+            return //
+        case RECEIVE_EXIT_ROOM:
+            //
+            return //
         default:
             return state;
     }
