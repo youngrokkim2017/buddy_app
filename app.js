@@ -18,6 +18,46 @@ const subscribers = require('./routes/api/subscribe');
 // Import user model
 const User = require('./models/User');
 
+// SOCKET IO //
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+// WEBSOCKETS // 
+io
+    .on('connection', (socket) => {
+        socket.emit('welcome', "welcome to post namespace")
+
+        socket.on('joinroom', (room) => {
+            socket.join(room);
+
+            return socket.emit('success', 'You have successfully joined ' + room)
+        })
+
+        socket.on('exitroom', (room) => {
+            socket.leave(room);
+
+            return socket.emit('success', 'You have successfully exited ' + room)
+        })
+
+        socket.on('sendMessage', (messageInfo) => {
+            io  
+                .in(`${messageInfo.room}`)
+                .emit('sendMessage', messageInfo);
+
+            const newChat = new Chat({
+                user: {
+                    id: messageInfo.user.id,
+                    name: messageInfo.user.name,
+                },
+                post: messageInfo.room,
+                content: messageInfo.content,
+            })
+
+            newChat.save();
+        })
+    })
+/////////////
+
 // set up app to test using postman
 const bodyParser = require('body-parser'); // tells our app what type of requests it should respond to 
 const passport = require('passport');
