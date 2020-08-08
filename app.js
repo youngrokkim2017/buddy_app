@@ -58,6 +58,14 @@ io
     })
 /////////////
 
+// AWS //
+const aws = require('aws-sdk');
+const S3_BUCKET = process.env.S3_BUCKET;
+aws.config.region = 'us-west-1';
+
+const port = process.env.PORT || 5000;
+/////////
+
 // set up app to test using postman
 const bodyParser = require('body-parser'); // tells our app what type of requests it should respond to 
 const passport = require('passport');
