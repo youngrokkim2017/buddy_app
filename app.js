@@ -64,11 +64,40 @@ const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-west-1';
 
 const port = process.env.PORT || 5000;
+
+//
+
+app.get('/sign-s3', (req, res) => {
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+        Bucket: S3_BUCKET,
+        Key: fileName,
+        Expires: 60,
+        ContentType: fileType,
+        ACL: 'public-read',
+    };
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+        if (err) return res.end();
+
+        const returnData = {
+            signedRequest: data,
+            url: `https://${S3_BUCKET}.s3.amazon.aws.com/${fileName}`
+        };
+
+        res.write(JSON.stringify(returnData));
+
+        res.end();
+    })
+})
 /////////
 
 // set up app to test using postman
 const bodyParser = require('body-parser'); // tells our app what type of requests it should respond to 
 const passport = require('passport');
+const { S3 } = require('aws-sdk');
 
 // have mongoose connect to the URI
 mongoose
