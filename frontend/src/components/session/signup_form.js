@@ -115,6 +115,54 @@ class SignupForm extends React.Component {
         )
     }
 
+    // MEDIA
+    handleUploadMediaFile(e) {
+        const file = e.currentTarget.files[0];
+
+        if (file) {
+            this.getSignedRequest(file);
+        };
+    }
+
+    getSignedRequest(file) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', `/sign-s3/file-name=${file.name}&file-type=${file.type}`);
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                
+                    this.uploadFile(file, response.signedRequest, response.url);
+                } else {
+                    alert ('coudl not get signed URL');
+                }
+            }
+        }
+        xhr.send();
+    }
+
+    uploadFile(file, signedRequest, url) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('PUT', signedRequest);
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    this.setState({
+                        profilePhotoUrl: url,
+                    });
+                } else {
+                    alert('could not upload file');
+                }
+            }
+        }
+        xhr.send(file);
+    }
+    //
+
     render() {
         // console.log('signup', this.props.location.state.email);
 
