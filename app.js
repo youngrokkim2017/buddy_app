@@ -18,6 +18,13 @@ const subscribers = require('./routes/api/subscribe');
 // Import user model
 const User = require('./models/User');
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('frontend/build'));
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(_dirname, 'frontend', 'build', 'index.html'))
+    })
+}
+
 // SOCKET IO //
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -63,7 +70,7 @@ const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-west-1';
 
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
 //
 
@@ -147,6 +154,7 @@ app.use('/api/subscribe', subscribers);
 const port = process.env.PORT || 5000;
 
 // tell the app to listen
-app.listen(port, () => {
+server.listen(port, () => {
+// app.listen(port, () => {
     console.log(`listening on port ${port}`)
 });
