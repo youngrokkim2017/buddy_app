@@ -36,7 +36,8 @@ class PostShow extends React.Component {
         // this.incrementFollower = this.incrementFollower.bind(this);
         // this.decrementFollower = this.decrementFollower.bind(this);
 
-        this.handleMessage = this.handleMessage.bind(this);
+        // this.handleMessage = this.handleMessage.bind(this);
+        this.handleChat = this.handleChat.bind(this);
     }
 
     componentDidMount() {
@@ -199,7 +200,8 @@ class PostShow extends React.Component {
     handleChat(e) {
         e.preventDefault();
 
-        this.props.history.push(`/post/${this.props.post._id}/chat`)
+        // this.props.history.push(`/post/${this.props.post._id}/chat`);
+        this.props.history.push(`/post/${this.props.match.params.postId}/chat`);
     }
 
     handleMessage(e) {
