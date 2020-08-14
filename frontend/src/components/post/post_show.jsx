@@ -201,7 +201,8 @@ class PostShow extends React.Component {
         e.preventDefault();
 
         // this.props.history.push(`/post/${this.props.post._id}/chat`);
-        this.props.history.push(`/post/${this.props.match.params.postId}/chat`);
+        // this.props.history.push(`/post/${this.props.match.params.postId}/chat`);
+        this.props.history.push(`/post/${this.props.match.params.id}/chat`);
     }
 
     handleMessage(e) {
@@ -264,7 +265,7 @@ class PostShow extends React.Component {
     };
 
     render() {
-        // console.log(this.props);
+        console.log(this.props);
 
         // console.log(this.props.currentUserId)
         // console.log(this.state.requesterId)
