@@ -348,6 +348,11 @@ class PostShow extends React.Component {
                                     {this.props.requests.length}
                                 </div>
                             </div>
+                            <div className="chat-button-container">
+                                <button onClick={this.handleChat}>
+                                    Message
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
