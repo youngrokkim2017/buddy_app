@@ -10,6 +10,20 @@ class Search extends React.Component {
             loading: false,
             message: '',
         }
+
+        this.handleOnInputChange = this.handleOnInputChange.bind(this);
+    }
+
+    handleOnInputChange(e) {
+        // e.preventDefault();
+
+        const query = e.tagerget.value;
+
+        this.setState({
+            state: {
+                query
+            }
+        })
     }
 
     render() {
