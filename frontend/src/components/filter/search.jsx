@@ -17,6 +17,11 @@ class Search extends React.Component {
         // this.handleOnInputChange = this.handleOnInputChange.bind(this);
     }
 
+    componentDidMount() {
+        // this.props.fetchPosts();
+        // this.props.fetchSearchedPosts();
+    }
+
     ///////////////////////////////////////////////////////////////////////////
 
     // handleOnInputChange(e) {
