@@ -1,4 +1,5 @@
 import React from 'react';
+// import axios from 'axios';
 
 class Search extends React.Component {
     constructor(props) {
@@ -13,6 +14,8 @@ class Search extends React.Component {
 
         this.handleOnInputChange = this.handleOnInputChange.bind(this);
     }
+
+    ///////////////////////////////////////////////////////////////////////////
 
     // handleOnInputChange(e) {
     //     e.preventDefault();
@@ -29,25 +32,31 @@ class Search extends React.Component {
     //     })
     // }
 
-    handleOnInputChange(e) {
-        e.preventDefault();
+    // handleOnInputChange(e) {
+    //     e.preventDefault();
 
-        const query = e.target.value;
+    //     const query = e.target.value;
 
-        this.setState({
-            state: {
-                query: query,
-                loading: true,
-                message: '',
-            }
-        })
-    }
+    //     this.setState({
+    //         state: {
+    //             query: query,
+    //             loading: true,
+    //             message: '',
+    //         }
+    //     })
+    // }
 
-    update(type) {
-        return e => this.setState({
-            [type]: e.currentTarget.value
-        });
-    }
+    // update(type) {
+    //     return e => this.setState({
+    //         [type]: e.currentTarget.value
+    //     });
+    // }
+
+    // fetchSearchResults = (updatePageNo, query) => {
+    //     const searchURL
+    // }
+
+    ///////////////////////////////////////////////////////////////////////////
 
     render() {
         const { query } = this.state; // const query = this.state.query;
@@ -56,22 +65,29 @@ class Search extends React.Component {
 
         return (
             <div className="search-container">
-                <label>
-                    <input
-                        className="appearance-none bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
-                        type='text'
-                        // value=''
-                        name='query'
-                        value={query}
-                        id='search-input'
-                        placeholder='Search'
-                        // onChange={this.handleOnInputChange}
-                        onChange={this.update('query')}
-                    />
-                </label>
+                
             </div>
         )
     }
 }
 
 export default Search;
+
+
+{/* <form onSubmit={this.handleOnInputChange}>
+    <label>
+        <input
+            className="appearance-none bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+            type='text'
+            // value=''
+            name='query'
+            value={query}
+            id='search-input'
+            placeholder='Search'
+            // onChange={this.handleOnInputChange}
+            onChange={this.update('query')}
+        />
+    </label>
+
+    <input type="submit" value="SEARCH" />
+</form> */}
