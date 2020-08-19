@@ -1,18 +1,20 @@
 import React from 'react';
 // import axios from 'axios';
+import PostIndexItem from '../post/post_index_item';
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            query: '',
-            results: {},
-            loading: false,
-            message: '',
+            // query: '',
+            // results: {},
+            // loading: false,
+            // message: '',
+            search: '',
         }
 
-        this.handleOnInputChange = this.handleOnInputChange.bind(this);
+        // this.handleOnInputChange = this.handleOnInputChange.bind(this);
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -64,15 +66,43 @@ class Search extends React.Component {
         console.warn(this.state);
 
         return (
-            <div className="search-container">
-                
+            <div>
+                <div className="search-container">
+                    
+                </div>
+
+                {this.props.posts.length === 0 ? 
+                <div>
+                    There are no Posts
+                </div>
+
+                :
+
+                <div className="feed pb-12 lg:pb-0">
+                    {this.props.posts.map((p, idx) => (
+                      <PostIndexItem
+                        // // key={p._id}
+                        key={idx}
+                        idx={idx}
+                        postId={p._id}
+                        title={p.title}
+                        start={p.start}
+                        destination={p.destination}
+                        time={p.time}
+                        // description={p.description}
+                        // user={p.firstName}
+                        author={p.author}
+                        date={p.date}
+                      />
+                    ))}
+                </div>
+            }
             </div>
         )
     }
 }
 
 export default Search;
-
 
 {/* <form onSubmit={this.handleOnInputChange}>
     <label>
