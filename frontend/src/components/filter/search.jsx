@@ -15,11 +15,19 @@ class Search extends React.Component {
         }
 
         // this.handleOnInputChange = this.handleOnInputChange.bind(this);
+        this.handleSearchInput = this.handleSearchInput.bind(this);
     }
 
     componentDidMount() {
         // this.props.fetchPosts();
         // this.props.fetchSearchedPosts();
+    }
+
+    handleSearchInput(e) {
+        this.setState({
+            // search: e.target.value,
+            search: e.currentTarget.value,
+        })
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -73,10 +81,13 @@ class Search extends React.Component {
         return (
             <div>
                 <div className="search-container">
-                    
+                    <input 
+                        type="text"
+                        onChange={this.handleSearchInput}
+                    />
                 </div>
 
-                {this.props.posts.length === 0 ? 
+            {/* {this.props.posts.length === 0 ? 
                 <div>
                     There are no Posts
                 </div>
@@ -101,7 +112,7 @@ class Search extends React.Component {
                       />
                     ))}
                 </div>
-            }
+            } */}
             </div>
         )
     }

@@ -22,6 +22,7 @@ class Post extends React.Component {
       destination: '',
       time: '',
       author: fullName,
+      search: '',
     };
 
     // this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
@@ -29,6 +30,8 @@ class Post extends React.Component {
     // this.toggleSortDate = this.toggleSortDate.bind(this);
     // this.handleAlphaSort = this.handleAlphaSort.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.handleSearchInput = this.handleSearchInput.bind(this);
 
     this.postFormStart = React.createRef();
     this.postFormDest = React.createRef();
@@ -178,6 +181,12 @@ class Post extends React.Component {
     return 
   }
 
+  handleSearchInput(e) {
+    this.setState({
+      search: e.currentTarget.value,
+    })
+  }
+
   render() {
     // console.log(this.props);
 
@@ -194,7 +203,10 @@ class Post extends React.Component {
                   <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" /></svg>
                 </div>
                 {/* <input className="appearance-none bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400" type="search" placeholder="Search" /> */}
-                <Search />
+                <Search 
+                  // handleInput={this.handleInput}
+                  handleSearchInput={this.handleSearchInput}
+                />
               </div>
             </div>
 
