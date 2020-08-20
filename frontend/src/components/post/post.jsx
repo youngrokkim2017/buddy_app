@@ -23,6 +23,7 @@ class Post extends React.Component {
       time: '',
       author: fullName,
       search: '',
+      // posts: this.props,
     };
 
     // this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
@@ -183,12 +184,20 @@ class Post extends React.Component {
 
   handleSearchInput(e) {
     this.setState({
-      search: e.currentTarget.value,
+      // search: e.currentTarget.value,
+      search: e.target.value,
     })
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
+    console.log(this.state);
+
+    // const searchedPosts = this.props.map()
+
+    // const searchedPosts = this.props.filter((post) => {
+    //   return post.destination.toLowerCase().includes(this.state.search.toLowerCase())
+    // })
 
     return (
       <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">

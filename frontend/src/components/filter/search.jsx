@@ -84,6 +84,7 @@ class Search extends React.Component {
                     <input 
                         type="text"
                         onChange={this.handleSearchInput}
+                        // onChange={props.handleSearchInput}
                     />
                 </div>
 
