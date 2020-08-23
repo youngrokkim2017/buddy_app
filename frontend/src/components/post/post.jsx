@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostIndexItem from './post_index_item';
 import Search from '../filter/search';
+import SearchItems from '../filter/search_items';
 /* global google */
 // import PostForm from './post_form';
 
