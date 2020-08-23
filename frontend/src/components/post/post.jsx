@@ -182,12 +182,61 @@ class Post extends React.Component {
     return 
   }
 
-  handleSearchInput(e) {
-    this.setState({
-      // search: e.currentTarget.value,
-      search: e.target.value,
-    })
-  }
+  // handleSearchInput(e) {
+  //   this.setState({
+  //     // search: e.currentTarget.value,
+  //     search: e.target.value,
+  //   })
+  // }
+
+  ////////////////////////////////////////   SEARCH BAR /////////////////////////////////////////////////
+
+  handleSearchSubmit(e) {
+        e.preventDefault();
+
+        if (this.state.search.length >= 1) {
+            // this.props.getSearchedBusinesses(this.state.find)
+            this.props.getSearchedPosts(this.state.search)
+                .then(() => {
+                    // this.props.getSearchedBusinesses(this.state.near)
+                    //     .then(() => {
+                            // this.props.history.push(`/search=${this.state.find}+${this.state.near}`)
+                            // this.props.history.push(`/search=${this.state.find}`)
+                  // this.props.history.push('/businesses')
+                  this.props.history.push('/post')
+
+                        // })
+                })
+        } else {
+            this.props.history.push('/post')
+        }
+    }
+
+    handleChange(type) {
+        return (e) => {
+            this.setState({
+                [type]: e.target.value
+            })
+        }
+    }
+
+    handleSearchInputs() {
+        let searchInputs = document.getElementsByClassName('search-results-post');
+        searchInputs = searchInputs[0]
+        let searchResults = document.getElementsByClassName('search-items');
+        searchResults = Array.from(searchResults)
+
+        if (searchInputs !== null || searchInputs !== undefined) {
+            searchInputs.classList.remove('hide')
+            searchResults.forEach((result) => {
+                result.classList.remove('hide')
+            })
+        } 
+
+        this.props.getSearchedBusinesses(this.state.search);
+    }
+
+  ////////////////////////////////////////   SEARCH BAR /////////////////////////////////////////////////
 
   render() {
     console.log(this.props);
@@ -198,6 +247,10 @@ class Post extends React.Component {
     // const searchedPosts = this.props.filter((post) => {
     //   return post.destination.toLowerCase().includes(this.state.search.toLowerCase())
     // })
+
+    let searchResults = this.props.searchResults.map((items) => {
+      return <SearchItems key={items.id} items={items} />
+    });
 
     return (
       <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
@@ -288,6 +341,35 @@ class Post extends React.Component {
               </div>
             </div>
 
+            {/* search bar  */}
+{/* 
+            <form className="nav-search-bar">
+              <label className="nav-search-find">
+                <span className="nav-find-text">Search</span>
+                <input
+                  className="nav-find-container"
+                  type="text"
+                  onChange={this.handleChange('search')}
+                  placeholder="Search by Destination"
+                  // value={this.state.find} 
+                  onInput={this.handleSearchInputs}
+                />
+
+                {this.state.find.length ?
+                  <div className="search-results-post">
+                    {searchResults}
+                  </div>
+
+                  :
+
+                  ""
+                }
+
+              </label>
+              <button className="nav-search-button" onClick={this.handleSearchSubmit}>Search</button>
+            </form> */}
+
+            {/* SEARCH BAR */}
 
 {/* can logic for this.props.post.length go here? I want to load the create an activity form at the top*/}
 
