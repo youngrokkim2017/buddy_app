@@ -1,8 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostIndexItem from './post_index_item';
-import Search from '../filter/search';
+// import Search from '../filter/search';
+
 // import SearchItems from '../filter/search_items';
+
 /* global google */
 // import PostForm from './post_form';
 
@@ -33,7 +35,7 @@ class Post extends React.Component {
     // this.handleAlphaSort = this.handleAlphaSort.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.handleSearchInput = this.handleSearchInput.bind(this);
+    // this.handleSearchInput = this.handleSearchInput.bind(this);
 
     this.postFormStart = React.createRef();
     this.postFormDest = React.createRef();
