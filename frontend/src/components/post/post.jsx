@@ -273,8 +273,10 @@ class Post extends React.Component {
                     handleSearchInput={this.handleSearchInput}
                   /> */}
 
+                  {/* SEARCH BAR */}
+
                   <form className="nav-search-bar">
-                    <label className="nav-search-find">
+                    <label className="nav-search">
                       <span className="nav-find-text">Search</span>
                       <input
                         className="nav-find-container"
@@ -286,6 +288,9 @@ class Post extends React.Component {
                       />
                     </label>
                   </form>
+
+                  {/* SEARCH BAR */}
+
                 </div>
               </div>
             </div>
@@ -358,36 +363,6 @@ class Post extends React.Component {
                 </form>
               </div>
             </div>
-
-            {/* search bar  */}
-{/* 
-            <form className="nav-search-bar">
-              <label className="nav-search-find">
-                <span className="nav-find-text">Search</span>
-                <input
-                  className="nav-find-container"
-                  type="text"
-                  onChange={this.handleChange('search')}
-                  placeholder="Search by Destination"
-                  // value={this.state.find} 
-                  onInput={this.handleSearchInputs}
-                />
-
-                {this.state.find.length ?
-                  <div className="search-results-post">
-                    {searchResults}
-                  </div>
-
-                  :
-
-                  ""
-                }
-
-              </label>
-              <button className="nav-search-button" onClick={this.handleSearchSubmit}>Search</button>
-            </form> */}
-
-            {/* SEARCH BAR */}
 
 {/* can logic for this.props.post.length go here? I want to load the create an activity form at the top*/}
 
