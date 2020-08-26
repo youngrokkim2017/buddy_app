@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchPosts, deletePostItem, composePost } from '../../actions/post_actions';
 import Post from './post';
 
+import { getSearchedPosts } from '../../actions/search_actions';
+
 const mapStateToProps = (state) => {
     return {
         // posts: Object.values(state.posts.all),
@@ -19,6 +21,7 @@ const mapDispatchToProps = dispatch => {
         fetchPosts: () => dispatch(fetchPosts()),
         deletePostItem: (postId) => dispatch(deletePostItem(postId)),
         composePost: data => dispatch(composePost(data)),
+        getSearchedPosts: query => dispatch(getSearchedPosts(query)),
     };
 };
 
