@@ -12,11 +12,6 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //     post: [],
-    //     isNewestFirst: true,
-    // };
-
     let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
 
     this.state = {
@@ -31,8 +26,6 @@ class Post extends React.Component {
 
     // this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    // this.toggleSortDate = this.toggleSortDate.bind(this);
-    // this.handleAlphaSort = this.handleAlphaSort.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     // this.handleSearchInput = this.handleSearchInput.bind(this);
@@ -58,44 +51,12 @@ class Post extends React.Component {
   //     }
   // }
 
-  ////////// MAP PROPS //////////
-  // static defaultProps = {
-  //     center: {
-  //       lat: 59.95,
-  //       lng: 30.33
-  //     },
-  //     zoom: 11
-  // };    
-  //////////////////////////////
-
   // componentWillMount() {
   componentDidMount() {
     // console.log(this.postFormStart.current);
     // console.log("post " + this.props.post);
     // console.log("post " + this.props.post.length);
     this.props.fetchPosts();
-
-    // if ("geolocation" in navigator) {
-    //     console.log("Available");
-    // } else {
-    //     console.log("Not Available");
-    // }
-
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //     console.log("Latitude is :", position.coords.latitude);
-    //     console.log("Longitude is :", position.coords.longitude);
-    // });
-
-    ///////////////// GEOLOCATION///////////////////////////////////////////
-    // navigator.geolocation.getCurrentPosition(
-    //     function (position) {
-    //         console.log(position)
-    //     },
-    //     function (error) {
-    //             console.error("Error Code = " + error.code + " - " + error.message);
-    //     }
-    // );
-    ////////////////////////////////////////////////////////////////////////
 
     this.startAutocomplete = new google.maps.places.Autocomplete(this.postFormStart.current);
     this.destAutocomplete = new google.maps.places.Autocomplete(this.postFormDest.current);
