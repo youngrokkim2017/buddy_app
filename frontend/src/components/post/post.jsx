@@ -199,7 +199,7 @@ class Post extends React.Component {
         //     })
         // } 
 
-        this.props.getSearchedBusinesses(this.state.search);
+        this.props.getSearchedPosts(this.state.search);
     }
 
   ////////////////////////////////////////   SEARCH BAR /////////////////////////////////////////////////
@@ -246,7 +246,7 @@ class Post extends React.Component {
                         onChange={this.handleChange('search')}
                         placeholder="Search for Destination"
                         value={this.state.search} 
-                        // onInput={this.handleSearchInputs}
+                        onInput={this.handleSearchInputs}
                       />
                     </label>
                     <button onClick={this.handleSearchSubmit}>
