@@ -28,7 +28,8 @@ class Post extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    // this.handleSearchInput = this.handleSearchInput.bind(this);
+    this.handleSearchInputs = this.handleSearchInputs.bind(this);
+
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
 
     this.postFormStart = React.createRef();
@@ -185,21 +186,21 @@ class Post extends React.Component {
         }
     }
 
-    // handleSearchInputs() {
-    //     let searchInputs = document.getElementsByClassName('search-results-post');
-    //     searchInputs = searchInputs[0]
-    //     let searchResults = document.getElementsByClassName('search-items');
-    //     searchResults = Array.from(searchResults)
+    handleSearchInputs() {
+        let searchInputs = document.getElementsByClassName('search-results-post');
+        searchInputs = searchInputs[0]
+        let searchResults = document.getElementsByClassName('search-items');
+        searchResults = Array.from(searchResults)
 
-    //     if (searchInputs !== null || searchInputs !== undefined) {
-    //         searchInputs.classList.remove('hide')
-    //         searchResults.forEach((result) => {
-    //             result.classList.remove('hide')
-    //         })
-    //     } 
+        // if (searchInputs !== null || searchInputs !== undefined) {
+        //     searchInputs.classList.remove('hide')
+        //     searchResults.forEach((result) => {
+        //         result.classList.remove('hide')
+        //     })
+        // } 
 
-    //     this.props.getSearchedBusinesses(this.state.search);
-    // }
+        this.props.getSearchedBusinesses(this.state.search);
+    }
 
   ////////////////////////////////////////   SEARCH BAR /////////////////////////////////////////////////
 
