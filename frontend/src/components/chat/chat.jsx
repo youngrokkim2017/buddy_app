@@ -27,6 +27,22 @@ class Chat extends React.Component {
                     ))
                 })
             })
+
+        let msgCallBack = (message) => {
+            this.setState({
+                chat: this.state.chat.concat([
+                    <div>
+                        {/* user image */}
+                        <p>{message.user}</p>
+                        <p>{message.content}</p>
+                    </div>
+                ])
+            })
+        }
+
+        let messageListener = { action: 'sendMessage', callback: msgCallBack }
+
+        this.props.receiveListener(messageListener);
     }
 
     componentWillUnmount() {
