@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
         chats: state.entities.chats,
         users: Object.values(state.entities.users),
         // need sockets
-        socket: state.entities.chats,
+        socket: state.socket,
     }
 };
 
