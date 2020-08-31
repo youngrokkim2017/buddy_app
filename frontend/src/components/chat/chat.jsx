@@ -84,7 +84,8 @@ class Chat extends React.Component {
         return (
             <div className="chat-container">
                 <div className="chat-header">
-                    {title}
+                    {/* {title} */}
+                    <p>{title}</p>
                 </div>
                 <div className="chat-output">
                     {this.state.chat}
