@@ -187,10 +187,10 @@ class Post extends React.Component {
     }
 
     handleSearchInputs() {
-        let searchInputs = document.getElementsByClassName('search-results-post');
-        searchInputs = searchInputs[0]
-        let searchResults = document.getElementsByClassName('search-items');
-        searchResults = Array.from(searchResults)
+        // let searchInputs = document.getElementsByClassName('search-results-post');
+        // searchInputs = searchInputs[0]
+        // let searchResults = document.getElementsByClassName('search-items');
+        // searchResults = Array.from(searchResults)
 
         // if (searchInputs !== null || searchInputs !== undefined) {
         //     searchInputs.classList.remove('hide')

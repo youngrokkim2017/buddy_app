@@ -57,6 +57,8 @@ class Chat extends React.Component {
     }
 
     render() {
+        console.log(this.props);
+
         let title = "";
 
         if (this.props.users.length === 2) {

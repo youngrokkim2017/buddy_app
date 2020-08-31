@@ -5,5 +5,6 @@ export const getChats = (postId) => {
 };
 
 export const getMembers = (postId) => {
+    // debugger
     return axios.get(`/api/posts/${postId}/chat/users`);
 }
