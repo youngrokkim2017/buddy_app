@@ -10,6 +10,7 @@ class Chat extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleBack = this.handleBack.bind(this);
     }
 
     componentDidMount() {
@@ -51,6 +52,12 @@ class Chat extends React.Component {
         this.props.receiveExitRoom(this.props.match.params.postId);
     }
 
+    handleBack(e) {
+        e.preventDefault();
+
+        this.props.history.goBack();
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
@@ -84,8 +91,11 @@ class Chat extends React.Component {
         return (
             <div className="chat-container">
                 <div className="chat-header">
-                    {/* {title} */}
-                    <p>{title}</p>
+                    {/* <p>{title}</p> */}
+                    <div>{title}</div>
+                    <div>
+                        <button onClick={this.handleBack}>CLOSE</button>
+                    </div>
                 </div>
                 <div className="chat-output">
                     {this.state.chat}
