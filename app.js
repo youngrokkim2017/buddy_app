@@ -49,6 +49,12 @@ io
             return socket.emit('success', 'You have successfully exited ' + room)
         })
 
+        socket.on('sendLocation', (location) => {
+            io
+                .in(`${location.room}`)
+                .emit('sendLocation', location)
+        })
+
         socket.on('sendMessage', (messageInfo) => {
             io  
                 .in(`${messageInfo.room}`)
