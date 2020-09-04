@@ -113,6 +113,8 @@ app.get('/sign-s3', (req, res) => {
 // set up app to test using postman
 const bodyParser = require('body-parser'); // tells our app what type of requests it should respond to 
 const passport = require('passport');
+
+// AWS S3 bucket
 const { S3 } = require('aws-sdk');
 
 // have mongoose connect to the URI

@@ -177,14 +177,27 @@ router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (r
 ////////////////////////// CHAT //////////////////////////
 
 
-// // GETS users for the chat
-// router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
-//     let post = [];
+// GETS users for the chat
+router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // let post = [];
+    let request = [];
 
-//     post.findById(req.params.postId)
-//         .then(post => {
-//             // User.findById()
-//         })
-// });
+    // Post.findById(req.params.postId).then((post) => {
+    Request.findById(req.params.postId).then((request) => {
+        // User.findById(post.user).then((userOne) => {
+        User.findById(request.requester).then((userOne) => {
+            // post.push(userOne);
+            request.push(userOne);
+            
+            Post.findById(request.post).then((post) => {
+                User.findById(post.user).then((userTwo) => {
+                    response.push(userTwo);
+
+                    res.json(response);
+                })
+            })
+        })
+    })
+});
 
 module.exports = router;
