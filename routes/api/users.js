@@ -210,7 +210,8 @@ router.get('/:id',
 router.get('/requests/:requestId', 
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        User.findOneAndUpdate({ _id: req.params.requestId })
+        // User.findOneAndUpdate({ _id: req.params.requestId })
+        User.findOne({ _id: req.params.requestId })
             .then(user => {
                 res.json(user)
             })
