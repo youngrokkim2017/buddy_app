@@ -101,13 +101,13 @@ class Chat extends React.Component {
                     {this.state.chat}
                 </div>
 
-                <form className="chat-box">
+                <form className="chat-box-container">
                     <input 
                         type="text"
                         id="chat-input"
                         placeholder="Message"
                     />
-                    <button className="small main button" onClick={this.handleSubmit}>
+                    <button className="chat-send-button" onClick={this.handleSubmit}>
                         Send
                     </button>
                 </form>
