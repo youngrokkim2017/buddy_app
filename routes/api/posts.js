@@ -6,6 +6,7 @@ const validateChatInput = require('../../validation/chat');
 const Post = require('../../models/Post');
 const Chat = require('../../models/Chat');
 const User = require('../../models/User');
+const Request = require('../../models/Request');
 
 router.get('/test', (req, res) => {
     res.json({ msg: 'This is the post route' })
