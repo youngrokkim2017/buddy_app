@@ -3,7 +3,7 @@ const io = require('socket.io-client');
 let socket = process.env.NODE_ENV === 'production' ? io() : io('http://localhost:5000');
 socket.on('success', (res) => console.log(res));
 
-export const socketReducer = (state ={}, action) => {
+export const socketReducer = (state = {}, action) => {
     Object.freeze(state);
 
     let newState = Object.assign({}, state);
@@ -24,4 +24,4 @@ export const socketReducer = (state ={}, action) => {
         default:
             return state;
     }
-}
+};

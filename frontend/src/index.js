@@ -46,6 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // If this is a first time user, start with an empty store
         store = configureStore({});
     }
+
+    // TESTING CODES
+    if (process.env.NODE_ENV !== 'production') {
+        window.getState = store.getState;
+        window.dispatch = store.dispatch;
+    }
+
     // Render root component and pass in the store as a prop
     const root = document.getElementById('root');
 
