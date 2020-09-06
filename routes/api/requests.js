@@ -171,7 +171,8 @@ router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false 
     let response = [];
 
     // Post.findById(req.params.postId).then((post) => {
-    Request.findById(req.params.postId).then((request) => {
+    // Request.findById(req.params.postId).then((request) => {
+    Request.findById(req.params.requestId).then((request) => {
         // User.findById(post.user).then((userOne) => {
         User.findById(request.requester).then((userOne) => {
             // post.push(userOne);
