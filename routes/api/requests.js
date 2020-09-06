@@ -147,6 +147,7 @@ router.post('/:postId/chat', passport.authenticate('jwt', { session: false }), (
             name: req.user.name,
         },
         post: req.params.postId,
+        request: req.params.requestId,
         message: req.body.message,
     });
 
@@ -158,7 +159,8 @@ router.post('/:postId/chat', passport.authenticate('jwt', { session: false }), (
 // GET chats
 router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
     Chat
-        .find({ post: req.params.postId })
+        // .find({ post: req.params.postId })
+        .find({ post: req.params.requestId })
         .then(chats => res.json(chats))
 });
 
