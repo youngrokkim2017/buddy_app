@@ -20,7 +20,7 @@ class RequestIndex extends React.Component {
                     key={idx}
                     idx={idx}
                     requestId={request._id}
-                    status={request.status}
+                    // status={request.status}
                     postId={request.post}
                 />
             )

@@ -10,11 +10,11 @@ const RequestSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users"
     },
-    status: {
-        type: String,
-        required: true,
-        default: "pending"
-    },
+    // status: {
+    //     type: String,
+    //     required: true,
+    //     default: "pending"
+    // },
     date: {
         type: Date,
         default: Date.now

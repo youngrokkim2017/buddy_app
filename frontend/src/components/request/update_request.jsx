@@ -13,7 +13,7 @@ class UpdateRequest extends React.Component {
 
         let accept = {
             id: this.props.request._id,
-            status: "accepted",
+            // status: "accepted",
         }
     }
 
