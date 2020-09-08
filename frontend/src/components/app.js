@@ -31,8 +31,9 @@ const App = () => (
       <ProtectedRoute exact path="/new_post" component={PostComposeContainer} />
       <ProtectedRoute exact path="/post/:id/edit" component={PostEditContainer} />
 
-      <ProtectedRoute exact path="/post/:postId/chat" component={ChatContainer} />
-      {/* <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} /> */}
+      {/* <ProtectedRoute exact path="/post/:postId/chat" component={ChatContainer} /> */}
+      <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} />
+      {/* <Route path="/chatroom/:id" component={} /> */}
 
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
     </Switch>
