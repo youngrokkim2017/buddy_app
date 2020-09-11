@@ -25,53 +25,53 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-// // SOCKET IO //                                              // FIRST ATTEMPT
-// const server = require('http').Server(app);
-// const io = require('socket.io')(server);
-// // const io = require('socket.io')(server, {
-// //     pingTimeout: 60000
-// // });
+// SOCKET IO //                                              // FIRST ATTEMPT
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+// const io = require('socket.io')(server, {
+//     pingTimeout: 60000
+// });
 
-// // WEBSOCKETS // 
-// io
-//     .on('connection', (socket) => {
-//         socket.emit('welcome', "welcome to post namespace")
+// WEBSOCKETS // 
+io
+    .on('connection', (socket) => {
+        socket.emit('welcome', "welcome to post namespace")
 
-//         socket.on('joinroom', (room) => {
-//             socket.join(room);
+        socket.on('joinroom', (room) => {
+            socket.join(room);
 
-//             return socket.emit('success', 'You have successfully joined ' + room)
-//         })
+            return socket.emit('success', 'You have successfully joined ' + room)
+        })
 
-//         socket.on('exitroom', (room) => {
-//             socket.leave(room);
+        socket.on('exitroom', (room) => {
+            socket.leave(room);
 
-//             return socket.emit('success', 'You have successfully exited ' + room)
-//         })
+            return socket.emit('success', 'You have successfully exited ' + room)
+        })
 
-//         socket.on('sendLocation', (location) => {
-//             io
-//                 .in(`${location.room}`)
-//                 .emit('sendLocation', location)
-//         })
+        socket.on('sendLocation', (location) => {
+            io
+                .in(`${location.room}`)
+                .emit('sendLocation', location)
+        })
 
-//         socket.on('sendMessage', (messageInfo) => {
-//             io  
-//                 .in(`${messageInfo.room}`)
-//                 .emit('sendMessage', messageInfo);
+        socket.on('sendMessage', (messageInfo) => {
+            io  
+                .in(`${messageInfo.room}`)
+                .emit('sendMessage', messageInfo);
 
-//             const newChat = new Chat({
-//                 user: {
-//                     id: messageInfo.user.id,
-//                     name: messageInfo.user.name,
-//                 },
-//                 post: messageInfo.room,
-//                 content: messageInfo.content,
-//             })
+            const newChat = new Chat({
+                user: {
+                    id: messageInfo.user.id,
+                    name: messageInfo.user.name,
+                },
+                post: messageInfo.room,
+                content: messageInfo.content,
+            })
 
-//             newChat.save();
-//         })
-//     })
+            newChat.save();
+        })
+    })
 /////////////
 
 // // SOCKET IO CONNECTION
@@ -96,66 +96,65 @@ if (process.env.NODE_ENV === 'production') {
 // //
 
 ////////////////////////////////////////////////////////////////////////////////
-// MESSAGE SOCKET
-const http = require('http').Server(app);
-const path = require('path');
-const io = require('socket.io')(http);
+// // MESSAGE SOCKET
+// const http = require('http').Server(app);
+// const path = require('path');
+// const io = require('socket.io')(http);
 
-const uri = process.env.MONGODB_URI;
-// const port = process.env.PORT || 5000;
+// // const uri = process.env.MONGODB_URI;
+// const uri = require("./config/keys").mongoURI;
+// // const port = process.env.PORT || 5000;
 
-// const Message = require("./Message");
-const Message = require("./models/Message");
-// const mongoose = require('mongoose');
+// // const Message = require("./Message");
+// const Message = require("./models/Message");
+// // const mongoose = require('mongoose');
 
-mongoose.connect(uri, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-});
+// mongoose.connect(uri, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+// });
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+// app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
-io.on('connection', (socket) => {
+// io.on('connection', (socket) => {
 
-    // Get the last 10 messages from the database.
-    Message.find().sort({ createdAt: -1 }).limit(10).exec((err, messages) => {
-        if (err) return console.error(err);
+//     // Get the last 10 messages from the database.
+//     Message.find().sort({ createdAt: -1 }).limit(10).exec((err, messages) => {
+//         if (err) return console.error(err);
 
-        // Send the last messages to the user.
-        socket.emit('init', messages);
-    });
+//         // Send the last messages to the user.
+//         socket.emit('init', messages);
+//     });
 
-    // Listen to connected users for a new message.
-    socket.on('message', (msg) => {
-        // Create a message with the content and the name of the user.
-        const message = new Message({
-            content: msg.content,
-            name: msg.name,
-        });
+//     // Listen to connected users for a new message.
+//     socket.on('message', (msg) => {
+//         // Create a message with the content and the name of the user.
+//         const message = new Message({
+//             content: msg.content,
+//             name: msg.name,
+//         });
 
-        // Save the message to the database.
-        message.save((err) => {
-            if (err) return console.error(err);
-        });
+//         // Save the message to the database.
+//         message.save((err) => {
+//             if (err) return console.error(err);
+//         });
 
-        // Notify all other users about a new message.
-        socket.broadcast.emit('push', msg);
-    });
-});
+//         // Notify all other users about a new message.
+//         socket.broadcast.emit('push', msg);
+//     });
+// });
 
-http.listen(port, () => {
-    console.log('listening on *:' + port);
-});
+// // const port = process.env.PORT || 5000;
+
+// http.listen(port, () => {
+//     console.log('listening on *:' + port);
+// });
 ////////////////////////////////////////////////////////////////////////////////
 
 // AWS //
 const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-west-1';
-
-// const port = process.env.PORT || 5000;
-
-//
 
 app.get('/sign-s3', (req, res) => {
     const s3 = new aws.S3();
@@ -239,8 +238,8 @@ app.use('/api/subscribe', subscribers);
 const port = process.env.PORT || 5000;
 
 // tell the app to listen
-const server = app.listen(port, () => {
-// server.listen(port, () => {
+// const server = app.listen(port, () => {
+server.listen(port, () => {
 // app.listen(port, () => {
     console.log(`listening on port ${port}`)
 });

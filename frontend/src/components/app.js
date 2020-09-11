@@ -13,8 +13,8 @@ import PostComposeContainer from './post/post_form_container';
 import PostShowContainer from './post/post_show_container';
 import PostEditContainer from './post/post_edit_form_container';
 
-// import ChatContainer from './chat/chat_container';
-import MessageContainer from './message/message';
+import ChatContainer from './chat/chat_container';
+// import MessageContainer from './message/message';
 
 import ProfileContainer from './profile/profile_container';
 
@@ -33,8 +33,8 @@ const App = () => (
       <ProtectedRoute exact path="/post/:id/edit" component={PostEditContainer} />
 
       {/* <ProtectedRoute exact path="/post/:postId/chat" component={ChatContainer} /> */}
-      {/* <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} /> */}
-      <ProtectedRoute exact path="/requests/:requestId/chat" component={MessageContainer} />
+      <ProtectedRoute exact path="/requests/:requestId/chat" component={ChatContainer} />
+      {/* <ProtectedRoute exact path="/requests/:requestId/chat" component={MessageContainer} /> */}
       {/* <Route path="/chatroom/:id" component={} /> */}
 
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
