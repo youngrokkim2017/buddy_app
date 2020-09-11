@@ -2,12 +2,12 @@ import React from "react";
 import config from "../../config";
 import io from "socket.io-client";
 
-// import Paper from "@material-ui/core/Paper";
-// import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 
-// import MessageInputs from "./message_inputs";
+import MessageInputs from "./message_inputs";
 
-class App extends React.Component {
+class Message extends React.Component {
   constructor(props) {
     super(props);
 
@@ -95,7 +95,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <Paper id="chat" elevation={3}>
+        <Paper id="chat" elevation={3}>
           {this.state.chat.map((el, index) => {
             return (
               <div key={index}>
@@ -108,7 +108,7 @@ class App extends React.Component {
               </div>
             );
           })}
-        </Paper> */}
+        </Paper>
         <MessageInputs
           content={this.state.content}
           handleContent={this.handleContent.bind(this)}
@@ -121,4 +121,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Message;

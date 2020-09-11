@@ -25,53 +25,53 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-// SOCKET IO //
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-// const io = require('socket.io')(server, {
-//     pingTimeout: 60000
-// });
+// // SOCKET IO //                                              // FIRST ATTEMPT
+// const server = require('http').Server(app);
+// const io = require('socket.io')(server);
+// // const io = require('socket.io')(server, {
+// //     pingTimeout: 60000
+// // });
 
-// WEBSOCKETS // 
-io
-    .on('connection', (socket) => {
-        socket.emit('welcome', "welcome to post namespace")
+// // WEBSOCKETS // 
+// io
+//     .on('connection', (socket) => {
+//         socket.emit('welcome', "welcome to post namespace")
 
-        socket.on('joinroom', (room) => {
-            socket.join(room);
+//         socket.on('joinroom', (room) => {
+//             socket.join(room);
 
-            return socket.emit('success', 'You have successfully joined ' + room)
-        })
+//             return socket.emit('success', 'You have successfully joined ' + room)
+//         })
 
-        socket.on('exitroom', (room) => {
-            socket.leave(room);
+//         socket.on('exitroom', (room) => {
+//             socket.leave(room);
 
-            return socket.emit('success', 'You have successfully exited ' + room)
-        })
+//             return socket.emit('success', 'You have successfully exited ' + room)
+//         })
 
-        socket.on('sendLocation', (location) => {
-            io
-                .in(`${location.room}`)
-                .emit('sendLocation', location)
-        })
+//         socket.on('sendLocation', (location) => {
+//             io
+//                 .in(`${location.room}`)
+//                 .emit('sendLocation', location)
+//         })
 
-        socket.on('sendMessage', (messageInfo) => {
-            io  
-                .in(`${messageInfo.room}`)
-                .emit('sendMessage', messageInfo);
+//         socket.on('sendMessage', (messageInfo) => {
+//             io  
+//                 .in(`${messageInfo.room}`)
+//                 .emit('sendMessage', messageInfo);
 
-            const newChat = new Chat({
-                user: {
-                    id: messageInfo.user.id,
-                    name: messageInfo.user.name,
-                },
-                post: messageInfo.room,
-                content: messageInfo.content,
-            })
+//             const newChat = new Chat({
+//                 user: {
+//                     id: messageInfo.user.id,
+//                     name: messageInfo.user.name,
+//                 },
+//                 post: messageInfo.room,
+//                 content: messageInfo.content,
+//             })
 
-            newChat.save();
-        })
-    })
+//             newChat.save();
+//         })
+//     })
 /////////////
 
 // // SOCKET IO CONNECTION
@@ -102,10 +102,11 @@ const path = require('path');
 const io = require('socket.io')(http);
 
 const uri = process.env.MONGODB_URI;
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 
-const Message = require('./Message');
-const mongoose = require('mongoose');
+// const Message = require("./Message");
+const Message = require("./models/Message");
+// const mongoose = require('mongoose');
 
 mongoose.connect(uri, {
     useUnifiedTopology: true,
