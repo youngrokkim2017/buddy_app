@@ -168,7 +168,8 @@ router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (r
 
 
 // GETS users for the chat
-router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/:requestId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+// router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
     // let post = [];
     let response = [];
 
