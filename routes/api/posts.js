@@ -183,8 +183,8 @@ router.patch('/:id',
 //     // let post = [];
 //     let request = [];
 
-//     // Post.findById(req.params.postId).then((post) => {
-//     Request.findById(req.params.postId).then((request) => {
+//     Post.findById(req.params.postId).then((post) => {
+//     // Request.findById(req.params.requestId).then((request) => {
 //         // User.findById(post.user).then((userOne) => {
 //         User.findById(request.requester).then((userOne) => {
 //             // post.push(userOne);
