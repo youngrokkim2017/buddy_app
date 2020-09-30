@@ -1,18 +1,16 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostIndexItem from './post_index_item';
-import Search from '../filter/search';
+// import Search from '../search/search';
+
+// import SearchItems from '../search/search_items';
+
 /* global google */
 // import PostForm from './post_form';
 
 class Post extends React.Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //     post: [],
-    //     isNewestFirst: true,
-    // };
 
     let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
 
@@ -28,11 +26,11 @@ class Post extends React.Component {
 
     // this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    // this.toggleSortDate = this.toggleSortDate.bind(this);
-    // this.handleAlphaSort = this.handleAlphaSort.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.handleSearchInput = this.handleSearchInput.bind(this);
+    this.handleSearchInputs = this.handleSearchInputs.bind(this);
+
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
 
     this.postFormStart = React.createRef();
     this.postFormDest = React.createRef();
@@ -54,44 +52,12 @@ class Post extends React.Component {
   //     }
   // }
 
-  ////////// MAP PROPS //////////
-  // static defaultProps = {
-  //     center: {
-  //       lat: 59.95,
-  //       lng: 30.33
-  //     },
-  //     zoom: 11
-  // };    
-  //////////////////////////////
-
   // componentWillMount() {
   componentDidMount() {
     // console.log(this.postFormStart.current);
     // console.log("post " + this.props.post);
     // console.log("post " + this.props.post.length);
     this.props.fetchPosts();
-
-    // if ("geolocation" in navigator) {
-    //     console.log("Available");
-    // } else {
-    //     console.log("Not Available");
-    // }
-
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //     console.log("Latitude is :", position.coords.latitude);
-    //     console.log("Longitude is :", position.coords.longitude);
-    // });
-
-    ///////////////// GEOLOCATION///////////////////////////////////////////
-    // navigator.geolocation.getCurrentPosition(
-    //     function (position) {
-    //         console.log(position)
-    //     },
-    //     function (error) {
-    //             console.error("Error Code = " + error.code + " - " + error.message);
-    //     }
-    // );
-    ////////////////////////////////////////////////////////////////////////
 
     this.startAutocomplete = new google.maps.places.Autocomplete(this.postFormStart.current);
     this.destAutocomplete = new google.maps.places.Autocomplete(this.postFormDest.current);
@@ -182,12 +148,61 @@ class Post extends React.Component {
     return 
   }
 
-  handleSearchInput(e) {
-    this.setState({
-      // search: e.currentTarget.value,
-      search: e.target.value,
-    })
-  }
+  // handleSearchInput(e) {
+  //   this.setState({
+  //     // search: e.currentTarget.value,
+  //     search: e.target.value,
+  //   })
+  // }
+
+  ////////////////////////////////////////   SEARCH BAR /////////////////////////////////////////////////
+
+  handleSearchSubmit(e) {
+        e.preventDefault();
+
+        if (this.state.search.length >= 1) {
+            // this.props.getSearchedBusinesses(this.state.find)
+            this.props.getSearchedPosts(this.state.search)
+                .then(() => {
+                    // this.props.getSearchedBusinesses(this.state.near)
+                    //     .then(() => {
+                            // this.props.history.push(`/search=${this.state.find}+${this.state.near}`)
+                            // this.props.history.push(`/search=${this.state.find}`)
+                  // this.props.history.push('/businesses')
+                  this.props.history.push('/post')
+
+                        // })
+                })
+        } else {
+            this.props.history.push('/post')
+        }
+    }
+
+    handleChange(type) {
+        return (e) => {
+            this.setState({
+                [type]: e.target.value
+            })
+        }
+    }
+
+    handleSearchInputs() {
+        // let searchInputs = document.getElementsByClassName('search-results-post');
+        // searchInputs = searchInputs[0]
+        // let searchResults = document.getElementsByClassName('search-items');
+        // searchResults = Array.from(searchResults)
+
+        // if (searchInputs !== null || searchInputs !== undefined) {
+        //     searchInputs.classList.remove('hide')
+        //     searchResults.forEach((result) => {
+        //         result.classList.remove('hide')
+        //     })
+        // } 
+
+        this.props.getSearchedPosts(this.state.search);
+    }
+
+  ////////////////////////////////////////   SEARCH BAR /////////////////////////////////////////////////
 
   render() {
     console.log(this.props);
@@ -199,6 +214,10 @@ class Post extends React.Component {
     //   return post.destination.toLowerCase().includes(this.state.search.toLowerCase())
     // })
 
+    // let searchResults = this.props.searchResults.map((items) => {
+    //   return <SearchItems key={items.id} items={items} />
+    // });
+
     return (
       <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
         <div className="flex-grow overflow-y-scroll">
@@ -208,14 +227,38 @@ class Post extends React.Component {
                 <h1 className="text-2xl font-medium">Home</h1>
               </div>
               <div className="relative text-gray-600">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 0">
+                {/* <div className="absolute inset-y-0 left-0 flex items-center pl-3 0">
                   <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" /></svg>
+                </div> */}
+                <div className="search-bar">
+                  {/* <input className="appearance-none bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400" type="search" placeholder="Search" />
+                  <Search 
+                    handleSearchInput={this.handleSearchInput}
+                  /> */}
+
+                  {/* SEARCH BAR */}
+
+                  <form className="nav-search-bar">
+                    <label className="nav-search">
+                      <input
+                        className="nav-find-container"
+                        type="text"
+                        onChange={this.handleChange('search')}
+                        placeholder="Search for Destination"
+                        value={this.state.search} 
+                        onInput={this.handleSearchInputs}
+                      />
+                    </label>
+                    <button onClick={this.handleSearchSubmit}>
+                      {/* <div className="absolute inset-y-0 left-0 flex items-center pl-3 0"> */}
+                        <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" /></svg>
+                      {/* </div> */}
+                    </button>
+                  </form>
+
+                  {/* SEARCH BAR */}
+
                 </div>
-                {/* <input className="appearance-none bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 pl-10 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400" type="search" placeholder="Search" /> */}
-                <Search 
-                  // handleInput={this.handleInput}
-                  handleSearchInput={this.handleSearchInput}
-                />
               </div>
             </div>
 
@@ -287,7 +330,6 @@ class Post extends React.Component {
                 </form>
               </div>
             </div>
-
 
 {/* can logic for this.props.post.length go here? I want to load the create an activity form at the top*/}
 

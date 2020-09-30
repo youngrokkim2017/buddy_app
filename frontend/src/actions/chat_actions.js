@@ -8,12 +8,16 @@ export const receiveChats = chats => ({
     chats
 });
 
-export const fetchChats = (postId) => dispatch => (
-    ChatApiUtil.getChats(postId)
+// export const fetchChats = (postId) => dispatch => (
+export const fetchChats = (requestId) => dispatch => (
+    // ChatApiUtil.getChats(postId)
+    ChatApiUtil.getChats(requestId)
         .then(response => dispatch(receiveChats(response.data)))
 )
 
-export const fetchChatMembers = (postId) => dispatch => (
-    ChatApiUtil.getMembers(postId)
+// export const fetchChatMembers = (postId) => dispatch => (
+export const fetchChatMembers = (requestId) => dispatch => (
+    // ChatApiUtil.getMembers(postId)
+    ChatApiUtil.getMembers(requestId)
         .then(response => dispatch(receiveUsers(response.data)))
 )

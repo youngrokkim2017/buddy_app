@@ -10,6 +10,7 @@ class Chat extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleBack = this.handleBack.bind(this);
     }
 
     componentDidMount() {
@@ -27,12 +28,34 @@ class Chat extends React.Component {
                     ))
                 })
             })
+
+        let msgCallBack = (message) => {
+            this.setState({
+                chat: this.state.chat.concat([
+                    <div>
+                        {/* user image */}
+                        <p>{message.user}</p>
+                        <p>{message.content}</p>
+                    </div>
+                ])
+            })
+        }
+
+        let messageListener = { action: 'sendMessage', callback: msgCallBack }
+
+        this.props.receiveListener(messageListener);
     }
 
     componentWillUnmount() {
         console.log('chat has unmounted');
 
         this.props.receiveExitRoom(this.props.match.params.postId);
+    }
+
+    handleBack(e) {
+        e.preventDefault();
+
+        this.props.history.goBack();
     }
 
     handleSubmit(e) {
@@ -57,6 +80,8 @@ class Chat extends React.Component {
     }
 
     render() {
+        console.log(this.props);
+
         let title = "";
 
         if (this.props.users.length === 2) {
@@ -66,19 +91,23 @@ class Chat extends React.Component {
         return (
             <div className="chat-container">
                 <div className="chat-header">
-                    {title}
+                    {/* <p>{title}</p> */}
+                    <div>{title}</div>
+                    <div>
+                        <button onClick={this.handleBack}>CLOSE</button>
+                    </div>
                 </div>
                 <div className="chat-output">
                     {this.state.chat}
                 </div>
 
-                <form className="chat-box">
+                <form className="chat-box-container">
                     <input 
                         type="text"
                         id="chat-input"
                         placeholder="Message"
                     />
-                    <button className="small main button" onClick={this.handleSubmit}>
+                    <button className="chat-send-button" onClick={this.handleSubmit}>
                         Send
                     </button>
                 </form>

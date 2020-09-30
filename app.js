@@ -25,12 +25,12 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-// SOCKET IO //
+// SOCKET IO //                                              // FIRST ATTEMPT
 const server = require('http').Server(app);
-// const io = require('socket.io')(server);
-const io = require('socket.io')(server, {
-    pingTimeout: 60000
-});
+const io = require('socket.io')(server);
+// const io = require('socket.io')(server, {
+//     pingTimeout: 60000
+// });
 
 // WEBSOCKETS // 
 io
@@ -47,6 +47,12 @@ io
             socket.leave(room);
 
             return socket.emit('success', 'You have successfully exited ' + room)
+        })
+
+        socket.on('sendLocation', (location) => {
+            io
+                .in(`${location.room}`)
+                .emit('sendLocation', location)
         })
 
         socket.on('sendMessage', (messageInfo) => {
@@ -68,14 +74,87 @@ io
     })
 /////////////
 
+// // SOCKET IO CONNECTION
+// const io = require("socket.io")(server);
+// const jwt = require("jwt-then");
+
+// // MIDDLEWARE AUTHENTICATION
+// io.use(async (socket, next) => {
+//     try {
+//         const token = socket.handshake.query.token;
+//         const payload = await jwt.verify(token, process.env.SECRET);
+//         socket.userId = payload.id;
+//         next();
+//     } catch (err) {}
+// })
+
+// io.on('connection', (socket) => {
+//     console.log('Connected: ' + socket.userId);
+
+//     socket.on("Disconnected: " + socket.userId);
+// })
+// //
+
+////////////////////////////////////////////////////////////////////////////////
+// // MESSAGE SOCKET
+// const http = require('http').Server(app);
+// const path = require('path');
+// const io = require('socket.io')(http);
+
+// // const uri = process.env.MONGODB_URI;
+// const uri = require("./config/keys").mongoURI;
+// // const port = process.env.PORT || 5000;
+
+// // const Message = require("./Message");
+// const Message = require("./models/Message");
+// // const mongoose = require('mongoose');
+
+// mongoose.connect(uri, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+// });
+
+// app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+
+// io.on('connection', (socket) => {
+
+//     // Get the last 10 messages from the database.
+//     Message.find().sort({ createdAt: -1 }).limit(10).exec((err, messages) => {
+//         if (err) return console.error(err);
+
+//         // Send the last messages to the user.
+//         socket.emit('init', messages);
+//     });
+
+//     // Listen to connected users for a new message.
+//     socket.on('message', (msg) => {
+//         // Create a message with the content and the name of the user.
+//         const message = new Message({
+//             content: msg.content,
+//             name: msg.name,
+//         });
+
+//         // Save the message to the database.
+//         message.save((err) => {
+//             if (err) return console.error(err);
+//         });
+
+//         // Notify all other users about a new message.
+//         socket.broadcast.emit('push', msg);
+//     });
+// });
+
+// // const port = process.env.PORT || 5000;
+
+// http.listen(port, () => {
+//     console.log('listening on *:' + port);
+// });
+////////////////////////////////////////////////////////////////////////////////
+
 // AWS //
 const aws = require('aws-sdk');
 const S3_BUCKET = process.env.S3_BUCKET;
 aws.config.region = 'us-west-1';
-
-// const port = process.env.PORT || 5000;
-
-//
 
 app.get('/sign-s3', (req, res) => {
     const s3 = new aws.S3();
@@ -107,6 +186,8 @@ app.get('/sign-s3', (req, res) => {
 // set up app to test using postman
 const bodyParser = require('body-parser'); // tells our app what type of requests it should respond to 
 const passport = require('passport');
+
+// AWS S3 bucket
 const { S3 } = require('aws-sdk');
 
 // have mongoose connect to the URI
@@ -157,6 +238,7 @@ app.use('/api/subscribe', subscribers);
 const port = process.env.PORT || 5000;
 
 // tell the app to listen
+// const server = app.listen(port, () => {
 server.listen(port, () => {
 // app.listen(port, () => {
     console.log(`listening on port ${port}`)

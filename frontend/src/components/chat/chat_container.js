@@ -4,13 +4,16 @@ import { receiveListener, receiveEmit, receiveRoom, receiveExitRoom } from '../.
 import Chat from './chat';
 // import { fetchAUser } from '../../util/user_api_util';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    // let postId = ownProps.match.params.postId;
+
     return {
+        // post: state.entities.posts[postId],
         currentUser: state.session.user,
         chats: state.entities.chats,
         users: Object.values(state.entities.users),
         // need sockets
-        socket: state.entities.chats,
+        socket: state.socket,
     }
 };
 

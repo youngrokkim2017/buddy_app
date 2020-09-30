@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const validatePostInput = require("../../validation/post");
+// const validatePostInput = require("../../validation/post");
 const Post = require("../../models/Post");
 const User = require("../../models/User");
 const Request = require("../../models/Request");
+const Chat = require("../../models/Chat");
 const validateRequestStatus = require('../../validation/requests')
 
 // GET all requests associated with a Post
@@ -131,5 +132,64 @@ router.delete('/:id',
         )
     }
 )
+
+// FOR MAKING A CHAT
+router.post('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { errors, isValid } = validateChatInput(req.body);
+
+    if (!isValid) {
+        return res.status(400).json(errors);
+    };
+
+    const newChat = new Chat({
+        user: {
+            _id: req.user._id,
+            name: req.user.name,
+        },
+        post: req.params.postId,
+        request: req.params.requestId,
+        message: req.body.message,
+    });
+
+    newChat.save()
+        .then(chat => res.json(chat))
+        .catch(err => res.status(400).json(err))
+});
+
+// GET chats
+router.get('/:postId/chat', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Chat
+        // .find({ post: req.params.postId })
+        .find({ post: req.params.requestId })
+        .then(chats => res.json(chats))
+});
+
+////////////////////////// CHAT //////////////////////////
+
+
+// GETS users for the chat
+router.get('/:requestId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+// router.get('/:postId/chat/users', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // let post = [];
+    let response = [];
+
+    // Post.findById(req.params.postId).then((post) => {
+    // Request.findById(req.params.postId).then((request) => {
+    Request.findById(req.params.requestId).then((request) => {
+        // User.findById(post.user).then((userOne) => {
+        User.findById(request.requester).then((userOne) => {
+            // post.push(userOne);
+            response.push(userOne);
+
+            Post.findById(request.post).then((post) => {
+                User.findById(post.user).then((userTwo) => {
+                    response.push(userTwo);
+
+                    res.json(response);
+                })
+            })
+        })
+    })
+});
 
 module.exports = router;

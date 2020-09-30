@@ -3,7 +3,7 @@ import { RECEIVE_CHATS } from '../actions/chat_actions';
 const chatsReducer = (state = [], action) => {
     let newState = state.slice();
 
-    switch(action.type) {
+    switch (action.type) {
         case RECEIVE_CHATS:
             newState = action.chats;
             return newState;

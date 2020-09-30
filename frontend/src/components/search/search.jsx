@@ -1,6 +1,6 @@
 import React from 'react';
 // import axios from 'axios';
-import PostIndexItem from '../post/post_index_item';
+// import PostIndexItem from '../post/post_index_item';
 
 class Search extends React.Component {
     constructor(props) {
@@ -74,7 +74,7 @@ class Search extends React.Component {
     ///////////////////////////////////////////////////////////////////////////
 
     render() {
-        const { query } = this.state; // const query = this.state.query;
+        // const { query } = this.state; // const query = this.state.query;
 
         console.warn(this.state);
 
