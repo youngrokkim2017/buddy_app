@@ -1,4 +1,4 @@
-const express = require('express');
+    const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const validatePostInput = require('../../validation/post');
@@ -16,11 +16,27 @@ router.get('/test', (req, res) => {
 router.get('/', (req, res) => {
     // did not add passport.authenticate b/c doesn't matter which user is logged in
     // use mongoose to get the index
-    Post
+    // Post
+    //     .find()
+    //     .sort({ date: -1 }) // sort by date in reverse order
+    //     .then(p => res.json(p))
+    //     .catch(err => res.status(400).json(err));
+
+    if (req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Post
+        // .find({destination: regex})
+        .find({$or: [{start: regex,}, {destination: regex}]})
+        .sort({ date: -1 }) // sort by date in reverse order
+        .then(p => res.json(p))
+        .catch(err => res.status(400).json(err));
+    } else {
+        Post
         .find()
         .sort({ date: -1 }) // sort by date in reverse order
         .then(p => res.json(p))
         .catch(err => res.status(400).json(err));
+    }
 });
 
 // GET look up all the posts by a give user
@@ -200,5 +216,9 @@ router.patch('/:id',
 //         })
 //     })
 // });
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
