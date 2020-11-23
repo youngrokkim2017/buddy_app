@@ -238,7 +238,7 @@ class Post extends React.Component {
 
                   {/* SEARCH BAR */}
 
-                  <form className="nav-search-bar">
+                  {/* <form className="nav-search-bar">
                     <label className="nav-search">
                       <input
                         className="nav-find-container"
@@ -250,10 +250,24 @@ class Post extends React.Component {
                       />
                     </label>
                     <button onClick={this.handleSearchSubmit}>
-                      {/* <div className="absolute inset-y-0 left-0 flex items-center pl-3 0"> */}
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 0">
                         <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" /></svg>
-                      {/* </div> */}
+                      </div>
                     </button>
+                  </form> */}
+
+                  <form action="/post" method="GET">
+                    <div>
+                      <input 
+                        type="text" 
+                        name="search" 
+                        placeholder="Post search..."
+                      />
+                      <input 
+                        type="submit"
+                        value="Search"
+                      />
+                    </div>
                   </form>
 
                   {/* SEARCH BAR */}
