@@ -154,6 +154,41 @@ router.patch('/:id',
     }
 )
 
+// LIKE A POST 
+router.put('/like',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        Post.findByIdAndUpdate(req.body.postId, {
+            $push: { likes:req.user._id }
+        }, {
+            new: true,
+        }).exec((err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err })
+            } else {
+                res.json(result)
+            }
+        })
+})
+
+router.put('/unlike',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        Post.findByIdAndUpdate(req.body.postId, {
+            $pull: { likes:req.user._id }
+        }, {
+            new: true,
+        }).exec((err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err })
+            } else {
+                res.json(result)
+            }
+        })
+})
+
+//
+
 //  CHAT ROUTES //
 
 //              //
