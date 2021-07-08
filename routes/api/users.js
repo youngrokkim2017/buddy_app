@@ -233,4 +233,58 @@ router.get('/posts/:postId',
     }
 );
 
+// PUT request to follow
+router.put('follow',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        User.findByIdAndUpdate(req.body.followId, {
+            $push: { followers: req.user._id }
+        }, {
+            new: true
+        }, (err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err })
+            } 
+
+            User.findByIdAndUpdate(req.user._id, {
+                $push: { following: req.body.followId }
+            }, {
+                new: true
+            })
+            .then(result => {
+                res.json(result)
+            })
+            .catch(err => {
+                return res.status(422).json({ error: err })
+            })
+        })
+})
+
+// PUT request to unfollow
+router.put('unfollow',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+        User.findByIdAndUpdate(req.body.followId, {
+            $pull: { followers: req.user._id }
+        }, {
+            new: true
+        }, (err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err })
+            } 
+
+            User.findByIdAndUpdate(req.user._id, {
+                $pull: { following: req.body.followId }
+            }, {
+                new: true
+            })
+            .then(result => {
+                res.json(result)
+            })
+            .catch(err => {
+                return res.status(422).json({ error: err })
+            })
+        })
+})
+
 module.exports = router;
