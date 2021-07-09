@@ -28,6 +28,23 @@ class Profile extends React.Component {
         this.props.history.goBack();
     }
 
+    handleFollowUser() {
+        fetch('/follow', {
+            method: "put",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem('jwt')
+            },
+            body: JSOON.stringify({
+                followId: this.props.props.user
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+
     deleteButton() {
         if (this.props.post.user === this.props.currentUserId) {
             return (
