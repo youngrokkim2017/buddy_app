@@ -234,7 +234,7 @@ router.get('/posts/:postId',
 );
 
 // PUT request to follow
-router.put('follow',
+router.put('/follow',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         User.findByIdAndUpdate(req.body.followId, {
@@ -261,7 +261,7 @@ router.put('follow',
 })
 
 // PUT request to unfollow
-router.put('unfollow',
+router.put('/unfollow',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         User.findByIdAndUpdate(req.body.followId, {
