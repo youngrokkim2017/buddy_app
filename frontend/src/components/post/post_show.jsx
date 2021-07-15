@@ -25,6 +25,8 @@ class PostShow extends React.Component {
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
 
+        this.handleProfile = this.handleProfile.bind(this);
+
         // this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 
@@ -60,6 +62,14 @@ class PostShow extends React.Component {
         // this.props.history.goBack();
         this.props.history.push('/post');
 
+        window.location.reload(false);
+    }
+
+    handleProfile(e) {
+        e.preventDefault();
+
+        // this.props.history.push('/profile');
+        this.props.history.push(`/profile/${this.props.post.user}`);
         window.location.reload(false);
     }
 
@@ -299,7 +309,9 @@ class PostShow extends React.Component {
                                         </div>
                                         <div className="flex-1 md:flex-grow">
                                             <div className="flex flex-wrap">
-                                                <h1 className="mr-1 text-xl">{this.props.post.author}</h1>
+                                                {/* <h1 className="mr-1 text-xl">{this.props.post.author}</h1> */}
+                                                {/* <Link to={`/profile/${this.props.post.user}`}>{this.props.post.author}</Link> */}
+                                                <button onClick={this.handleProfile}>{this.props.post.author}</button>
                                                 {this.timeAgo(this.props.post.date, true)}
                                             </div>
                                             <div className="flex flex-wrap items-center text-2xl">

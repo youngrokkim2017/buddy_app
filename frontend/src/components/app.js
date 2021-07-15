@@ -37,7 +37,8 @@ const App = () => (
       {/* <ProtectedRoute exact path="/requests/:requestId/chat" component={MessageContainer} /> */}
       {/* <Route path="/chatroom/:id" component={} /> */}
 
-      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+      {/* <ProtectedRoute exact path="/profile" component={ProfileContainer} /> */}
+      <ProtectedRoute exact path="/profile/:id" component={ProfileContainer} />
     </Switch>
   </div>
 );

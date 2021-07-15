@@ -46,7 +46,8 @@ class NavBar extends React.Component {
     handleProfile(e) {
         e.preventDefault();
 
-        this.props.history.push('/profile');
+        // this.props.history.push('/profile');
+        this.props.history.push(`/profile/${this.props.currentUserId}`);
         window.location.reload(false);
     }
 
@@ -128,7 +129,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
+        console.log(this.props);
 
         if (this.props.location.pathname === "/" || this.props.location.pathname === "/login" || this.props.location.pathname === "/signup") {
             return (

@@ -19,7 +19,8 @@ class Profile extends React.Component {
 
     // componentWillMount() {
     componentDidMount() {
-        this.props.fetchUserPost(this.props.currentUser.id);
+        // this.props.fetchUserPost(this.props.currentUser.id);
+        this.props.fetchUserPost(this.props.match.params.id);
     }
 
     handleBackToPreviousPage(e) {
