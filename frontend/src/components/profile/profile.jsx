@@ -100,6 +100,9 @@ class Profile extends React.Component {
         if (this.props.post.length === 0) {
             return (
                 <div>
+                    <div>
+                        <button onClick={this.handleBackToPreviousPage}>Back</button>
+                    </div>
                     {this.props.currentUser.firstName} {this.props.currentUser.lastName} Has No Posts
                 </div>
             );
@@ -110,6 +113,7 @@ class Profile extends React.Component {
                         <div className="border-l border-r border-gray-300 h-screen">
                             <div className="flex border-gray-300 border-b p-6">
                                 <div className="flex-grow mr-4">
+                                    <button onClick={this.handleBackToPreviousPage}>Back</button>
                                     <h1 className="text-2xl font-medium">
                                         {/* <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2> */}
                                         {this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts
