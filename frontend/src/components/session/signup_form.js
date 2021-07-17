@@ -167,19 +167,25 @@ class SignupForm extends React.Component {
         // console.log('signup', this.props.location.state.email);
 
         return (
-            <div className="signup-form-container">
+            // <div className="signup-form-container">
+            <div className="w-full max-w-xs mx-auto bg-white rounded-lg">
                 <div>
                     {this.getLinkToHome()}
                 </div>
                 <br />
                 <form onSubmit={this.handleSubmit}>
-                    <div className="signup-form">
+                    {/* <div className="signup-form"> */}
+                    <div className="px-8 pt-6 pb-8 mb-4 mt-20">
                         {/* <br /> */}
+                        <label className="block text-sm font-medium mb-2">
+                            Email
+                        </label>
                         <input type="text"
                             autoComplete="username"
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder="Email"
+                            className="shadow-sm appearance-none font-light border rounded-lg w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <br />
                         {/* <input type="text"
@@ -189,41 +195,63 @@ class SignupForm extends React.Component {
                             placeholder="Handle"
                         />
                         <br /> */}
+                        <label className="block text-sm font-medium mb-2">
+                            First Name
+                        </label>
                         <input type="text"
                             autoComplete="username"
                             value={this.state.firstName}
                             onChange={this.update('firstName')}
                             placeholder="First Name"
+                            className="shadow-sm appearance-none font-light border rounded-lg w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <br />
+                        <label className="block text-sm font-medium mb-2">
+                            Last Name
+                        </label>
                         <input type="text"
                             autoComplete="username"
                             value={this.state.lastName}
                             onChange={this.update('lastName')}
                             placeholder="Last Name"
+                            className="shadow-sm appearance-none font-light border rounded-lg w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <br />
+                        <label className="block text-sm font-medium mb-2">
+                            Password
+                        </label>
                         <input type="password"
                             autoComplete="new-password"
                             value={this.state.password}
                             onChange={this.update('password')}
                             placeholder="Password"
+                            className="shadow-sm appearance-none font-light border rounded-lg w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <br />
+                        <label className="block text-sm font-medium mb-2">
+                            Confirm Password
+                        </label>
                         <input type="password"
                             autoComplete="new-password"
                             value={this.state.password2}
                             onChange={this.update('password2')}
                             placeholder="Confirm Password"
+                            className="shadow-sm appearance-none font-light border rounded-lg w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                         />
                         <br />
-                        <input type="submit" value="Sign Up" />
+                        <br />
+                        {/* <input type="submit" value="Sign Up" /> */}
+                        <div className="flex items-center justify-between">
+                            <input className="bg-cornflower hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" value="Sign Up" />
+                        </div>
                         {this.renderErrors()}
                     </div>
                 </form>
                 <div>
                     Already have an account?
-                    <Link to={'/login'}>Log in</Link>
+                    {/* <Link to={'/login'}>Log in</Link> */}
+                    <span>  </span>
+                    <Link to={'/login'} className="hover:text-blue-600">Log in</Link>
                 </div>
             </div>
         );
