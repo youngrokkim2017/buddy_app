@@ -96,6 +96,9 @@ class Profile extends React.Component {
 
     render() {
         console.log(this.props);
+        // console.log(this.props.post.map(p => p.author)[0]);
+
+        let author = this.props.post.map(p => p.author)[0];
 
         if (this.props.post.length === 0) {
             return (
@@ -103,7 +106,8 @@ class Profile extends React.Component {
                     <div>
                         <button onClick={this.handleBackToPreviousPage}>Back</button>
                     </div>
-                    {this.props.currentUser.firstName} {this.props.currentUser.lastName} Has No Posts
+                    {/* {this.props.currentUser.firstName} {this.props.currentUser.lastName} Has No Posts */}
+                    {author} Has No Posts
                 </div>
             );
         } else {
@@ -116,7 +120,8 @@ class Profile extends React.Component {
                                     <button onClick={this.handleBackToPreviousPage}>Back</button>
                                     <h1 className="text-2xl font-medium">
                                         {/* <h2>{this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts</h2> */}
-                                        {this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts
+                                        {/* {this.props.currentUser.firstName} {this.props.currentUser.lastName}'s Posts */}
+                                        {author}'s Posts
                                     </h1>
                                 </div>
                                 <button onClick={this.logoutUser}>Log Out</button>
@@ -134,6 +139,7 @@ class Profile extends React.Component {
                                     date={p.date}
                                     authorId={p.user}
                                     author={p.author}
+                                    postId={p._id}
                                 />
                             ))}
                             </div>
