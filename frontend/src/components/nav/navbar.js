@@ -12,7 +12,7 @@ class NavBar extends React.Component {
         this.handleHome = this.handleHome.bind(this);
         this.handleCompose = this.handleCompose.bind(this);
         this.handleProfile = this.handleProfile.bind(this);
-        this.handleNotifications = this.handleNotifications.bind(this);
+        // this.handleNotifications = this.handleNotifications.bind(this);
     }
 
     // componentDidUpdate() {
@@ -51,12 +51,12 @@ class NavBar extends React.Component {
         window.location.reload(false);
     }
 
-    handleNotifications(e) {
-        e.preventDefault();
+    // handleNotifications(e) {
+    //     e.preventDefault();
 
-        this.props.history.push('/notifications');
-        window.location.reload(false);
-    }
+    //     this.props.history.push('/notifications');
+    //     window.location.reload(false);
+    // }
 
     // Selectively render links dependent on whether the user is logged in
     getLinks() {
@@ -90,8 +90,8 @@ class NavBar extends React.Component {
                     {/* </Link> */}
                     </button>
                     
-                    <button onClick={this.handleNotifications}>
                     {/* <Link to={'/notifications'}> */}
+                    {/* <button onClick={this.handleNotifications}>
                         <div className="flex text-xl mb-4 flex-shrink-0 hover:text-blue-600">
                             <div className="flex-none self-center mr-2 relative">
                                 <svg className="flex-none fill-current w-6 h-6 lg:w-8 lg:h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"><path d="M15 19a3 3 0 0 1-6 0H4a1 1 0 0 1 0-2h1v-6a7 7 0 0 1 4.02-6.34 3 3 0 0 1 5.96 0A7 7 0 0 1 19 11v6h1a1 1 0 0 1 0 2h-5zm-4 0a1 1 0 0 0 2 0h-2zm0-12.9A5 5 0 0 0 7 11v6h10v-6a5 5 0 0 0-4-4.9V5a1 1 0 0 0-2 0v1.1z" /></svg>
@@ -99,8 +99,8 @@ class NavBar extends React.Component {
                             </div>
                             <h1 className="text-2xl font-medium hidden lg:block">Notifications</h1>
                         </div>
+                    </button> */}
                     {/* </Link> */}
-                    </button >
                 </>
             );
         } else {
