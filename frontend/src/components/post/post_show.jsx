@@ -284,11 +284,14 @@ class PostShow extends React.Component {
         if (this.props.post === undefined) return null;
         // let { post } = this.props;
 
-        let requesterId = this.props.requests.map((r, idx) => {
-            return (r.requester)
-        })
+        // let requesterId = this.props.requests.map((r, idx) => {
+        //     return (r.requester)
+        // })
 
-        console.log(requesterId);
+        // console.log(requesterId);
+
+        let requesters = this.props.requests.map((request) => request.requester);
+        // console.log(requesters)
 
         return (
             <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5">
@@ -353,11 +356,26 @@ class PostShow extends React.Component {
                                 {this.deleteButton()}
                             </div>
                             <div>
-                                {this.props.currentUserId === this.state.requesterId ?
+                                {/* {this.props.currentUserId === this.state.requesterId ?
                                     <button onClick={this.handleRemoveRequest}>Unfollow</button>
                                     :
                                     <button onClick={this.handleRequest}>Follow</button>
-                                }
+                                } */}
+                                {/* {
+                                    this.props.requests.map((request) => {
+                                        {request.requester === this.props.currentUserId ? 
+                                            <button onClick={this.handleRemoveRequest}>Unfollow</button>
+                                        :
+                                            <button onClick={this.handleRequest}>Follow</button>
+                                        }
+                                        
+                                    })
+                                } */}
+                                {requesters.includes(this.props.currentUserId) ?
+                                    <button onClick={this.handleRemoveRequest}>Unfollow</button>
+                                :
+                                    <button onClick={this.handleRequest}>Follow</button>
+                                } 
                                 <div>
                                     {this.props.requests.length}
                                 </div>
