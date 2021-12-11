@@ -29,6 +29,9 @@ const fs = require('fs')
 const multer = require('multer')
 const upload = multer({ dest: 'images/' })
 
+// const cors = require('cors');  
+// app.use(cors());
+
 // const { uploadFile } = require('./s3')
 
 if (process.env.NODE_ENV === 'production') {

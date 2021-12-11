@@ -44,6 +44,15 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users"
     }],
+    // following: {
+    //     type: Array,
+    // },
+    // followers: {
+    //     type: Array,
+    // },
+    // likedPosts: {
+    //     type: Array,
+    // },
     date: {
         type: Date,
         default: Date.now,

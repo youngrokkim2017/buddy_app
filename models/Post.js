@@ -92,10 +92,18 @@ const PostSchema = new Schema({
     //         expires: 120,
     //     },
     // },
+    // // LIKES
     likes: [{
         type: Schema.Types.ObjectId,
         ref: 'users',
     }],
+    // likes: {
+    //     type: Number,
+    //     default: 0
+    // },
+    // comments: {
+    //     type: Array
+    // },
     date: {
         type: Date,
         default: Date.now,
