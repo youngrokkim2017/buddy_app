@@ -132,6 +132,21 @@ router.delete('/:id',
     }
 );
 
+// // DELETE??
+// router.delete(':/id', async (req, res) => {
+//     if (req.body.postid) {
+//         Post.findByIdAndDelete(req.body.postid, (err) => {
+//             err ? res.json(err) : res.json('Success');
+//         })
+//     }
+
+//     if (req.body.userid) {
+//         Post.deleteMany({ author: req.body.userid }, (err) => {
+//             err ?res.json(err) : res.json('Success')
+//         })
+//     }
+// })
+
 // Edit a post
 router.patch('/:id',
     passport.authenticate('jwt', { session: false }),
