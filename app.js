@@ -24,6 +24,11 @@ const User = require('./models/User');
 // const util = require('utils')
 // const unlinkFile = util.promisify(fs.unlink)
 
+// upload image to server
+const fs = require('fs')
+const multer = require('multer')
+const upload = multer({ dest: 'images/' })
+
 // const { uploadFile } = require('./s3')
 
 if (process.env.NODE_ENV === 'production') {
@@ -55,6 +60,27 @@ if (process.env.NODE_ENV === 'production') {
 //     const description = req.body.description
 //     res.send({imagePath: `/images/${result.Key}`})
 // })
+
+// uploading images to server
+// app.use('/images', express.static('images'))
+app.get('/images/:imageName', (req, res) => {
+  // do a bunch of if statements to make sure the user is 
+  // authorized to view this image, then
+
+  const imageName = req.params.imageName
+  const readStream = fs.createReadStream(`images/${imageName}`)
+  readStream.pipe(res)
+})
+
+app.post('/images', upload.single('image'), (req, res) => {
+  const imagePath = req.file.path
+  const description = req.body.description
+
+  // Save this data to a database probably
+
+  console.log(description, imagePath)
+  res.send({description, imagePath})
+})
 
 // SOCKET IO //                                              // FIRST ATTEMPT
 const server = require('http').Server(app);
