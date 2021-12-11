@@ -17,6 +17,14 @@ const requests = require('./routes/api/requests');
 const subscribers = require('./routes/api/subscribe');
 // Import user model
 const User = require('./models/User');
+// // import multer library
+// const multer  = require('multer')
+// const upload = multer({ dest: 'uploads/' })
+// const fs = require('fs')
+// const util = require('utils')
+// const unlinkFile = util.promisify(fs.unlink)
+
+// const { uploadFile } = require('./s3')
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
@@ -24,6 +32,29 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(_dirname, 'frontend', 'build', 'index.html'))
     })
 }
+
+// MULTER //
+// app.get('/images/:key', (req, res) => {
+//     // console.log(req.params)
+//     const key = req.params.key
+//     const readStream = getFileStream(key)
+
+//     readStream.pipe(res)
+// })
+
+// app.post('/images', upload.single('image'), async (req, res) => {
+//     const file = req.file
+//     // console.log(file)
+//     const result = await uploadFile(file)
+//     // console.log(result)
+
+//     // could apply a filter, or resize, etc
+
+//     await unlinkFile(file.path)
+    
+//     const description = req.body.description
+//     res.send({imagePath: `/images/${result.Key}`})
+// })
 
 // SOCKET IO //                                              // FIRST ATTEMPT
 const server = require('http').Server(app);
@@ -152,43 +183,43 @@ io
 ////////////////////////////////////////////////////////////////////////////////
 
 // AWS //
-const aws = require('aws-sdk');
-const S3_BUCKET = process.env.S3_BUCKET;
-aws.config.region = 'us-west-1';
+// const aws = require('aws-sdk');
+// const S3_BUCKET = process.env.S3_BUCKET;
+// aws.config.region = 'us-west-1';
 
-app.get('/sign-s3', (req, res) => {
-    const s3 = new aws.S3();
-    const fileName = req.query['file-name'];
-    const fileType = req.query['file-type'];
-    const s3Params = {
-        Bucket: S3_BUCKET,
-        Key: fileName,
-        Expires: 60,
-        ContentType: fileType,
-        ACL: 'public-read',
-    };
+// app.get('/sign-s3', (req, res) => {
+//     const s3 = new aws.S3();
+//     const fileName = req.query['file-name'];
+//     const fileType = req.query['file-type'];
+//     const s3Params = {
+//         Bucket: S3_BUCKET,
+//         Key: fileName,
+//         Expires: 60,
+//         ContentType: fileType,
+//         ACL: 'public-read',
+//     };
 
-    s3.getSignedUrl('putObject', s3Params, (err, data) => {
-        if (err) return res.end();
+//     s3.getSignedUrl('putObject', s3Params, (err, data) => {
+//         if (err) return res.end();
 
-        const returnData = {
-            signedRequest: data,
-            url: `https://${S3_BUCKET}.s3.amazon.aws.com/${fileName}`
-        };
+//         const returnData = {
+//             signedRequest: data,
+//             url: `https://${S3_BUCKET}.s3.amazon.aws.com/${fileName}`
+//         };
 
-        res.write(JSON.stringify(returnData));
+//         res.write(JSON.stringify(returnData));
 
-        res.end();
-    })
-})
+//         res.end();
+//     })
+// })
 /////////
 
 // set up app to test using postman
 const bodyParser = require('body-parser'); // tells our app what type of requests it should respond to 
 const passport = require('passport');
 
-// AWS S3 bucket
-const { S3 } = require('aws-sdk');
+// // AWS S3 bucket
+// const { S3 } = require('aws-sdk');
 
 // have mongoose connect to the URI
 mongoose
