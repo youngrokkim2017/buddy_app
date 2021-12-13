@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import CreateRequestContainer from '../request/create_request_container';
 import CreateRequest from '../request/create_request';
 import { withRouter } from 'react-router-dom';
+import DeleteModal from '../modal/delete_modal'
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -21,6 +22,8 @@ class PostShow extends React.Component {
             // followFlag: this.props.followFlag || true,
             // status: this.props.requests.map((r) => r.status) || 'pending',
             // status: null,
+            // // MODAL STATE
+            openModal: false,
         }
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
@@ -40,6 +43,9 @@ class PostShow extends React.Component {
 
         // this.handleMessage = this.handleMessage.bind(this);
         this.handleChat = this.handleChat.bind(this);
+
+        // this.deleteModal = this.deleteModal.bind(this)
+        this.handleDeleteModal = this.handleDeleteModal.bind(this)
     }
 
     componentDidMount() {
@@ -61,6 +67,7 @@ class PostShow extends React.Component {
 
         // this.props.history.goBack();
         this.props.history.push('/post');
+        // this.props.history.replace('/post');
 
         window.location.reload(false);
     }
@@ -85,14 +92,34 @@ class PostShow extends React.Component {
         }
     }
 
-    handleDelete() {
+    handleDelete(e) {
         // e.preventDefault();
         this.props.deletePostItem(this.props.post._id)
             // .then(this.props.history.push('/post'))
-            .then(this.props.history.replace('/post'))
+            // .then(this.props.history.replace('/post'))
+            // .then(this.deleteModal)
+            // .then(this.handleBackToPreviousPage)
+            // .then(this.props.history.goBack())
+            // .then(<DeleteModal />)
+            .then(this.setState({openModal: true}))
 
-        window.location.reload(false);
+        // window.location.reload(false);
     }
+
+    handleDeleteModal(e) {
+        e.preventDefault();
+
+        this.setState({openModal: true})
+    }
+
+    // deleteModal() {
+    //     return (
+    //         <div>
+    //             <h1>Post Deleted</h1>
+    //             <button onClick={this.handleBackToPreviousPage}>Return to Newsfeed</button>
+    //         </div>
+    //     )
+    // }
 
     handleEdit() {
     // handleEdit(e) {
@@ -354,6 +381,12 @@ class PostShow extends React.Component {
                             <div>
                                 {/* <button onClick={this.deleteButton()}>Delete</button> */}
                                 {this.deleteButton()}
+                                {
+                                this.state.openModal === false ?
+                                    null
+                                    :
+                                    <DeleteModal />
+                                }
                             </div>
                             <div>
                                 {/* {this.props.currentUserId === this.state.requesterId ?

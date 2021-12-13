@@ -77,6 +77,10 @@ class Post extends React.Component {
   //   if (this.props.location.pathname !== prevProps.location.pathname) {
   //     this.props.fetchPosts();
   //   }
+
+  //   // if (this.props.posts.length !== prevProps.posts.length) {
+  //   //   this.props.fetchPosts();
+  //   // }
   // }
 
   // componentWillReceiveProps(newState) {
@@ -371,6 +375,28 @@ class Post extends React.Component {
                         date={p.date}
                       />
                     ))}
+                    {/* {this.props.posts.map((p, idx) => (
+                      <>
+                      {p === undefined ?
+                        null
+                        :
+                          <PostIndexItem
+                            // // key={p._id}
+                            key={idx}
+                            idx={idx}
+                            postId={p._id}
+                            title={p.title}
+                            start={p.start}
+                            destination={p.destination}
+                            time={p.time}
+                            // description={p.description}
+                            // user={p.firstName}
+                            author={p.author}
+                            date={p.date}
+                          />
+                      }
+                      </>
+                    ))} */}
               </div>
             }
           </div>
