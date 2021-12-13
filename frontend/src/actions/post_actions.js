@@ -117,7 +117,8 @@ export const composePost = (data) => dispatch => (
 
 export const deletePostItem = (postId) => dispatch => (
     deletePost(postId)
-        .then(post => dispatch(removePost(postId)))
+        // .then(post => dispatch(removePost(postId)))
+        .then(post => dispatch(removePost(post)))
         .catch(err => console.log(err))
         // .catch(err => dispatch(receivePostErrors(err.response.data)))
 );
