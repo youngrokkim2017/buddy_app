@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CreateRequest from '../request/create_request';
 import { withRouter } from 'react-router-dom';
 import DeleteModal from '../modal/delete_modal'
-import EditModal from '../modal/edit_modal'
+// import EditModal from '../modal/edit_modal'
 
 class PostShow extends React.Component {
     constructor(props) {
@@ -35,6 +35,7 @@ class PostShow extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEditModal = this.handleEditModal.bind(this);
         this.toggleEditModal = this.toggleEditModal.bind(this);
+        // this.handleEdit = this.handleEdit.bind(this);
 
         // this.handleAccept = this.handleAccept.bind(this);
         this.handleRequest = this.handleRequest.bind(this);
@@ -124,23 +125,23 @@ class PostShow extends React.Component {
     //     )
     // }
 
-    // handleEdit() {
-    // // handleEdit(e) {
-    //     // e.preventDefault();
+    handleEdit() {
+    // handleEdit(e) {
+        // e.preventDefault();
 
-    //     if (this.props.post.user === this.props.currentUserId) {
-    //         return (
-    //             <div>
-    //                 <Link to={`/post/${this.props.post._id}/edit`}>
-    //                     <button>
-    //                     {/* <button onclick={this.setState({editModal: true})}> */}
-    //                         Edit
-    //                     </button>
-    //                 </Link>
-    //             </div>
-    //         )
-    //     }
-    // }
+        if (this.props.post.user === this.props.currentUserId) {
+            return (
+                <div>
+                    <Link to={`/post/${this.props.post._id}/edit`}>
+                        <button>
+                        {/* <button onclick={this.setState({editModal: true})}> */}
+                            Edit
+                        </button>
+                    </Link>
+                </div>
+            )
+        }
+    }
 
     handleEditModal() {
         this.setState({editModal: true})
