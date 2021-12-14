@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 
-function DeleteModal() {
+function EditModal({ editModal }) {
     let history = useHistory();
 
     function handleBackToHomePage() {
@@ -18,6 +18,12 @@ function DeleteModal() {
 
     //     window.location.reload(false);
     // }
+
+    function handleEditModal() {
+        editModal = !editModal
+    }
+
+    // console.log(editModal)
 
     return (
         <div className='modal-background'>
@@ -39,7 +45,7 @@ function DeleteModal() {
                       <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                         <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
                           {/* Deactivate account */}
-                          Deleted Post
+                          Edit Post
                         </h3>
                         {/* <div className="mt-2">
                           <p className="text-sm text-gray-500">
@@ -53,11 +59,11 @@ function DeleteModal() {
                     {/* <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                       Deactivate
                     </button> */}
-                    {/* <button type="button" className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button type="button" onClick={handleEditModal} className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                       Cancel
-                    </button> */}
+                    </button>
                     <button type="button" onClick={handleBackToHomePage} className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-                      Go Back to Home
+                      Update
                     </button>
                   </div>
                 </div>
@@ -67,7 +73,7 @@ function DeleteModal() {
     )
 }
 
-export default DeleteModal
+export default EditModal
 
             // <div className='modal-container'>
             //     {/* <button> X </button> */}

@@ -148,7 +148,9 @@ router.delete('/:id',
 // })
 
 // Edit a post
-router.patch('/:id',
+// router.patch('/:id',
+// router.patch('/:id',
+router.put('/:id',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validatePostInput(req.body);
