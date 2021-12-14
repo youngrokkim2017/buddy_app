@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
-import { fetchPosts, fetchOnePost, deletePostItem } from '../../actions/post_actions';
+import { fetchPosts, fetchOnePost, deletePostItem, editPost } from '../../actions/post_actions';
 import { fetchRequests } from '../../actions/request_actions';
 import { sendRequest, deleteRequest } from '../../actions/request_actions';
 // import { sendRequest, fetchRequests, deleteRequest } from '../../actions/post_actions';
@@ -42,6 +42,7 @@ const mapDispatchToProps = dispatch => {
         fetchRequests: (postId) => dispatch(fetchRequests(postId)),
         request: postId => dispatch(sendRequest(postId)),
         deleteRequest: requestId => dispatch(deleteRequest(requestId)),
+        editPost: (postId) => dispatch(editPost(postId)),
     };
 };
 

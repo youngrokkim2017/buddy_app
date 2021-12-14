@@ -15,12 +15,10 @@ class PostEditForm extends React.Component {
         console.log(this.props);
 
         return (
-            <div>
-                <PostForm
-                    action={this.props.editPost}
-                    currentUser={this.props.currentUser}
-                />
-            </div>
+            <PostForm
+                action={this.props.editPost}
+                currentUser={this.props.currentUser}
+            />
         )
     }
 }
