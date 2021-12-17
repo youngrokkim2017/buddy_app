@@ -114,7 +114,7 @@ class PostForm extends React.Component {
                                         <div className="w-full md:w-1/2 mb-6 pr-3">
                                             <label className="font-medium mb-2">
                                                 Start
-                                    </label>
+                                            </label>
                                             <input
                                                 type="textarea"
                                                 value={this.state.start}
@@ -127,7 +127,7 @@ class PostForm extends React.Component {
                                         <div className="w-full md:w-1/2 mb-6 pr-3">
                                             <label className="font-medium mb-2">
                                                 End
-                                    </label>
+                                            </label>
                                             <input
                                                 type="textarea"
                                                 value={this.state.destination}
@@ -143,7 +143,7 @@ class PostForm extends React.Component {
                                         <div className="w-full md:w-1/2 mb-6 pr-3">
                                             <label className="font-medium mb-2">
                                                 Title
-                                    </label>
+                                            </label>
                                             <input
                                                 type="textarea"
                                                 value={this.state.title}
@@ -155,7 +155,7 @@ class PostForm extends React.Component {
                                         <div className="w-full md:w-1/2 mb-6 pr-3">
                                             <label className="font-medium mb-2">
                                                 Time
-                                    </label>
+                                            </label>
                                             <input
                                                 type="time"
                                                 value={this.state.time}

@@ -11,6 +11,8 @@ class PostShow extends React.Component {
         super(props);
         // this.state = this.props.post;
 
+        let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
+
         this.state = {
             // // requester: this.props.requester,
             // // loading: true,
@@ -26,6 +28,13 @@ class PostShow extends React.Component {
             // // MODAL STATE
             openModal: false,
             editModal: false,
+            // POST FORM STATES
+            title: '',
+            start: '',
+            destination: '',
+            time: '',
+            // description: '',
+            author: fullName,
         }
 
         this.handleBackToPreviousPage = this.handleBackToPreviousPage.bind(this);
@@ -50,6 +59,11 @@ class PostShow extends React.Component {
 
         // this.deleteModal = this.deleteModal.bind(this)
         this.handleDeleteModal = this.handleDeleteModal.bind(this)
+
+        // POST FORM HANDLERS
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.postFormStart = React.createRef();
+        this.postFormDest = React.createRef();
     }
 
     componentDidMount() {
@@ -57,13 +71,47 @@ class PostShow extends React.Component {
         this.props.fetchOnePost(this.props.match.params.id);
 
         this.props.fetchRequests(this.props.match.params.id);
+
+        // // POST FORM LIFECYCLE 
+        // this.startAutocomplete = new google.maps.places.Autocomplete(this.postFormStart.current);
+        // this.destAutocomplete = new google.maps.places.Autocomplete(this.postFormDest.current);
+        // this.startAutocomplete.addListener('place_changed', () => {
+        //     this.setState({
+        //         'start': this.postFormStart.current.value
+        //     })
+        // });
+        // this.destAutocomplete.addListener('place_changed', () =>{
+        //     this.setState({
+        //         'destination': this.postFormDest.current.value
+        //     })
+        // });
     }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //   return this.state.title !== nextState.title;
+    // }
+
+    // componentWillUpdate(nextProps, nextState){
+    //   this.setState({
+    //     title: nextProps.title,
+    //     start: nextProps.start,
+    //     destination: nextProps.destination,
+    //     time: nextProps.time,
+    //   });
+    // } 
 
     componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             this.props.fetchOnePost(this.props.match.params.id);
             // this.props.fetchRequests(this.props.match.params.id);
         }
+
+        // this.setState({
+        //   title: this.props.title,
+        //   start: this.props.start,
+        //   destination: this.props.destination,
+        //   time: this.props.time,
+        // });
     }
 
     handleBackToPreviousPage(e) {
@@ -341,8 +389,48 @@ class PostShow extends React.Component {
         }
     };
 
+    // POST FORM FUNCTIONS
+    handleSubmit(e) {
+        e.preventDefault();
+
+        let fullName = this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName;
+
+        let post = {
+            title: this.state.title,
+            start: this.state.start,
+            destination: this.state.destination,
+            time: this.state.time,
+            // description: this.state.description,
+            author: this.state.author,
+        };
+
+        // this.props.composePost(post);
+        // this.props.action(post);
+        this.props.editPost(post);
+
+        this.setState({
+            title: '',
+            start: '',
+            destination: '',
+            time: '',
+            // description: '',
+            author: fullName,
+        });
+
+        // this.props.history.push('/post');
+
+        // window.location.reload(false);
+    }
+
+    update(type) {
+        return e => this.setState({
+            [type]: e.currentTarget.value
+        });
+    }
+
     render() {
         console.log(this.props);
+        console.log(this.state);
 
         // console.log(this.props.currentUserId)
         // console.log(this.state.requesterId)
@@ -436,21 +524,108 @@ class PostShow extends React.Component {
                                                       Edit Post
                                                     </h3>
                                                     <div className="mt-2">
-                                                      <p className="text-sm text-gray-500">
-                                                        Edit Post Form Goes Here
-                                                      </p>
+                                                      <div className="text-sm text-gray-500">
+                                                        {/* Edit Post Form Goes Here */}
+                                                        {/* <div className="flex overflow-hidden mx-auto w-full lg:mx-0 lg:w-3/5"> */}
+                                                        <div>
+                                                            <div className="flex-grow overflow-y-scroll">
+                                                                {/* <div className="border-l border-r border-gray-300 h-screen"> */}
+                                                                <div>
+                                                                    <div className="p-6 pb-6">
+
+                                                                        <h1 className="text-2xl font-medium mb-4">Edit Activity</h1>
+                                                                        {/* {this.props.location.pathname === `/post/${this.props.post._id}/edit}` ?
+                                                                            <h1 className="text-2xl font-medium mb-4">Edit Activity</h1>
+
+                                                                            :
+
+                                                                            <h1 className="text-2xl font-medium mb-4">Create an activity</h1>
+                                                                        } */}
+
+                                                                        <form onSubmit={this.handleSubmit}>
+                                                                            <div className="w-full">
+                                                                    
+                                                                                <div className="flex flex-wrap">
+                                                                                    <div className="w-full md:w-1/2 mb-6 pr-3">
+                                                                                        <label className="font-medium mb-2">
+                                                                                            Start
+                                                                                </label>
+                                                                                        <input
+                                                                                            type="textarea"
+                                                                                            value={this.state.start}
+                                                                                            onChange={this.update('start')}
+                                                                                            // placeholder="UC Berkeley"
+                                                                                            className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                                                                            ref={this.postFormStart}
+                                                                                        />
+                                                                                    </div>
+                                                                                    <div className="w-full md:w-1/2 mb-6 pr-3">
+                                                                                        <label className="font-medium mb-2">
+                                                                                            End
+                                                                                </label>
+                                                                                        <input
+                                                                                            type="textarea"
+                                                                                            value={this.state.destination}
+                                                                                            onChange={this.update('destination')}
+                                                                                            // placeholder="Telegraph and Dwight"
+                                                                                            className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                                                                            ref={this.postFormDest}
+                                                                                        />
+                                                                                    </div>
+                                                                                </div>
+                                                                    
+                                                                                <div className="flex flex-wrap">
+                                                                                    <div className="w-full md:w-1/2 mb-6 pr-3">
+                                                                                        <label className="font-medium mb-2">
+                                                                                            Title
+                                                                                </label>
+                                                                                        <input
+                                                                                            type="textarea"
+                                                                                            value={this.state.title}
+                                                                                            onChange={this.update('title')}
+                                                                                            // placeholder="Going home"
+                                                                                            className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                                                                        />
+                                                                                    </div>
+                                                                                    <div className="w-full md:w-1/2 mb-6 pr-3">
+                                                                                        <label className="font-medium mb-2">
+                                                                                            Time
+                                                                                </label>
+                                                                                        <input
+                                                                                            type="time"
+                                                                                            value={this.state.time}
+                                                                                            onChange={this.update('time')}
+                                                                                            // placeholder="6:00 pm"
+                                                                                            className="block bg-gray-100 w-full border border-gray-300 rounded-lg py-2 px-4 placeholder-gray-600 focus:outline-none focus:border-blue-400 focus:placeholder-gray-400"
+                                                                                        />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <input type="submit" value="Update" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" />
+                                                                                <button type="button" onClick={this.toggleEditModal} className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                                                                  Cancel
+                                                                                </button>
+                                                                                {/* <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                                                                  Update
+                                                                                </button> */}
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      </div>
                                                     </div>
                                                   </div>
                                                 </div>
                                               </div>
-                                              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                              {/* <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                                 <button type="button" onClick={this.toggleEditModal} className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                                                   Cancel
                                                 </button>
                                                 <button type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                                                   Update
                                                 </button>
-                                              </div>
+                                              </div> */}
                                             </div>
                                           </div>
                                         </div>
